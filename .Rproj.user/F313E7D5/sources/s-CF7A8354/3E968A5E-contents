@@ -1,0 +1,29 @@
+library(readr)
+library(dplyr)
+library(ggplot2)
+#library("tidyverse")
+
+# Carga base de datos de accesos de banda ancha fija
+
+BAF_raw <- read_csv("TODO_BAF/TD_ACC_BAF_ITE_VA.csv", 
+                              col_types = cols(ANIO = col_character(), 
+                                               K_ACCESO_INTERNET = col_character(), 
+                                               K_ENTIDAD = col_character(), K_MUNICIPIO = col_character(), 
+                                               MES = col_character()), locale = locale(encoding = "ISO-8859-1"))
+
+# Tabla resumen de conexiones por anio
+year_resume <- BAF_raw %>% select(ANIO, MES, A_TOTAL_E) %>% group_by(ANIO,MES) %>% 
+  summarize(n=sum(A_TOTAL_E,na.rm = TRUE)/1000000) %>% ungroup()
+
+year_resume <- mutate(year_resume, key_yearmonth = paste(year_resume$ANIO, year_resume$MES,sep = ""))
+
+#ggplot(year_resume, aes(key_yearmonth, n)) + geom_bar(stat = "identity")
+
+# Tabla resumen de conexiones por anio, con desagregacion de tecnologia
+technology_resume<-BAF_raw %>% select(ANIO, MES, K_ACCESO_INTERNET, TECNO_ACCESO_INTERNET, A_TOTAL_E) %>% group_by(ANIO, MES, K_ACCESO_INTERNET, TECNO_ACCESO_INTERNET) %>% 
+  summarize(n=sum(A_TOTAL_E,na.rm = TRUE)/1000000) %>% ungroup()
+
+# Seleccionamos algunas variables de la base
+
+BAF_study <- BAF_raw %>% select(K_ENTIDAD, K_MUNICIPIO, ANIO, MES, CONCESIONARIO, EMPRESA, TECNO_ACCESO_INTERNET, A_TOTAL_E)
+BAF_study$K_MUNICIPIO <- substr(BAF_study$K_MUNICIPIO,3,5)
