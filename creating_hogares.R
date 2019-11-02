@@ -33,7 +33,7 @@ cleaning_hog_state<-function(name_state){
   return(test)
 }
 
-test_hogares = cleaning_pop_state("ags")
+test_hogares = cleaning_hog_state("ags")
 
 for (name_state in states_list ){
   test_hogares <- rbind(test_hogares,cleaning_hog_state(name_state))
@@ -42,6 +42,10 @@ for (name_state in states_list ){
 
 # Elimina duplicados
 test_hogares<-unique(test_hogares)
+hogares2015 <- test_hogares<-unique(test_hogares)
 
 # Escribe la base de hogares en el municipio
 write_csv(test_hogares,"hogares2015.csv")
+
+# Eliminamos objetos auxiliares
+rm(test_hogares)

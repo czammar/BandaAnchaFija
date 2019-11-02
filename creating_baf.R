@@ -19,20 +19,26 @@ BAF_study$K_MUNICIPIO <- substr(BAF_study$K_MUNICIPIO,3,5)
 BAF_study <- BAF_study  %>% mutate(K_ENTIDAD_MUNICIPIO = paste(K_ENTIDAD, K_MUNICIPIO, sep = ""))
 
 ## seleccion variable y alarga la bases de accesos por tecnologia
-BAF_study <- BAF_study %>% 
-  select(K_ENTIDAD_MUNICIPIO, K_ENTIDAD, K_MUNICIPIO, ANIO, MES, CONCESIONARIO, EMPRESA, K_ACCESO_INTERNET, A_TOTAL_E) %>% spread(K_ACCESO_INTERNET, A_TOTAL_E)
+
+# suma los accesos de todos los operadores en el municipio por tecnologia
+BAF_study <- BAF_study %>%  select(K_ENTIDAD_MUNICIPIO,K_ENTIDAD,K_MUNICIPIO, ANIO, MES,K_ACCESO_INTERNET, A_TOTAL_E) %>% 
+  group_by(K_ENTIDAD_MUNICIPIO,K_ENTIDAD,K_MUNICIPIO, ANIO, MES,K_ACCESO_INTERNET) %>% summarise_all(funs(sum))
+
+BAF_study <- BAF_study %>% ungroup()
+
+BAF_study<- BAF_study %>% spread(K_ACCESO_INTERNET, A_TOTAL_E)
 
 ## El detalle de accesos a nivel municipal con NA se imputa con cero
 BAF_study <- BAF_study %>% mutate_all(~replace(., is.na(.), 0))
 
 # Renombramos columnas de accesos segun su tecnologia
-names(BAF_study)[8] <- "CABLE_COAXIAL"
-names(BAF_study)[9] <- "DSL"
-names(BAF_study)[10] <- "FIBRA_OPTICA"
-names(BAF_study)[11] <- "SATELITAL"
-names(BAF_study)[12] <- "TERRESTRE_FIJO_INALAMBRICO"
-names(BAF_study)[13] <- "OTRAS_TECNOLOGIAS"
-names(BAF_study)[14] <- "SIN_TECNOLOGIA_ESPECIFICADA"
+names(BAF_study)[6] <- "CABLE_COAXIAL"
+names(BAF_study)[7] <- "DSL"
+names(BAF_study)[8] <- "FIBRA_OPTICA"
+names(BAF_study)[9] <- "SATELITAL"
+names(BAF_study)[10] <- "TERRESTRE_FIJO_INALAMBRICO"
+names(BAF_study)[11] <- "OTRAS_TECNOLOGIAS"
+names(BAF_study)[12] <- "SIN_TECNOLOGIA_ESPECIFICADA"
 
 # Agregamos columna de todos los accesos del municipio
 BAF_study <- BAF_study %>% mutate(ALL_ACCESS = CABLE_COAXIAL+DSL+FIBRA_OPTICA+SATELITAL+TERRESTRE_FIJO_INALAMBRICO+OTRAS_TECNOLOGIAS+SIN_TECNOLOGIA_ESPECIFICADA)
@@ -45,6 +51,9 @@ BAF_062019 <-  subset(BAF_study, ANIO == "2019" & MES == "06" & K_ENTIDAD != "99
 
 # Escribe la base
 write_csv(BAF_062019, "BAF_06209.csv")
+
+# Eliminamos objetos auxiliares
+rm(BAF_raw,BAF_study)
 
 ####---- Resumenes
 

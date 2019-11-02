@@ -42,6 +42,10 @@ for (name_state in states_list ){
 
 # Elimina duplicados
 test<-unique(test)
+poblacion2015<-test
 
 # Escribe la base de poblacion en el municipio
-write_csv(test,"poblacion2015.csv")
+write_csv(poblacion2015,"poblacion2015.csv")
+
+#Eliminamos objeto auxiliar
+rm(test)
