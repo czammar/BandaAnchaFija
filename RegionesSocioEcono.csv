@@ -1,0 +1,33 @@
+NUM,K_ENTIDAD,NOM_ENTIDAD,NOM_ABRE_ENTIDAD,REG_SOCIOECONOM
+1,09,Distrito Federal,CDMX,Centrosur
+2,12,Guerrero,Gro,Suroeste
+3,15,México,Mex,Centrosur
+4,17,Morelos,Mor,Centrosur
+5,25,Sinaloa,Sin,Noroeste
+6,02,Baja California,BC,Noroeste
+7,26,Sonora,Son,Noroeste
+8,03,Baja California Sur,BCS,Noroeste
+9,32,Zacatecas,Zac,Centronorte
+10,10,Durango,Dgo,Noroeste
+11,08,Chihuahua,Chih,Noroeste
+12,06,Colima,Col,Occidente
+13,18,Nayarit,Nay,Occidente
+14,16,Michoacán de Ocampo,Mich,Occidente
+15,14,Jalisco,Jal,Occidente
+16,07,Chiapas,Chis,Suroeste
+17,27,Tabasco,Tab,Sureste
+18,20,Oaxaca,Oax,Suroeste
+19,11,Guanajuato,Gto,Centronorte
+20,01,Aguascalientes,Ags,Centronorte
+21,22,Querétaro,Qro,Centronorte
+22,24,San Luis Potosí,SLP,Centronorte
+23,29,Tlaxcala,Tlax,Oriente
+24,21,Puebla,Pue,Oriente
+25,13,Hidalgo,Hgo,Oriente
+26,30,Veracruz de Ignacio de la Llave,Ver,Oriente
+27,19,Nuevo León,NL,Noreste
+28,05,Coahuila de Zaragoza,Coah,Noreste
+29,28,Tamaulipas,Tamps,Noreste
+30,31,Yucatán,Yuc,Sureste
+31,04,Campeche,Camp,Sureste
+32,23,Quintana Roo,Q_Roo,Sureste

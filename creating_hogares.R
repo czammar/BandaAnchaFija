@@ -8,7 +8,7 @@ states_list = c("ags","bc","bcs","cam","coah","col","chis","chih","cdmx","dgo","
 
 # Funcion para extraer los datos de poblacion
 
-cleaning_pop_state<-function(name_state){
+cleaning_hog_state<-function(name_state){
   # Carga el archivo con el path descrito
   test <-read_excel(paste0(left_path,name_state,right_path), sheet = 3, col_names = FALSE, col_types = NULL, na = "", skip = 10)
   
@@ -36,7 +36,7 @@ cleaning_pop_state<-function(name_state){
 test_hogares = cleaning_pop_state("ags")
 
 for (name_state in states_list ){
-  test_hogares <- rbind(test_hogares,cleaning_pop_state(name_state))
+  test_hogares <- rbind(test_hogares,cleaning_hog_state(name_state))
   
 }
 
