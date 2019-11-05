@@ -11,6 +11,17 @@ INAFED <- subset(INAFED, id_municipio != "0")
 INAFED <- INAFED %>%  select("cve_inegi","superficie")
 colnames(INAFED) <- c("K_ENTIDAD_MUNICIPIO","SUPERFICIE")
 
+# Se agregan dos datos faltantes en la base del INAFED
+de<-data.frame("07036",48.24) # Ver http://inafed.gob.mx/work/enciclopedia/EMM07chiapas/municipios/07036a.html
+names(de)<-c("K_ENTIDAD_MUNICIPIO","SUPERFICIE")
+INAFED <- rbind(INAFED,de)
+
+de<-data.frame("23010",20.1) # Ver https://es.wikipedia.org/wiki/Municipio_de_Bacalar
+names(de)<-c("K_ENTIDAD_MUNICIPIO","SUPERFICIE")
+INAFED <- rbind(INAFED,de)
 
 # Escribe la base de superficies
 write_csv(INAFED, "INAFED_surface.csv")
+
+# elimina variable auxiliar
+rm(de)

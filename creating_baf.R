@@ -1,5 +1,5 @@
 library(readr)
-library(dplyr)
+library(tidyverse)
 library(ggplot2)
 #library("tidyverse")
 
@@ -49,11 +49,34 @@ BAF_study <- BAF_study %>% mutate(COAX_FO = CABLE_COAXIAL+FIBRA_OPTICA)
 # Se excluyen los datos de accesos que no tienen ubicacion de municipio
 BAF_062019 <-  subset(BAF_study, ANIO == "2019" & MES == "06" & K_ENTIDAD != "99"  & K_MUNICIPIO != "999" )
 
-# Escribe la base
+
+# ----- Contamos la cantidad de empresas presentes en el municipio
+
+# Filtramos la base en crudo para junio de 2019
+BAF_raw062019<- BAF_raw %>%filter(ANIO=="2019" & MES == "06" & K_ENTIDAD != "99"  & K_MUNICIPIO != "999" )
+
+## Crea una llave para cruzar con las otras bases
+BAF_raw062019$K_MUNICIPIO <- substr(BAF_raw062019$K_MUNICIPIO,3,5)
+BAF_raw062019 <- BAF_raw062019  %>% mutate(K_ENTIDAD_MUNICIPIO = paste(K_ENTIDAD, K_MUNICIPIO, sep = ""))
+
+# Crea la base auxiliar que tiene por clave de municipio la cantidad de empresas de BAF en esta 
+BAF_study_ops <- BAF_raw062019 %>% select(K_ENTIDAD_MUNICIPIO) %>% unique()
+BAF_study_ops$NUM_OPS <-NA
+
+for (i in 1:nrow(BAF_study_ops)){
+  folio =BAF_study_ops$K_ENTIDAD_MUNICIPIO[i]
+  n <- BAF_raw062019 %>% select(EMPRESA,K_ENTIDAD_MUNICIPIO) %>% filter(K_ENTIDAD_MUNICIPIO == BAF_study_ops$K_ENTIDAD_MUNICIPIO[i]) %>% unique() %>% nrow()
+  BAF_study_ops$NUM_OPS[i]= n
+}
+
+# Agrega un columna de la cantidad total de empresas que cuentan con al menos un acceso de BAF en cada municipio
+BAF_062019 <- left_join(BAF_062019,BAF_study_ops, by = "K_ENTIDAD_MUNICIPIO")
+
+#----- Escribe la base final
 write_csv(BAF_062019, "BAF_06209.csv")
 
 # Eliminamos objetos auxiliares
-rm(BAF_raw,BAF_study)
+rm(BAF_raw,BAF_study,folio,i,n,BAF_study_ops,BAF_raw062019)
 
 ####---- Resumenes
 
