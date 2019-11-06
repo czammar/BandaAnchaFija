@@ -24,7 +24,7 @@ df <- left_join(df,infraestructura_index, by = "K_ENTIDAD_MUNICIPIO")
 df <- left_join(df,BAF_062019, by = "K_ENTIDAD_MUNICIPIO")
 
 df$SUPERFICIE<- as.numeric(df$SUPERFICIE)
-df$df$PO2SM<- as.numeric(df$PO2SM)
+df$PO2SM<- as.numeric(df$PO2SM)
 
 # Se eliminan columas sin interes para el analisis
 df$K_ENTIDAD<-NULL
@@ -89,3 +89,8 @@ for (index in 1:nrow(df)){
                                                                          if_else(df$REG_SOCIOECONOM[index]=="Sureste",7,8)))))))
 }
 
+# ---- Seleccionamos columnas para el analisis 
+
+df1<- df %>% select(HOGARES, POBLACION, PO2SM, IM, SUPERFICIE, INFRA_INDEX, ALL_ACCESS, NUM_OPS, DENS_HOGS, PEN_CLASS)
+
+write_csv(df1, "BAF_06209_selected.csv")
