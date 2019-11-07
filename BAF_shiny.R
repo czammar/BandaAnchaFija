@@ -4,10 +4,8 @@ library(ggplot2)
 library(dplyr)
 library(tidyverse)
 
-# Para ejectuar este archivo, por favor situarse en la ruta:
-# ../intro-to-data-science-2019/alumnos/czammar/Examen_parcial_I/data
-
-# Cargamos los datos limpios de las importaciones de autos en 1985
+# Para ejectuar este archivo, por favor situarse en la ruta donde esta el archivo csv con los datos
+# Cargamos los datos limpios
 df <- read_csv("BAF_06209_selected.csv")
 df$PEN_CLASS <- as.character(df$PEN_CLASS)
 
@@ -26,7 +24,7 @@ categorical_names <- c("PEN_CLASS")
 
 ui<-fluidPage(
   # Application title
-  titlePanel("Analisis Exploratorio de Autos importados de 1985"),
+  titlePanel("Analisis Exploratorio de Banda Ancha fija"),
   
   # Creamos el titulo del panel
   headerPanel("Opciones de graficos"),
@@ -34,7 +32,7 @@ ui<-fluidPage(
   #Especificaciones de panel lateral izquierdo
   sidebarPanel
   ( # Seleccion de inputs para el analisis: variables y tipo de grafico a desplegar
-    selectInput("dataset","Datos:", choices =list(autos_imports1985 = "df"), selected=NULL), # Datos en que se basa el analisis
+    selectInput("dataset","Datos:", choices =list(BAF062016 = "df"), selected=NULL), # Datos en que se basa el analisis
     selectInput("variable1","Variable 1:", names(df)), # Campo para seleccionar variable 1 a cruzar
     selectInput("variable2","Variable 2", names(df)), # Campo para seleccionar variable 2 a cruzar
     selectInput("variable3","Variable 3 (para desagregación por grupos)", choices = NULL), # Campo para seleccionar variable 3 a cruzar de manera que se desagreguen los plots con ella 
@@ -50,9 +48,9 @@ ui<-fluidPage(
   
   # Llamaos a los graficos al panel del dashboard
   mainPanel(
-    plotlyOutput("distPlot"), # Dasboard bivariado
-    plotlyOutput("p"), # Dasboard bivariado
-    plotlyOutput("q") # Dashboard multivariado
+    plotOutput("distPlot"), # Dasboard bivariado
+    plotOutput("p"), # Dasboard bivariado
+    plotOutput("q") # Dashboard multivariado
   )
 )
 
@@ -63,7 +61,7 @@ server<-(function(input, output, session){
   
   #Actualizacion de las variables elegidas por el usuario en el panel lateral izquierdo
   observe({
-    if(!exists(input$dataset)) return() # Revisamos que si se hallan cargado los datos de autos
+    if(!exists(input$dataset)) return() # Revisamos que si se hallan cargado los datos
     var.opts<-colnames(get(input$dataset))
     updateSelectInput(session, "variable1", choices = var.opts) # usuario variable 1 - de entre todas las variables de la base
     updateSelectInput(session, "variable2", choices = var.opts) # usuario variable 2 - de entre todas las variables de la base
@@ -113,7 +111,7 @@ server<-(function(input, output, session){
   
   
   ######-----  Univariado  -----######
-  output$distPlot <- renderPlotly({
+  output$distPlot <- renderPlot({
     plot.obj<-get_data()
     
     # revisamos que se hayan agregado los datos especificados para hacer las graficas, sino paramos
@@ -123,7 +121,7 @@ server<-(function(input, output, session){
     if(plot.obj$variable1 == "") return()
     
     if(!plot.obj$variable1 %in% categorical_names){
-      p<- ggplot(plot.obj$data, aes_string(plot.obj$variable1))+ geom_histogram(aes(y=..density..), colour="black", fill="white") + geom_density(alpha=.2, fill="#FF6666") 
+      p<- ggplot(plot.obj$data, aes_string(plot.obj$variable1))+ geom_histogram(colour="black", fill="white") #geom_histogram(aes(y=..density..), colour="black", fill="white") #+ geom_density(alpha=.2, fill="#FF6666") 
       p<-p+labs(
         x 		= input$variable1,
         title = "Univariado: variable 1"
@@ -144,7 +142,7 @@ server<-(function(input, output, session){
   })
   
   ######-----  Bivariado  -----######
-  output$p <- renderPlotly({  
+  output$p <- renderPlot({  
     plot.obj<-get_data()
     
     # revisamos que se hayan agregado los datos especificados para hacer las graficas, sino paramos
@@ -213,7 +211,7 @@ server<-(function(input, output, session){
   })
   
   ######----- Multivariado ----- #####
-  output$q <- renderPlotly({  
+  output$q <- renderPlot({  
     plot.obj<-get_data()
     
     # revisamos que se hayan agregado los datos especificados para hacer las graficas, sino paramos
