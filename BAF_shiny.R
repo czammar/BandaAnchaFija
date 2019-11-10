@@ -117,7 +117,7 @@ server<-(function(input, output, session){
     # revisamos que se hayan agregado los datos especificados para hacer las graficas, sino paramos
     if(is.null(plot.obj)) return()
     
-    # verificamos que el usuario ha establecido la variable a cruzar
+    # verificamos que el usuario ha establecido la variable a cruzar  
     if(plot.obj$variable1 == "") return()
     
     if(!plot.obj$variable1 %in% categorical_names){
