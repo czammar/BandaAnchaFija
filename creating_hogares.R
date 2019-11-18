@@ -42,7 +42,7 @@ for (name_state in states_list ){
 
 # Elimina duplicados
 test_hogares<-unique(test_hogares)
-hogares2015 <- test_hogares<-unique(test_hogares)
+hogares2015 <- test_hogares
 
 # Escribe la base de hogares en el municipio
 write_csv(test_hogares,"hogares2015.csv")

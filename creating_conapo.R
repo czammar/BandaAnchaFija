@@ -20,7 +20,7 @@ conapo<- conapo %>% mutate(K_ENTIDAD_MUNICIPIO = paste(K_ENTIDAD, K_MUNICIPIO,se
 conapo <- subset(conapo, ENT != "Nacional")
 
 # Filtramos la base para seleccionar columnas y renglones de interes, en 2015
-conapo <- conapo %>% select(K_ENTIDAD_MUNICIPIO,PO2SM,IM,GM, AÑO)
+conapo <- conapo %>% select(K_ENTIDAD_MUNICIPIO,ANALF,SPRIM, OVSDE, OVSEE, OVSAE, VHAC, OVPT,"PL<5000" ,PO2SM,IM,GM, AÑO)
 conapo <- subset(conapo, AÑO == "2015")
 conapo$AÑO<-NULL
 

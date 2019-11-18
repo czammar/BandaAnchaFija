@@ -80,6 +80,61 @@ rm(BAF_raw,BAF_study,folio,i,n,BAF_study_ops,BAF_raw062019)
 
 ####---- Resumenes
 
+# Numero de accesos de BAF en 06/2019; sin importa tecnologia (18.85439 millones)
+BAF_raw %>% filter(ANIO=='2019' & MES=='06') %>% select(A_TOTAL_E) %>% sum()/1000000
+
+# Numero de accesos de BAF en 06/2019; sin ubicación
+BAF_raw %>% filter(ANIO=='2019' & MES=='06') %>% select(MUNICIPIO,A_TOTAL_E) %>% filter(MUNICIPIO == "Sin información de Municipio") %>% select(A_TOTAL_E) %>% sum()/1000000/18.85439
+
+# Distribucion de accesos de BAF en 06/2019 por tecnologia
+BAF_raw%>% filter(ANIO=='2019' & MES=='06')  %>% select(TECNO_ACCESO_INTERNET,A_TOTAL_E) %>% 
+  group_by(TECNO_ACCESO_INTERNET) %>%  summarize(n=sum(A_TOTAL_E,na.rm = TRUE)/1000000) %>%
+  ungroup() %>% mutate(distrib_n = n/18.85439)
+
+# Numero de accesos de BAF basados en DSL en 06/2019 (11.34751 millones)
+BAF_raw %>% filter(ANIO=='2019' & MES=='06' & TECNO_ACCESO_INTERNET=='DSL' ) %>% select(A_TOTAL_E) %>% sum()/1000000
+
+# Numero de accesos de BAF basados en fibra óptica o cable coaxial en 06/2019 (11.34751 millones)
+BAF_raw %>% filter(ANIO=='2019' & MES=='06' & (TECNO_ACCESO_INTERNET=='Cable Coaxial' |  TECNO_ACCESO_INTERNET=='Fibra Óptica' ) ) %>% select(A_TOTAL_E) %>% sum()/1000000
+
+
+# Empresas y concesionarios de toda la DB (una empresas esta formada de varios concesionarios)
+unique(BAF_raw$EMPRESA) 
+unique(BAF_raw$CONCESIONARIO) 
+
+# Empresas de Grupo Televisa
+BAF_raw %>% select(GRUPO, EMPRESA) %>% unique() %>% filter(GRUPO=="GRUPO TELEVISA")
+
+# Empresas de grupo America Movil
+BAF_raw %>% select(GRUPO, EMPRESA) %>% unique() %>% filter(GRUPO=="AMÉRICA MÓVIL")
+
+# Empresas de grupo MEGACABLE-MCM
+BAF_raw %>% select(GRUPO, EMPRESA) %>% unique() %>% filter(GRUPO=="MEGACABLE-MCM")
+
+# Empresas de grupo TOTALPLAY
+BAF_raw %>% select(GRUPO, EMPRESA) %>% unique() %>% filter(GRUPO=="TOTALPLAY")
+
+# Distribución de acceso por grupos economicos
+BAF_raw%>% filter(ANIO=='2019' & MES=='06')  %>% select(GRUPO,A_TOTAL_E) %>% 
+  group_by(GRUPO) %>%  summarize(n=sum(A_TOTAL_E,na.rm = TRUE)/1000000) %>%
+  ungroup() %>% mutate(distrib_n = n/18.85439) %>% arrange(desc(distrib_n))
+
+# Distribucion de acceso por tecnologia y por grupos de empresas
+BAF_raw%>% filter(ANIO=='2019' & MES=='06')  %>% select(GRUPO,TECNO_ACCESO_INTERNET,A_TOTAL_E) %>% 
+  group_by(GRUPO,TECNO_ACCESO_INTERNET) %>%  summarize(n=sum(A_TOTAL_E,na.rm = TRUE)/1000000) %>%
+  ungroup() %>% spread(TECNO_ACCESO_INTERNET, n)%>% mutate_all(~replace(., is.na(.), 0)) %>% 
+  mutate(Sin_tecnoliga_especificada = `Sin tecnología especificada`+`Sin Tecnología especificada`) %>%
+  select(-c(`Sin tecnología especificada`,`Sin Tecnología especificada`))
+
+# Distribucion de acceso por tecnologia y por por grupos de empresas mas importantes
+BAF_raw%>% filter(ANIO=='2019' & MES=='06')  %>% select(GRUPO,TECNO_ACCESO_INTERNET,A_TOTAL_E) %>% 
+  group_by(GRUPO,TECNO_ACCESO_INTERNET) %>%  summarize(n=sum(A_TOTAL_E,na.rm = TRUE)/1000000) %>%
+  ungroup() %>% spread(TECNO_ACCESO_INTERNET, n)%>% mutate_all(~replace(., is.na(.), 0)) %>%
+  mutate(Sin_tecnoliga_especificada = `Sin tecnología especificada`+`Sin Tecnología especificada`) %>%
+  select(-c(`Sin tecnología especificada`,`Sin Tecnología especificada`)) %>% 
+  filter(GRUPO == "AMÉRICA MÓVIL"|GRUPO == "GRUPO TELEVISA"| GRUPO == "AMÉRICA MÓVIL" | GRUPO == "MEGACABLE-MCM" | GRUPO == "TOTALPLAY")
+
+
 # # Tabla resumen de conexiones por anio
 # year_resume <- BAF_raw %>% select(ANIO, MES, A_TOTAL_E) %>% group_by(ANIO,MES) %>% 
 #   summarize(n=sum(A_TOTAL_E,na.rm = TRUE)/1000000) %>% ungroup()
@@ -89,5 +144,4 @@ rm(BAF_raw,BAF_study,folio,i,n,BAF_study_ops,BAF_raw062019)
 # #ggplot(year_resume, aes(key_yearmonth, n)) + geom_bar(stat = "identity")
 # 
 # # Tabla resumen de conexiones por anio, con desagregacion de tecnologia
-# technology_resume<-BAF_raw %>% select(ANIO, MES, K_ACCESO_INTERNET, TECNO_ACCESO_INTERNET, A_TOTAL_E) %>% group_by(ANIO, MES, K_ACCESO_INTERNET, TECNO_ACCESO_INTERNET) %>% 
-#   summarize(n=sum(A_TOTAL_E,na.rm = TRUE)/1000000) %>% ungroup()
+# technology_resume<-)

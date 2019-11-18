@@ -9,9 +9,12 @@ setwd("/media/Box/Aprendizaje_Maquina/Projecto")
 source("creating_baf.R") # Accesos de banda ancha fija a junio/2019 BIT del IFT
 source("creating_conapo.R") # Indice marginacion y porcentaje pob con menos de 2 salarios min, 2015 CONAPO
 source("creating_inafed.R") # Superficie de municipios, INAFED
-source("creating_indiceinfraestructura.R")  # Indice infraestructura TII - centro de estudios IFT
+#source("creating_indiceinfraestructura.R")  # Indice infraestructura TII - centro de estudios IFT
+source("creating_indicadores_serviciostelecom_viviendas_.R")  # Indicadores de disponiblidad de servicios de telecomunicaciones Encuesta intercensal 2015, INEGI
 source("creating_hogares.R") # Hogares por municipios Encuesta intercensal 2015, INEGI
 source("creating_poblacion.R") # Poblacion por municipios Encuesta intercensal 2015, INEGI
+source("creating_humandevelop_index.R") # Programa de las Naciones Unidas para el Desarrollo (PNUD), datos del Indice de desarollo humano 2015
+
 
 # Elimina variables auxiliares
 rm(index, left_path,name_state,right_path,states_list,cleaning_hog_state,cleaning_pop_state)
@@ -20,8 +23,11 @@ rm(index, left_path,name_state,right_path,states_list,cleaning_hog_state,cleanin
 df <- left_join(hogares2015,poblacion2015, by = "K_ENTIDAD_MUNICIPIO")
 df <- left_join(df,conapo, by = "K_ENTIDAD_MUNICIPIO")
 df <- left_join(df,INAFED, by = "K_ENTIDAD_MUNICIPIO")
-df <- left_join(df,infraestructura_index, by = "K_ENTIDAD_MUNICIPIO")
+df <- left_join(df,indicadores_servicios2015, by = "K_ENTIDAD_MUNICIPIO")
 df <- left_join(df,BAF_062019, by = "K_ENTIDAD_MUNICIPIO")
+
+## El detalle de accesos a nivel municipal con NA se imputa con cero
+df <- df %>% mutate_all(~replace(., is.na(.), 0))
 
 df$SUPERFICIE<- as.numeric(df$SUPERFICIE)
 df$PO2SM<- as.numeric(df$PO2SM)
@@ -32,8 +38,14 @@ df$K_MUNICIPIO<-NULL
 df$ANIO<-NULL
 df$MES<-NULL
 
-## El detalle de accesos a nivel municipal con NA se imputa con cero
-df <- df %>% mutate_all(~replace(., is.na(.), 0))
+# df1 <- df
+# Se cambian algunas variables de caracteres a numericas
+# df1 <- df1 %>% select(-K_ENTIDAD_MUNICIPIO,-GM)
+df$SPRIM <- as.numeric(df$SPRIM)
+df$OVSDE <- as.numeric(df$OVSDE)
+df$VHAC <- as.numeric(df$VHAC)
+df$OVPT <- as.numeric(df$OVPT)
+df$`PL<5000` <- as.numeric(df$`PL<5000`)
 
 # Crea variable de penetracion de BAF por cada 100 hogares y la penetracion de cable coaxial + fibra optica
 df <- df %>% mutate(PEN_BAF = df$ALL_ACCESS/df$HOGARES*100)
@@ -89,8 +101,30 @@ for (index in 1:nrow(df)){
                                                                          if_else(df$REG_SOCIOECONOM[index]=="Sureste",7,8)))))))
 }
 
+
+# Adjuntamos los datos de indices de derechos humanos
+df <- left_join(df, hd_index2015, by = "K_ENTIDAD_MUNICIPIO")
+
+
 # ---- Seleccionamos columnas para el analisis 
 
-df1<- df %>% select(HOGARES, POBLACION, PO2SM, IM, SUPERFICIE, INFRA_INDEX, ALL_ACCESS, NUM_OPS, DENS_HOGS, PEN_CLASS)
+#df1<- df %>% select(HOGARES, POBLACION, PO2SM, IM, SUPERFICIE, INFRA_INDEX, ALL_ACCESS, NUM_OPS, DENS_HOGS, PEN_CLASS)
+
+
+#### ---- Intentemos Lasso
+
+df1 <- df %>% select_if(is.numeric)
+# df1 <- df1 %>% select(ALL_ACCESS,COAX_FO,HOGARES,POBLACION, ANALF, SPRIM, OVSDE,OVSEE, OVSAE, VHAC, OVPT,`PL<5000`,PO2SM,IM)
+
+df1 <- df1 %>%select(-PEN_CLASS,PEN_CLASS)
 
 write_csv(df1, "BAF_06209_selected.csv")
+
+
+#library(corrplot)
+#M<-cor(df1)
+#corrplot(M, method="circle")# 
+#corrplot(M, method="number")
+
+
+

@@ -3,44 +3,44 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: ilcss-wp-example.aux
 The style file: apalike.bst
 Database file #1: ilcss-sample.bib
-You've used 2 entries,
+You've used 15 entries,
             1935 wiz_defined-function locations,
-            487 strings with 4087 characters,
-and the built_in function-call counts, 850 in all, are:
-= -- 85
-> -- 31
-< -- 1
-+ -- 10
-- -- 10
-* -- 78
-:= -- 149
-add.period$ -- 6
-call.type$ -- 2
-change.case$ -- 15
-chr.to.int$ -- 2
-cite$ -- 2
-duplicate$ -- 28
-empty$ -- 61
-format.name$ -- 14
-if$ -- 162
-int.to.chr$ -- 1
+            549 strings with 6031 characters,
+and the built_in function-call counts, 4426 in all, are:
+= -- 425
+> -- 132
+< -- 13
++ -- 42
+- -- 40
+* -- 305
+:= -- 838
+add.period$ -- 46
+call.type$ -- 15
+change.case$ -- 94
+chr.to.int$ -- 13
+cite$ -- 15
+duplicate$ -- 198
+empty$ -- 325
+format.name$ -- 55
+if$ -- 843
+int.to.chr$ -- 3
 int.to.str$ -- 0
-missing$ -- 2
-newline$ -- 13
-num.names$ -- 6
-pop$ -- 10
+missing$ -- 16
+newline$ -- 78
+num.names$ -- 45
+pop$ -- 79
 preamble$ -- 1
-purify$ -- 15
+purify$ -- 95
 quote$ -- 0
-skip$ -- 22
+skip$ -- 162
 stack$ -- 0
-substring$ -- 74
-swap$ -- 2
+substring$ -- 228
+swap$ -- 15
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 12
+type$ -- 88
 warning$ -- 0
-while$ -- 8
+while$ -- 32
 width$ -- 0
-write$ -- 28
+write$ -- 185
