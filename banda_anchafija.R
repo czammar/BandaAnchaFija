@@ -154,9 +154,14 @@ df <- left_join(df, hd_index2015, by = "K_ENTIDAD_MUNICIPIO")
 df1<- df %>% select(K_ENTIDAD_MUNICIPIO, HOGARES, POBLACION, SUPERFICIE, DENS_HOGS, DENS_HABS,
                     ANALF, SPRIM, ANOS_PROMEDIO_DE_ESCOLARIDAD,OVSAE, OVSEE, 'PL<5000', PO2SM, INGRESOPC_ANUAL,
                     DISP_INTERNET, DISP_TV_PAGA, DISP_TEL_CELULAR, DISP_TEL_FIJO, 
-                    NUM_OPS, CLASS_PEN_BAF_HOGS_COAXFO, IS_PEN_BAF_HABS_COAXFO)
+                    NUM_OPS, CLASS_PEN_BAF_HABS_COAXFO, IS_PEN_BAF_HABS_COAXFO)
 
-write_csv(df1, "BAF_06209_selected.csv")
+# Base para el problema de detecion de penetracion sin importar el nivel
+write_csv(df1, "BAF_06209_P1.csv")
+
+# Base para el problema de detecion del nivel de penetracion
+write_csv(df1, "BAF_06209_P2.csv")
+
 
 #### ---- Intentemos Lasso
 
