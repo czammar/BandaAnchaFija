@@ -114,6 +114,16 @@ for (index in 1:nrow(df)){
                                                                  if_else(df$PEN_BAF_HABS_COAXFO[index]<=30.92,3,4))))
 }
 
+df$IS_PEN_BAF_HABS_COAXFO <- 0
+
+for (index in 1:nrow(df)){
+  df$IS_PEN_BAF_HABS_COAXFO[index] <- if_else(df$CLASS_PEN_BAF_HABS_COAXFO[index]!=0,1,0)
+}
+
+
+
+
+
 #----- Agregamos una columna que nos diga la region socioecnomica a la que pertenece el municipio
 
 RegionesSocioEcono <- read_csv("RegionesSocioEcono.csv", 
@@ -139,27 +149,30 @@ for (index in 1:nrow(df)){
 df <- left_join(df, hd_index2015, by = "K_ENTIDAD_MUNICIPIO")
 
 
-# ---- Seleccionamos columnas para el analisis 
+# ---- Seleccionamos columnas para el analisis y escribimos la base para Python
 
-#df1<- df %>% select(HOGARES, POBLACION, PO2SM, IM, SUPERFICIE, INFRA_INDEX, ALL_ACCESS, NUM_OPS, DENS_HOGS, PEN_CLASS)
+df1<- df %>% select(K_ENTIDAD_MUNICIPIO, HOGARES, POBLACION, SUPERFICIE, DENS_HOGS, DENS_HABS,
+                    ANALF, SPRIM, ANOS_PROMEDIO_DE_ESCOLARIDAD,OVSAE, OVSEE, 'PL<5000', PO2SM, INGRESOPC_ANUAL,
+                    DISP_INTERNET, DISP_TV_PAGA, DISP_TEL_CELULAR, DISP_TEL_FIJO, 
+                    NUM_OPS, CLASS_PEN_BAF_HOGS_COAXFO, IS_PEN_BAF_HABS_COAXFO)
 
+write_csv(df1, "BAF_06209_selected.csv")
 
 #### ---- Intentemos Lasso
 
-df1 <-df %>% select(-c(NUM_OPS,K_ENTIDAD_MUNICIPIO, IM, GM, CABLE_COAXIAL, FIBRA_OPTICA, SATELITAL, TERRESTRE_FIJO_INALAMBRICO, OTRAS_TECNOLOGIAS, SIN_TECNOLOGIA_ESPECIFICADA, ALL_ACCESS, DSL, COAX_FO, PEN_BAF_HOGS_COAXFO, PEN_BAF_HABS_COAXFO, CLASS_PEN_BAF_HOGS_COAXFO, CLASS_PEN_BAF_HABS_COAXFO, ANOS_ESPERADOS_DE_ESCOLARIZACIÓN, TASA_DE_MORTALIDAD_INFANTIL, INDICE_DE_EDUCACION,INDICE_DE_SALUD, INDICE_DE_INGRESO,IDH))  
-df2 <- df %>% select(PEN_BAF_HABS_COAXFO)
+#df1 <-df %>% select(-c(NUM_OPS,K_ENTIDAD_MUNICIPIO, IM, GM, CABLE_COAXIAL, FIBRA_OPTICA, SATELITAL, TERRESTRE_FIJO_INALAMBRICO, OTRAS_TECNOLOGIAS, SIN_TECNOLOGIA_ESPECIFICADA, ALL_ACCESS, DSL, COAX_FO, PEN_BAF_HOGS_COAXFO, PEN_BAF_HABS_COAXFO, CLASS_PEN_BAF_HOGS_COAXFO, CLASS_PEN_BAF_HABS_COAXFO, ANOS_ESPERADOS_DE_ESCOLARIZACIÓN, TASA_DE_MORTALIDAD_INFANTIL, INDICE_DE_EDUCACION,INDICE_DE_SALUD, INDICE_DE_INGRESO,IDH))  
+#df2 <- df %>% select(PEN_BAF_HABS_COAXFO)
 
-library(glmnet)
+#library(glmnet)
 
-fit = glmnet(as.matrix(df1[!is.na(df1$INGRESOPC_ANUAL),]), as.matrix(df2[!is.na(df1$INGRESOPC_ANUAL),]))
+#fit = glmnet(as.matrix(df1[!is.na(df1$INGRESOPC_ANUAL),]), as.matrix(df2[!is.na(df1$INGRESOPC_ANUAL),]))
 
-plot(fit, label=TRUE)
+#plot(fit, label=TRUE)
 
 # df1 <- df1 %>% select(ALL_ACCESS,COAX_FO,HOGARES,POBLACION, ANALF, SPRIM, OVSDE,OVSEE, OVSAE, VHAC, OVPT,`PL<5000`,PO2SM,IM)
 
-df1 <- df1 %>%select(-PEN_CLASS,PEN_CLASS)
+#df1 <- df1 %>%select(-PEN_CLASS,PEN_CLASS)
 
-write_csv(df1, "BAF_06209_selected.csv")
 
 
 #library(corrplot)
