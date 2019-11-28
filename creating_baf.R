@@ -11,6 +11,34 @@ BAF_raw <- read_csv("TODO_BAF/TD_ACC_BAF_ITE_VA.csv",
                                                K_ENTIDAD = col_character(), K_MUNICIPIO = col_character(), 
                                                MES = col_character()), locale = locale(encoding = "ISO-8859-1"))
 
+######---- Modificacmos los datos atipicos de de Mayapan (Yucatan) y Rayon (Estado de Mexico) ----#####
+
+# Los municipios circundates a Mayapan no tienen penetracion de BAF en cable coaxial ni fibra optica.
+# Se considera que Mayapan tampoco (error en la base del  BIT)
+
+indice_mayapan = (BAF_raw$ANIO == "2019")*(BAF_raw$ENTIDAD == "Yucatan")*(BAF_raw$MUNICIPIO == "Mayapan")
+for (i in which(indice_mayapan==1)){
+  BAF_raw$A_TOTAL_E[i]<-0
+}
+
+rm(indice_mayapan)
+# El nivel reportado de penetracion para Rayon es muy alto debido a incosistencias con los accesos
+# reportados por Megacable en los meses 04, 05 y 06 de 2019. Se les imputa el valor
+# historico mas reciente, que es congruente con los datos historicos previos.
+
+
+indice_rayon = (BAF_raw$ANIO == "2019")*(BAF_raw$ENTIDAD == "Mexico.")*(BAF_raw$MUNICIPIO == "Rayon..")*(BAF_raw$EMPRESA == "MEGACABLE")*(BAF_raw$TECNO_ACCESO_INTERNET == "Cable Coaxial")
+
+indice_rayon_03 = which((indice_rayon*(BAF_raw$MES == "03"))==1)
+indice_rayon_04 = which((indice_rayon*(BAF_raw$MES == "04"))==1)
+indice_rayon_05 = which((indice_rayon*(BAF_raw$MES == "05"))==1)
+indice_rayon_06 = which((indice_rayon*(BAF_raw$MES == "06"))==1)
+
+BAF_raw$A_TOTAL_E[indice_rayon_04] <- BAF_raw$A_TOTAL_E[indice_rayon_03] 
+BAF_raw$A_TOTAL_E[indice_rayon_05] <- BAF_raw$A_TOTAL_E[indice_rayon_03] 
+BAF_raw$A_TOTAL_E[indice_rayon_06] <- BAF_raw$A_TOTAL_E[indice_rayon_03] 
+
+
 ######---- Transformacion y limpieza de la base de accesos ----#####
 
 ## Crea una llave para cruzar con las otras bases
@@ -104,7 +132,7 @@ unique(BAF_raw$CONCESIONARIO)
 
 # Empresas de Grupo Televisa
 BAF_raw %>% select(GRUPO, EMPRESA) %>% unique() %>% filter(GRUPO=="GRUPO TELEVISA")
-
+  
 # Empresas de grupo America Movil
 BAF_raw %>% select(GRUPO, EMPRESA) %>% unique() %>% filter(GRUPO=="AMÉRICA MÓVIL")
 

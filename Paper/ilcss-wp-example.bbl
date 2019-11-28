@@ -35,8 +35,15 @@ IFT (2018b).
 \newblock {Banco de Información de Telecomunicaciones}.
 \newblock {\em https://bit.ift.org.mx/BitWebApp/}.
 
-\bibitem[IFT, 2018c]{IFT2018man}
+\bibitem[IFT, 2018c]{IFTcobertura2018}
 IFT (2018c).
+\newblock {Documento metodológico para el diagnóstico de cobertura de banda
+  ancha a nivel municipal por Entidad Federativa}.
+\newblock {\em Página electrónica del Instituto Federal de
+  Telecomunicaciones}.
+
+\bibitem[IFT, 2018d]{IFT2018man}
+IFT (2018d).
 \newblock {Manual de definiciones de los indicadores estadísticos de
   telecomunicaciones}.
 \newblock {\em Pagina electronica del Instituto Federal de Telecomunicaciones}.
@@ -78,8 +85,8 @@ Moya, J. (2014).
 
 \bibitem[ONU, 2015]{ONU2015}
 ONU (2010-2015).
-\newblock
-  {https://www.mx.undp.org/content/mexico/es/home/library/poverty/informe-de-desarrollo-humano-municipal-2010-2015--transformando-.html}.
+\newblock {Informe de Desarrollo Humano Municipal 2010-2015. Transformando
+  México desde lo local}.
 \newblock {\em Página electrónica de la Comisión Nacional de población}.
 
 \bibitem[Pradhan et~al., 2014]{PRADHAN2014634}

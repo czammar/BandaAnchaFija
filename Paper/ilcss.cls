@@ -108,7 +108,7 @@
 \newboolean{displaycopyright}
 \setboolean{displaycopyright}{false} % Confirmed as not required
 \RequirePackage{textcomp} % For copyright symbol styling
-\newcommand{\copyrightstatement}{\, \textcopyright\, 2015 by The National Academy of Sciences of the USA}
+\newcommand{\copyrightstatement}{\, \textcopyright\, 2019 ITAM}
 
 %% Graphics, tables and other formatting
 \RequirePackage{graphicx,xcolor}
@@ -185,8 +185,7 @@
 \pagestyle{fancy}          % Enables the custom headers/footers
 
 \fancypagestyle{firststyle}{
-   \fancyfoot[R]{\footerfont iLCSS\hspace{7pt}|\hspace{7pt}\textbf{\today}\hspace{7pt}|\hspace{7pt}vol. XXX\hspace{7pt}|\hspace{7pt}no. XX\hspace{7pt}|\hspace{7pt}\textbf{\thepage\textendash\pageref{LastPage}}}
-   \fancyfoot[L]{\footerfont\@ifundefined{@doi}{}{\@doi}}
+   \fancyfoot[R]{\footerfont ITAM\hspace{7pt}|\hspace{7pt}\textbf{\today}\hspace{7pt}|}
 }
 
 
@@ -201,7 +200,7 @@
 \rfoot{}%
 
 \fancyfoot[LE]{\footerfont\textbf{\thepage}\hspace{7pt}|\hspace{7pt}\@ifundefined{@doi}{}{\@doi}}
-\fancyfoot[RO]{\footerfont iLCSS\hspace{7pt}|\hspace{7pt}\textbf{\today}\hspace{7pt}|\hspace{7pt}vol. XXX\hspace{7pt}|\hspace{7pt}no. XX\hspace{7pt}|\hspace{7pt}\textbf{\thepage}}
+\fancyfoot[RO]{\footerfont ITAM \hspace{7pt}|\hspace{7pt}\textbf{\today}\hspace{7pt}|}
 \fancyfoot[RE,LO]{\footerfont\@ifundefined{@leadauthor}{}{\@leadauthor}\ifnum \value{authors} > 1\hspace{5pt}\textit{et al.}\fi}
 
 \renewcommand{\headrulewidth}{0pt}% % No header rule

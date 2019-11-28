@@ -47,19 +47,33 @@ df$VHAC <- as.numeric(df$VHAC)
 df$OVPT <- as.numeric(df$OVPT)
 df$`PL<5000` <- as.numeric(df$`PL<5000`)
 
-# Crea variable de penetracion de BAF por cada 100 hogares y la penetracion de cable coaxial + fibra optica
-df <- df %>% mutate(PEN_BAF = df$ALL_ACCESS/df$HOGARES*100)
-df$PEN_BAF_COAXFO <- 0
-for (i in 1:nrow(df)){
-df$PEN_BAF_COAXFO[i]<- df$COAX_FO[i]/df$HOGARES[i]*100
-}
-
 # Crea variable de densidad de hogares por kilometros cuadrados
-#df <- df %>% mutate(DENS_HOGS = df$HOGARES/df$SUPERFICIE)
 
 df$DENS_HOGS <- 0
 for (i in 1:nrow(df)){
   df$DENS_HOGS[i]<- df$HOGARES[i]/df$SUPERFICIE[i]*100
+}
+
+# Crea variable de densidad de personas por kilometros cuadrados
+#df <- df %>% mutate(DENS_HOGS = df$HOGARES/df$SUPERFICIE)
+
+df$DENS_HABS <- 0
+for (i in 1:nrow(df)){
+  df$DENS_HABS[i]<- df$HOGARES[i]/df$SUPERFICIE[i]*100
+}
+
+# Crea variable de penetracion de BAF por cada 100 hogares y la penetracion de cable coaxial + fibra optica
+#df <- df %>% mutate(PEN_BAF_HOGS = df$ALL_ACCESS/df$HOGARES*100)
+df$PEN_BAF_HOGS_COAXFO <- 0
+for (i in 1:nrow(df)){
+  df$PEN_BAF_HOGS_COAXFO[i]<- df$COAX_FO[i]/df$HOGARES[i]*100
+}
+
+# Crea variable de penetracion de BAF por cada 100 habitantes y la penetracion de cable coaxial + fibra optica
+#df <- df %>% mutate(PEN_BAF_HABS = df$ALL_ACCESS/df$HOGARES*100)
+df$PEN_BAF_HABS_COAXFO <- 0
+for (i in 1:nrow(df)){
+  df$PEN_BAF_HABS_COAXFO[i]<- df$COAX_FO[i]/df$POBLACION[i]*100
 }
 
 # Creamos una columna para clasificar los municipios segun su grado de penetracion.
@@ -71,14 +85,33 @@ for (i in 1:nrow(df)){
 # Alta 75%>100%
 # Muy Alta 100%
 
-df$PEN_CLASS <- NA
+df$CLASS_PEN_BAF_HOGS_COAXFO <- 0
 
 for (index in 1:nrow(df)){
-  df$PEN_CLASS[index] <- if_else(df$PEN_BAF_COAXFO[index]==0,0, 
-                                 if_else(df$PEN_BAF_COAXFO[index]<=25,1,
-                                         if_else(df$PEN_BAF_COAXFO[index]<=50,2,
-                                                 if_else(df$PEN_BAF_COAXFO[index]<=75,3, 
-                                                         if_else(df$PEN_BAF_COAXFO[index]<=100,4,5)))))
+  df$CLASS_PEN_BAF_HOGS_COAXFO[index] <- if_else(df$PEN_BAF_HOGS_COAXFO[index]==0,0, 
+                                           if_else(df$PEN_BAF_HOGS_COAXFO[index]<=25,1,
+                                                   if_else(df$PEN_BAF_HOGS_COAXFO[index]<=50,2,
+                                                           if_else(df$PEN_BAF_HOGS_COAXFO[index]<=75,3, 
+                                                                   if_else(df$PEN_BAF_HOGS_COAXFO[index]<=100,4,5)))))
+}
+
+
+# Creamos una columna para clasificar los municipios segun su grado de penetracion.
+#La clasificación de Penetracion de Fibra Óptica y Cable Coaxial:
+# Sin cobertura=0
+# Muy baja 0>25%
+# Baja 25%>50%
+# Media 50%>75%
+# Alta 75%>100%
+# Muy Alta 100%
+
+df$CLASS_PEN_BAF_HABS_COAXFO <- 0
+
+for (index in 1:nrow(df)){
+  df$CLASS_PEN_BAF_HABS_COAXFO[index] <- if_else(df$PEN_BAF_HABS_COAXFO[index]==0,0, 
+                                                 if_else(df$PEN_BAF_HABS_COAXFO[index]<=10,1,
+                                                         if_else(df$PEN_BAF_HABS_COAXFO[index]<=20,2,
+                                                                 if_else(df$PEN_BAF_HABS_COAXFO[index]<=30.92,3,4))))
 }
 
 #----- Agregamos una columna que nos diga la region socioecnomica a la que pertenece el municipio
@@ -113,7 +146,15 @@ df <- left_join(df, hd_index2015, by = "K_ENTIDAD_MUNICIPIO")
 
 #### ---- Intentemos Lasso
 
-df1 <- df %>% select_if(is.numeric)
+df1 <-df %>% select(-c(NUM_OPS,K_ENTIDAD_MUNICIPIO, IM, GM, CABLE_COAXIAL, FIBRA_OPTICA, SATELITAL, TERRESTRE_FIJO_INALAMBRICO, OTRAS_TECNOLOGIAS, SIN_TECNOLOGIA_ESPECIFICADA, ALL_ACCESS, DSL, COAX_FO, PEN_BAF_HOGS_COAXFO, PEN_BAF_HABS_COAXFO, CLASS_PEN_BAF_HOGS_COAXFO, CLASS_PEN_BAF_HABS_COAXFO, ANOS_ESPERADOS_DE_ESCOLARIZACIÓN, TASA_DE_MORTALIDAD_INFANTIL, INDICE_DE_EDUCACION,INDICE_DE_SALUD, INDICE_DE_INGRESO,IDH))  
+df2 <- df %>% select(PEN_BAF_HABS_COAXFO)
+
+library(glmnet)
+
+fit = glmnet(as.matrix(df1[!is.na(df1$INGRESOPC_ANUAL),]), as.matrix(df2[!is.na(df1$INGRESOPC_ANUAL),]))
+
+plot(fit, label=TRUE)
+
 # df1 <- df1 %>% select(ALL_ACCESS,COAX_FO,HOGARES,POBLACION, ANALF, SPRIM, OVSDE,OVSEE, OVSAE, VHAC, OVPT,`PL<5000`,PO2SM,IM)
 
 df1 <- df1 %>%select(-PEN_CLASS,PEN_CLASS)
