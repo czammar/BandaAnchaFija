@@ -164,30 +164,75 @@ Se observó que a junio de 2019, existían 18.85 millones de accesos de BAF dist
 
 En términos de los principales grupos de telecomunicaciones de México a los que pertenecen los accesos de BAF, se tiene la siguiente distribución: América Móvil\footnote{Telmex y Telnor}  51.6\%, Grupo Televisa\footnote{Cablecom, Cablemas, Cablevision, Cablevision Red, Television Internacional y Sky} 23.3\%, Megacable-MCM\footnote{Megacable y MCM}  16.1\% y Totalplay 7.35\%  
 
-Otro punto a destacar es que únicamente los empresas que pertenecen a dichos grupos han desplegado accesos basados en cable coaxial o fibra óptica en el país.%\footnote{Aunque no se tiene datos explícitos de fibra óptica para Grupo Televisa, la oferta comercial de "Izzi" si los considera
-	%: \emph{"...hoy izzi ofrece servicio en más de 60 ciudades en 29 estados de la República Mexicana, mediante una red de más de 30,000 kilómetros de fibra óptica y 77,000 kilómetros de cable coaxial"}, consultado el 18 de Noviembre de 2019 en 
-	%ver https://www.izzi.mx/nosotros\#infraestructura}.
+Otro punto a destacar es que únicamente los empresas que pertenecen a dichos grupos han desplegado accesos basados en cable coaxial o fibra óptica en el país.\footnote{Aunque no se tiene datos explícitos de fibra óptica para Grupo Televisa, la oferta comercial de "Izzi" si los considera
+	: \emph{"...hoy izzi ofrece servicio en más de 60 ciudades en 29 estados de la República Mexicana, mediante una red de más de 30,000 kilómetros de fibra óptica y 77,000 kilómetros de cable coaxial"}, consultado el 18 de Noviembre de 2019 en 
+	ver https://www.izzi.mx/nosotros\#infraestructura}.
 
-%\begin{table}[tbhp]
-%	\centering
-%	\caption{Distribución de accesos de BAF por tecnología (Junio 2019)\label{table:distribaccesosgrupos}}
-%	\begin{tabular}{@{}llllll@{}}
-%		\toprule
-%		Grupo & Coaxial & DSL & Fibra & Satelital & No especificado \\ \midrule
-%		América Móvil &  & 71.9\% & 28.1\% &  &  \\ 
-%		Grupo Televisa & 95.6\% &  &  & 0.1\% & 4.3\% \\ 
-%		Megacable-MCM & 99.9\% &  &  &  & 0.1\% \\ 
-%		TotalPlay &  &  & 100\% &  &  \\ \bottomrule
-%	\end{tabular}
-%\end{table}
+\begin{table}[tbhp]
+ \centering
+	\caption{Distribución de accesos de BAF por tecnología (Junio 2019)\label{table:distribaccesosgrupos}}
+	\begin{tabular}{@{}llllll@{}}
+		\toprule
+		Grupo & Coaxial & DSL & Fibra & Satelital & No especificado \\ \midrule
+		América Móvil &  & 71.9\% & 28.1\% &  &  \\ 
+		Grupo Televisa & 95.6\% &  &  & 0.1\% & 4.3\% \\ 
+		Megacable-MCM & 99.9\% &  &  &  & 0.1\% \\ 
+		TotalPlay &  &  & 100\% &  &  \\ \bottomrule
+	\end{tabular}
+\end{table}
 
-%No se omite destacar la existencia de municipios con una cantidad de accesos inusualmente baja (e.g. hay 31 municipios con un sólo acceso, 7 que poseen únicamente dos accesos).
+No se omite destacar la existencia de municipios con una cantidad de accesos inusualmente baja (e.g. hay 31 municipios con un sólo acceso, 7 que poseen únicamente dos accesos).
+
+\subsubsection{Distribucion de poblacion y hogares}
+
+\begin{table}[tbhp]
+\centering
+\caption{Distribución de población y hogares según nivel de penetración de BAF en municipios}
+\label{tab:dist_pob_hogs}
+\begin{tabular}{@{}lcccc@{}}
+	\toprule
+	Penetracion & \multicolumn{1}{l}{\# Municipios} & \multicolumn{1}{l}{\% Municipios} & \multicolumn{1}{l}{\% Poblacion} & \multicolumn{1}{l}{\% Hogares} \\ \midrule
+	Nula & 1,686 & 68.1 & 16.4 & 15.5 \\
+	Baja & 629 & 25.4 & 38.5 & 37.4 \\
+	Media & 134 & 5.4 & 35.4 & 36.3 \\
+	Alta & 20 & 0.8 & 7.42 & 7.96 \\
+	Muy alta & 8 & 0.3 & 2.4 & 2.85 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Densidad de habitantes y penetracion}
+
+Aunque existe variabilidad considerable en la densidad de habitantes por municipio la información refleja un escalonamiento.
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=1.0\linewidth]{images/pen_denhabs.png}
+	\caption{Densidad de habitantes en municipios vs Penetración BAF Junio 2018 (\cite{IFT2019BIT})}
+	\label{fig:pen_denhabs}
+\end{figure}
+
+\subsubsection{Ingreso y penetración}
+Del análisis (ver figura \ref{fig:pen_income}) se desprende una relación escalonada, en términos generales, entre el ingreso que per capita de los municipios de México\footnote{Se reitera que en la fuente considerada no se cuentan con datos de 11 municipios del país.} y el nivel de penetración de BAF basado en fibra óptica y cable coaxial, lo cual sugiere que los despliegues de ambas tecnologías se han focalizado en municipios donde hay mayores ingresos por habitante.
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=1.0\linewidth]{images/pen_income.png}
+	\caption{Penetración BAF Junio 2018 (\cite{IFT2019BIT}) vs Ingreso Anual per capita en municipios (\cite{ONU2015}) }
+	\label{fig:pen_income}
+\end{figure}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=1.0\linewidth]{images/pen_smm.png}
+	\caption{Gráfico de densidad del porcentaje de población en municipios que ganaba hasta 2 salarios mínimos(\cite{CONAPO2015}), desagregado por nivel de penetración de BAF. \textbf{Nota:} 0 = Pen. nula, 1= Pen. Baja, ..., 5= Pen. Muy alta}
+	\label{fig:pen_smm}
+\end{figure}
 
 \subsubsection{Heterogeneidad de la penetración en los municipios}
 
 \begin{figure}[tbhp]
 \centering
-\includegraphics[width=0.5\linewidth]{images/pen_habs_cdmx.png}
+\includegraphics[width=0.9\linewidth]{images/pen_habs_cdmx.png}
 \caption{Penetración de cable coaxial y fibra alrededor de CDMX}
 \label{fig:pen_habs_cdmx}
 \end{figure}
@@ -220,37 +265,26 @@ Dado que, como se hizo notar en la sección previa, la cobertura de los municipi
 
 En linea con la exposición anterior, se busca explorar la posibilidad de que la información del entorno socio-económico, demográfico y tecnológico de los municipios sirva como una vía que permita inferir el nivel de cobertura actual de los servicios de banda ancha fija que los operadores hayan desplegado a la fecha.
 
+\subsection{Modelo de regresión para clasificación}
 
+Los modelos regresión de regresión se emplean a problemas de clasificación de $K\geq 1$ clases; es decir se consideran conjuntos de puntos y etiquetas de la forma ${\mathcal D} =\{(x^{(i)}, y^{(i)}) \in \mathbb{R}^n \times \{0,1,2, \ldots, K-1\}: i\in [m] \}$ donde se asume la existencia de una relación funcional en términos probabilísticos $\mathbf{y} = \mathbf{W}^T \mathbf{x} + \epsilon$ donde $\mathbf{W}$ es un vector de pesos y $\epsilon$ representa un error residual.
 
-\subsection*{Selección de variables relevantes}
+En el caso en que la respuesta sea binaria ($y\in \{0,1\}$) suele aplicarse el modelo de regresión logística el cual asume que $y$ sigue una distribución Bernoulli, $p(\mathbf{y}| \mathbf{W}, \mathbf{x})= Ber(y|\mu(\mathbf{x}))$ donde la media satisface $\mu(\mathbf{x}) = E[y | \mathbf{x}] = p(y=1|x) =sigm(W^Tx)$\footnote{Función sigmoide dada por $sigm(\eta) = \frac{1}{1+ e^{-\eta}}$}. Dicho modelo predice la etiqueta $\hat{y}(x)$de un punto específico $x$ a través de un umbral $p\in (0,1)$; es decir decide que $\hat{y}(x)=1 \leftrightarrow p(y=1|x)>p$.
 
-Uso de matriz de correlaciones
-
-Uso de regresión de Lasso sobre el número bruto de la penetración.
-
-Variables que se añadieron (densidad de hogares, densidad poblacional)
-
-\subsection{Modelo de regresión logística para clasificación}
-
-Pendiente: desarrollo
+Por otra parte, el modelo de regresión multinomial resulta de una generalización de lo anterior, para tratar puntos con múltiples etiquetas ($K>1$). En este caso, la probabilidad de que cada punto pertenezca una clase $k$ se modela con la función $softmax$, esto es $P[y=k] = \frac{\exp(\mathbf{W}_k^T x )}{\sum_{i=1}^{K-1}\mathbf{W}_i^T x}$, donde $W_i$ refiere a la $i$-ésima columna del vector de pesos. En ente sentido, esta familia de modelos predice la etiqueta $\hat{y}(x)$de un punto específico $x$ a través asignándolo a la clase que maximice la probabilidad de pertenencia a ésta.
 
 \subsection{Bosques aleatorios para problemas de clasificación}
 
-Consideremos ${\mathcal D} =\{(x^{(i)}, y^{(i)})\}_{i=1}^n$ una colección de puntos de entrenamiento junto con sus respectivas etiquetas, para los cuales se construye una colección de muestras bootstrap ${\mathcal D}_1^*, {\mathcal D}_2^*, \ldots, {\mathcal D}_B^*$ y se fija un número $m$ que permitirá seleccionar un subconjunto de sus características.
+En el contexto de problemas de clasificación los árboles son modelos de aprendizaje de máquina que buscan realizar predicciones explorando a los individuos a través de cortes en sus características (variables de entrada) con el objeto de ir dividiendo la muestra, de manera que mediante cortes sucesivos se puedan refinar hasta establecer regiones que caractericen a las predicciones de manera acertada, lo cual 1) permite aproximar relaciones no lineales entre sus variables, y 2) otorga variabilidad en el proceso de su construcción.
 
-Para cada unas de esta muestras bootstrap construimos un árbol, bajo el siguiente esquema: a)
-En cada nodo candidato a particionar, escogemos al azar $m$ variables de las disponibles; 2) Buscamos la mejor variable y punto de corte (como en un árbol normal) pero solo entre las variables que seleccionamos al azar, 3) Seguimos hasta construir un árbol grande.
+Los bosques aleatorios son modelos de ensamble, pues permiten incorporar la información de predicciones de muchos árboles; para disminuir la varianza se recurre a un proceso que induce árboles con menor correlación entre sí. Para ello se considera una colección de muestras bootstrap\footnote{Se refiere a una colección de muestras del conjunto de prueba, elegidas con reemplazo y con la misma cardinalidad que este conjunto en estudio} ${\mathcal D}_1^*, {\mathcal D}_2^*, \ldots, {\mathcal D}_B^*$ proveniente de los puntos de entrenamiento y sus etiquetas ${\mathcal D} =\{(x^{(i)}, y^{(i)})\}_{i=1}^n$, prefijando un número $m$ de ss características. Para cada unas de tales muestras bootstrap se construye un árbol bajo el esquema de que: a)
+en cada nodo candidato a particionar, se escogen al azar $m$ variables; 2) de entre ellas se elige la mejor variable y punto de corte (e.g. con un criterio de medida de impureza, coeficiente de Gini, entre otros), 3) repetir 1) y 2) hasta obtener un árbol suficientemente grande.
 
-Al consolidar un conjunto de 
+Ello permite consolidar un sistema de votación entre las predicciones de todos los árboles; de modo que la clase a la que pertenece un punto específico se estima como aquella a la que predijeron en mayor medida los árboles construidos en el proceso previamente descrito; es decir mediante la expresión $T^*(x) = argmax_k \{ \# \{b |T_b^*(x)=k; b=1,\ldots, B\}\}.$
 
-$T^*(x) = argmax_g \{ \# \{i|T_b^*(x)=g\}\}.$
-
-Bosques aleatorios pueden ayudar a reducir el error de predicción gracias a una reducción a veces considerable de varianza. El objetivo final es reducir la varianza alta que producen árboles normales debido a la forma tan agresiva de construir sus cortes.
-
-Pendiente: desarrollo
 
 \subsection{Extra Gradient boosting (XGboost) para problemas de clasificación) }
-Los métodos basados en ensambles de árboles parten de la idea de que al combinar cierta cantidad de modelos predictores débiles para un problema. Esto se traduce en aplicar un proceso recursivo de aprendizaje
+Análogamente a los bosques aleatorios, los modelos XGBoost (\cite{Chen:2016:XST:2939672.2939785}) se basan en ensambles de árboles, bajo la idea de que al combinar cierta cantidad de modelos predictores débiles se puede obtener un predictor más fuerte. Esto se traduce en aplicar un proceso recursivo de aprendizaje
 
 \begin{equation}
 \hat{y}_i = \sum_{k=1}^K f_k(x_i), f_k \in \mathcal{F}

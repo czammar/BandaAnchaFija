@@ -162,6 +162,9 @@ write_csv(df1, "BAF_06209_P1.csv")
 # Base para el problema de detecion del nivel de penetracion
 write_csv(df1, "BAF_06209_P2.csv")
 
+# Base completa para EDA
+write_csv(df, "BAF_06209_EDA.csv")
+
 
 #### ---- Intentemos Lasso
 

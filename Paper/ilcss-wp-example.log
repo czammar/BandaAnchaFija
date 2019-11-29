@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.29)  26 NOV 2019 13:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.29)  29 NOV 2019 00:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1673,23 +1673,58 @@ LaTeX Font Info:    Font shape `T1/phv/b/sl' will be
 LaTeX Warning: Reference `pen_hogares' on page 2 undefined on input line 149.
 
 [2]
-<images/pen_habs_cdmx.png, id=177, 744.7825pt x 592.2125pt>
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <6> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 169.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 5.69998pt on input line 169.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 7.12497pt on input line 174.
+LaTeX Font Info:    Calculating math sizes for size <7.5> on input line 174.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7.5> on input line 174.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5.24997> on input line 174.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <3.75> on input line 174.
+
+Overfull \hbox (8.17719pt too wide) in paragraph at lines 174--182
+ [][] 
+ []
+
+
+Overfull \hbox (1.39333pt too wide) in paragraph at lines 192--201
+ [][] 
+ []
+
+<images/pen_denhabs.png, id=190, 334.24875pt x 268.75406pt>
+File: images/pen_denhabs.png Graphic file (type png)
+<use images/pen_denhabs.png>
+Package pdftex.def Info: images/pen_denhabs.png  used on input line 207.
+(pdftex.def)             Requested size: 246.09686pt x 197.88248pt.
+<images/pen_income.png, id=197, 451.6875pt x 267.24844pt>
+File: images/pen_income.png Graphic file (type png)
+<use images/pen_income.png>
+Package pdftex.def Info: images/pen_income.png  used on input line 217.
+(pdftex.def)             Requested size: 246.09686pt x 145.60876pt.
+<images/pen_smm.png, id=206, 334.24875pt x 268.75406pt>
+File: images/pen_smm.png Graphic file (type png)
+<use images/pen_smm.png>
+Package pdftex.def Info: images/pen_smm.png  used on input line 224.
+(pdftex.def)             Requested size: 246.09686pt x 197.88248pt.
+<images/pen_habs_cdmx.png, id=211, 744.7825pt x 592.2125pt>
 File: images/pen_habs_cdmx.png Graphic file (type png)
 <use images/pen_habs_cdmx.png>
-Package pdftex.def Info: images/pen_habs_cdmx.png  used on input line 190.
-(pdftex.def)             Requested size: 123.04843pt x 97.83734pt.
-LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.12497pt on input line 201.
-LaTeX Font Info:    Calculating math sizes for size <7.5> on input line 201.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7.5> on input line 201.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5.24997> on input line 201.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <3.75> on input line 201.
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 273.
+Package pdftex.def Info: images/pen_habs_cdmx.png  used on input line 233.
+(pdftex.def)             Requested size: 221.48567pt x 176.11086pt.
 
- (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/t1lmtt.fd
+Underfull \vbox (badness 2644) has occurred while \output is active []
+
+ [3 <./images/pen_denhabs.png (PNG copy)> <./images/pen_income.png (PNG copy)>]
+ [4 <./images/pen_smm.png (PNG copy)> <./images/pen_habs_cdmx.png>]
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 303.
+
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 Package microtype Info: Loading generic protrusion settings for font family
@@ -1697,37 +1732,49 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-(./ilcss-wp-example.bbl [3 <./images/pen_habs_cdmx.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 58--61
+(./ilcss-wp-example.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 60--63
 []\T1/lmr/m/n/9 (+20) INEGI (2015).  En-cuesta In-ter-censal 2015.
  []
 
 ) 
 AED: lastpage setting LastPage
-[4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 360.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 360.
+[5]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 390.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 390.
  (./ilcss-wp-example.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 360.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 360.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 390.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 390.
 Package rerunfilecheck Info: File `ilcss-wp-example.out' has not changed.
-(rerunfilecheck)             Checksum: 657DF951C6DC00DCF6888A7B5749BF1E;1590.
+(rerunfilecheck)             Checksum: CDAE7AE1C0B224054BA7587AD85A0EC1;1852.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 360.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 390.
  ) 
 Here is how much of TeX's memory you used:
- 34634 strings out of 494457
- 638404 string characters out of 6173956
- 734155 words of memory out of 5000000
- 37531 multiletter control sequences out of 15000+600000
- 643755 words of font info for 169 fonts, out of 8000000 for 9000
+ 34700 strings out of 494457
+ 639527 string characters out of 6173956
+ 737856 words of memory out of 5000000
+ 37562 multiletter control sequences out of 15000+600000
+ 659103 words of font info for 183 fonts, out of 8000000 for 9000
  62 hyphenation exceptions out of 8191
  62i,11n,67p,1099b,480s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Hfootnote.12} has been referenced but does not ex
+pdfTeX warning (dest): name{Hfootnote.16} has been referenced but does not ex
 ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.15} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.14} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.13} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.12} has been referenced but does not exis
+t, replaced by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.11} has been referenced but does not exis
 t, replaced by a fixed one
@@ -1764,30 +1811,35 @@ pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/t
 exlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2019/te
-xmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/2019/texmf-dist/f
-onts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/d
-vips/lm/lm-mathit.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm
--rm.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/l
-ocal/texlive/2019/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></usr/local/texliv
-e/2019/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2019/tex
-mf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2019/texmf-dist/fon
-ts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pu
-blic/lm/lmmi9.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr
-5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/
-local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texliv
-e/2019/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive/2019/texmf
--dist/fonts/type1/public/lm/lmri9.pfb></usr/local/texlive/2019/texmf-dist/fonts
-/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/p
-ublic/lm/lmsy6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lm
-sy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></u
-sr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmtt9.pfb></usr/local/te
-xlive/2019/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2
-019/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/local/texlive/2019/te
-xmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on ilcss-wp-example.pdf (4 pages, 381861 bytes).
+xmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2019/texmf-dist/f
+onts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips
+/lm/lm-mathex.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mat
+hit.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/l
+ocal/texlive/2019/texmf-dist/fonts/type1/public/lm/lmbx6.pfb></usr/local/texliv
+e/2019/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></usr/local/texlive/2019/texm
+f-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2019/texmf-dist/fon
+ts/type1/public/lm/lmmi5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/pu
+blic/lm/lmmi6.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmm
+i8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></us
+r/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr5.pfb></usr/local/texl
+ive/2019/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2019/tex
+mf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2019/texmf-dist/font
+s/type1/public/lm/lmr9.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/publ
+ic/lm/lmri9.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmssb
+x10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy5.pfb></u
+sr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/te
+xlive/2019/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2019/
+texmf-dist/fonts/type1/public/lm/lmsy9.pfb></usr/local/texlive/2019/texmf-dist/
+fonts/type1/public/lm/lmtt9.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1
+/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
+ype1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/ur
+w/helvetic/uhvbo8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helv
+etic/uhvr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/uh
+vro8a.pfb>
+Output written on ilcss-wp-example.pdf (5 pages, 505101 bytes).
 PDF statistics:
- 289 PDF objects out of 1000 (max. 8388607)
- 260 compressed objects within 3 object streams
- 54 named destinations out of 1000 (max. 500000)
- 39066 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 368 PDF objects out of 1000 (max. 8388607)
+ 321 compressed objects within 4 object streams
+ 67 named destinations out of 1000 (max. 500000)
+ 41665 words of extra memory for PDF output out of 42996 (max. 10000000)
 

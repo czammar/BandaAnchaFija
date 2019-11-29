@@ -5,24 +5,24 @@ The style file: apalike.bst
 Database file #1: ilcss-sample.bib
 You've used 16 entries,
             1935 wiz_defined-function locations,
-            553 strings with 6196 characters,
-and the built_in function-call counts, 4696 in all, are:
-= -- 451
-> -- 139
-< -- 14
-+ -- 45
-- -- 42
-* -- 322
-:= -- 889
-add.period$ -- 49
+            555 strings with 6286 characters,
+and the built_in function-call counts, 4822 in all, are:
+= -- 472
+> -- 134
+< -- 16
++ -- 43
+- -- 40
+* -- 323
+:= -- 895
+add.period$ -- 50
 call.type$ -- 16
-change.case$ -- 100
+change.case$ -- 99
 chr.to.int$ -- 13
 cite$ -- 16
-duplicate$ -- 211
-empty$ -- 345
+duplicate$ -- 224
+empty$ -- 358
 format.name$ -- 58
-if$ -- 894
+if$ -- 935
 int.to.chr$ -- 4
 int.to.str$ -- 0
 missing$ -- 17
@@ -30,17 +30,17 @@ newline$ -- 83
 num.names$ -- 48
 pop$ -- 84
 preamble$ -- 1
-purify$ -- 101
+purify$ -- 100
 quote$ -- 0
-skip$ -- 173
+skip$ -- 186
 stack$ -- 0
-substring$ -- 240
-swap$ -- 16
-text.length$ -- 0
+substring$ -- 251
+swap$ -- 25
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 94
 warning$ -- 0
-while$ -- 34
+while$ -- 36
 width$ -- 0
-write$ -- 197
+write$ -- 200

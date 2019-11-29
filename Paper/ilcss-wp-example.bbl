@@ -1,5 +1,12 @@
 \begin{thebibliography}{}
 
+\bibitem[Chen and Guestrin, 2016]{Chen:2016:XST:2939672.2939785}
+Chen, T. and Guestrin, C. (2016).
+\newblock Xgboost: A scalable tree boosting system.
+\newblock In {\em Proceedings of the 22Nd ACM SIGKDD International Conference
+  on Knowledge Discovery and Data Mining}, KDD '16, pages 785--794, New York,
+  NY, USA. ACM.
+
 \bibitem[CONAPO, 2015]{CONAPO2015}
 CONAPO (2010-2015).
 \newblock {Índice de marginación por entidad federativa y municipio 2010 y
@@ -12,11 +19,6 @@ Escobar, R. (2017).
   Telecomunicaciones.}
 \newblock {\em Pagina electronica del Centro de Estudios del Instituto Federal
   de Telecomunicaciones}.
-
-\bibitem[Hanafizadeh et~al., 2009]{Hanafizadeh}
-Hanafizadeh, P., Hanafizadeh, M., and Khodabakhshi, M. (2009).
-\newblock Extracting core ict indicators using entropy method.
-\newblock {\em The Information Society}, 25:236--247.
 
 \bibitem[IFT, 2017]{IFT2017}
 IFT (2017).
