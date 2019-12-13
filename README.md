@@ -22,8 +22,6 @@ Explorar métodos de aprendizaje de máquina para inferir el nivel de cobertura 
 
 En archivo que proceso los fuente de datos en crudo para la creación de las bases de datos con las que trabaja el pipeline de modelos se denominada archivo banda_anchafija.R, el cual emplea diferentes archivos que procesan cada una de las bases de la fuentes que se reunieron, a saber:
 
-Programa de las Naciones Unidas para el Desarrollo (PNUD), datos del Indice de desarollo humano 2015
-
 | # | Archivo | Descripción | Fuente |
 |---|----------------------------------------------------|----------------------------------------------------------------------------------------------------------------|--------|
 | 1 | creating_baf.R | Accesos de banda ancha fija a junio/2019  | Banco de Información de Telecomunicaciones, IFT |
