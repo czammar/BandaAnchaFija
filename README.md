@@ -20,7 +20,7 @@ Explorar métodos de aprendizaje de máquina para inferir el nivel de cobertura 
 
 ### Especificaciones de las carpetas y programas
 
-En archivo que proceso los fuente de datos en crudo para la creación de las bases de datos con las que trabaja el pipeline de modelos se denominada archivo banda_anchafija.R, el cual emplea diferentes archivos que procesan cada una de las bases de la fuentes que se reunieron, a saber:
+El archivo que procesa los fuentes de datos en crudo para la creación de las bases de datos con las que trabaja el pipeline de modelos se denominada **banda_anchafija.R**, el cual manda a llamar diferentes rutinas en R procesan cada una de las bases de la fuentes que se reunieron, a saber:
 
 | # | Archivo | Descripción | Fuente |
 |---|----------------------------------------------------|----------------------------------------------------------------------------------------------------------------|--------|
