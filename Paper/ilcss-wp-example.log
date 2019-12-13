@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.29)  13 DEC 2019 08:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.29)  13 DEC 2019 12:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1904,10 +1904,10 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 591.
  ) 
 Here is how much of TeX's memory you used:
- 36261 strings out of 494457
- 662990 string characters out of 6173956
- 761041 words of memory out of 5000000
- 39022 multiletter control sequences out of 15000+600000
+ 36260 strings out of 494457
+ 662983 string characters out of 6173956
+ 761049 words of memory out of 5000000
+ 39021 multiletter control sequences out of 15000+600000
  674625 words of font info for 199 fonts, out of 8000000 for 9000
  62 hyphenation exceptions out of 8191
  62i,12n,67p,1709b,484s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2007,7 +2007,7 @@ type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/u
 rw/helvetic/uhvbo8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/hel
 vetic/uhvr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/u
 hvro8a.pfb>
-Output written on ilcss-wp-example.pdf (11 pages, 1267507 bytes).
+Output written on ilcss-wp-example.pdf (11 pages, 1267338 bytes).
 PDF statistics:
  549 PDF objects out of 1000 (max. 8388607)
  462 compressed objects within 5 object streams
