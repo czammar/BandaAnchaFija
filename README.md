@@ -24,12 +24,12 @@ En archivo que proceso los fuente de datos en crudo para la creación de las bas
 
 Programa de las Naciones Unidas para el Desarrollo (PNUD), datos del Indice de desarollo humano 2015
 
-| # | Archivo | Descripción | Notas |
+| # | Archivo | Descripción | Fuente |
 |---|----------------------------------------------------|----------------------------------------------------------------------------------------------------------------|--------|
-| 1 | creating_baf.R | Accesos de banda ancha fija a junio/2019 BIT del IFT |  |
-| 2 | creating_conapo.R | Indice marginación y porcentaje de población con menos de 2 salarios min, 2015 CONAPO |  |
-| 3 | creating_inafed.R | Superficie de municipios en kilómetros cuadrados, INAFED |  |
-| 4 | creating_indicadores_serviciostelecom_viviendas_.R | Indicadores de disponiblidad de servicios de telecomunicaciones Encuesta intercensal 2015, INEGI |  |
-| 5 | creating_hogares.R | Hogares por municipios Encuesta intercensal 2015, INEGI |  |
-| 6 | creating_poblacion.R | Población por municipios Encuesta intercensal 2015, INEGI |  |
-| 7 | creating_humandevelop_index.R | Datos del programa de las Naciones Unidas para el Desarrollo (PNUD), datos del Indice de desarollo humano 2015 |  |
+| 1 | creating_baf.R | Accesos de banda ancha fija a junio/2019  | Banco de Información de Telecomunicaciones, IFT |
+| 2 | creating_conapo.R | Datos del Indice marginación y porcentaje de población con menos de 2 salarios min, 2015  | CONAPO |
+| 3 | creating_inafed.R | Superficie de municipios en kilómetros cuadrados  | INAFED |
+| 4 | creating_indicadores_serviciostelecom_viviendas_.R | Indicadores de disponiblidad de servicios de telecomunicaciones tv de paga, internet, telefonía fija y celular | Encuesta intercensal 2015, INEGI |
+| 5 | creating_hogares.R | Hogares por municipios  | Encuesta intercensal 2015, INEGI |
+| 6 | creating_poblacion.R | Población por municipios  |Encuesta intercensal 2015, INEGI  |
+| 7 | creating_humandevelop_index.R | Datos datos del Indice de desarollo humano 2015 | programa de las Naciones Unidas para el Desarrollo (PNUD) |
