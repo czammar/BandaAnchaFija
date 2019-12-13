@@ -223,7 +223,7 @@ Dado que, como se hizo notar en la sección previa, la cobertura de los municipi
 \end{table}
 
 
-\subsubsection{Distribución de poblacion y hogares}
+\subsubsection{Distribución de población y hogares}
 
 Como se ha mencionado previamente la distribución de población y hogares son factores que los operadores de telecomunicaciones toman en cuenta para realizar sus despliegues, y por lo tanto es un factor a considerar para explicar el nivel de penetración de BAF en municipios. Sin embargo, que un porcentaje de la población mayor al 16\% habita 1,698 municipios donde no existen accesos de las tecnologías cable coaxial ni fibra óptica; en contraste los municipios con alta nivel de penetración agrupan únicamente a 2.4\% de la población del país.
 
@@ -233,7 +233,7 @@ Como se ha mencionado previamente la distribución de población y hogares son f
 \label{tab:dist_pob_hogs}
 \begin{tabular}{@{}lcccc@{}}
 	\toprule
-	Penetracion & \multicolumn{1}{l}{\# Municipios} & \multicolumn{1}{l}{\% Municipios} & \multicolumn{1}{l}{\% Poblacion} & \multicolumn{1}{l}{\% Hogares} \\ \midrule
+	Penetracion & \multicolumn{1}{l}{\# Municipios} & \multicolumn{1}{l}{\% Municipios} & \multicolumn{1}{l}{\% Población} & \multicolumn{1}{l}{\% Hogares} \\ \midrule
 	Nula & 1,686 & 68.1 & 16.4 & 15.5 \\
 	Baja & 629 & 25.4 & 38.5 & 37.4 \\
 	Media & 134 & 5.4 & 35.4 & 36.3 \\
@@ -248,7 +248,7 @@ Del análisis (ver figuras \ref{fig:pen_income} y \ref{fig:pen_smm}) se desprend
 
 
 
-\subsubsection{Densidad de habitantes y penetracion}
+\subsubsection{Densidad de habitantes y penetración}
 
 De acuerdo a la figura \ref{fig:pen_denhabs}, aunque existe variabilidad considerable en la densidad de habitantes por municipio la información refleja un escalonamiento de conforme al nivel de penetración de BAF en los municipios.
 
@@ -294,7 +294,7 @@ Por otra parte, el modelo de regresión multinomial resulta de una generalizaci�
 
 En el contexto de problemas de clasificación los árboles son modelos de aprendizaje de máquina que buscan realizar predicciones explorando a los individuos a través de cortes en sus características (variables de entrada) con el objeto de ir dividiendo la muestra, de manera que mediante cortes sucesivos se puedan refinar hasta establecer regiones que caractericen a las predicciones de manera acertada, lo cual 1) permite aproximar relaciones no lineales entre sus variables, y 2) otorga variabilidad en el proceso de su construcción.
 
-Los bosques aleatorios son modelos de ensamble, pues permiten incorporar la información de predicciones de muchos árboles; para disminuir la varianza se recurre a un proceso que induce árboles con menor correlación entre sí. Para ello se considera una colección de muestras bootstrap\footnote{Se refiere a una colección de muestras del conjunto de prueba, elegidas con reemplazo y con la misma cardinalidad que este conjunto en estudio} ${\mathcal D}_1^*, {\mathcal D}_2^*, \ldots, {\mathcal D}_B^*$ proveniente de los puntos de entrenamiento y sus etiquetas ${\mathcal D} =\{(x^{(i)}, y^{(i)})\}_{i=1}^n$, prefijando un número $m$ de ss características. Para cada unas de tales muestras bootstrap se construye un árbol bajo el esquema de que: a)
+Los bosques aleatorios son modelos de ensamble, pues permiten incorporar la información de predicciones de muchos árboles; para disminuir la varianza se recurre a un proceso que induce árboles con menor correlación entre sí. Para ello se considera una colección de muestras bootstrap\footnote{Se refiere a una colección de muestras del conjunto de prueba, elegidas con reemplazo y con la misma cardinalidad que este conjunto en estudio} ${\mathcal D}_1^*, {\mathcal D}_2^*, \ldots, {\mathcal D}_B^*$ proveniente de los puntos de entrenamiento y sus etiquetas ${\mathcal D} =\{(x^{(i)}, y^{(i)})\}_{i=1}^n$, prefijando un número $m$ de sus características. Para cada unas de tales muestras bootstrap se construye un árbol bajo el esquema de que: a)
 en cada nodo candidato a particionar, se escogen al azar $m$ variables; 2) de entre ellas se elige la mejor variable y punto de corte (e.g. con un criterio de medida de impureza, coeficiente de Gini, entre otros), 3) repetir 1) y 2) hasta obtener un árbol suficientemente grande.
 
 Ello permite consolidar un sistema de votación entre las predicciones de todos los árboles; de modo que la clase a la que pertenece un punto específico se estima como aquella a la que predijeron en mayor medida los árboles construidos en el proceso previamente descrito; es decir mediante la expresión $T^*(x) = argmax_k \{ \# \{b |T_b^*(x)=k; b=1,\ldots, B\}\}.$
@@ -396,7 +396,7 @@ Recordemos que este problema aborda la clasificación de un municipio de acuerdo
 A través de la tabla \ref{tab:p1_results} se aprecia que el modelo de bosques aleatorio fue el que obtuvo mejor $F1$-score, a nivel promedio ponderado, sobre el conjunto de prueba, y que el resto de modelos obtuvo valores similares de desempeño.
 
 Sin embargo, al analizar las matrices de confusión (ver figuras \ref{fig:p1_mc_logistic} , \ref{fig:p1_mc_rd} y \ref{fig:p1_mc_xgboost}) se puede como el modelo logístico
-acertó en la predicción de más valores que los basados en árboles, mientras que los otros tuvieron menos falsos positivos que éste. Se destaca que las matrices de los modelos basados en árboles son prácticamente iguales, salvo en que la matríz del modelo de gradient tree boosting tuvo un falso positivo más que la proveniente del modelo de bosque aleatorio.
+acertó en la predicción de más valores que los basados en árboles, mientras que los otros tuvieron menos falsos positivos que éste. Se destaca que las matrices de los modelos basados en árboles son prácticamente iguales, salvo en que la matriz del modelo de gradient tree boosting tuvo un falso positivo más que la proveniente del modelo de bosque aleatorio.
 
 En complemento, a través de los diagramas de feature importance asociados al modelo de gradient tree  boosting, (ver figuras \ref{fig:p1_xgboost_weight}, \ref{fig:p1_xgboost_gain}, \ref{fig:p1_xgboost_cover} presentes en el apéndice) se puede apreciar que el número de hogares, el porcentaje de población del municipio que vive en localidades de menos de 5,000 hogares, la cantidad de habitantes, el ingreso anual per capita y la densidad de hogares son las variables que más aportaron en la reducción de pérdida a la hora de efectuar splits de los árboles del método, es decir, en términos relativos fueron las que más aportaron a la predicción de la existencia de cobertura de BAF.
 
@@ -420,7 +420,7 @@ Mediante la tabla \ref{tab:p2_results} se desprende que el modelo de bosques ale
 
 Se aprecia que respecto a los resultados obtenidos en el caso anterior, existe un aumento en la métrica de los valores predecidos; presumiblemente derivado de que dimos más información al modelos respecto a la presencia de servicios de Internet en los municipios y sobre la competencia a nivel local entre operadores.
 
-Al revisar las matrices de confusión de esos modelos (véase las figuras \ref{fig:p2_mc_logistic_1toall}, \ref{fig:p2_mc_logistic_alltoall}, \ref{fig:p2_mc_rd} y \ref{fig:p2_mc_xgboost} en el apéndice) se aprecia, en términos generales: a) em general, el modelo de gradient tree boosting fue el único que se equivocó prediciendo la penetración de un municipio a un nivel inmediato superior o inferior, b) ninguno de los modelos pudo predecir acertadamente el nivel de penetración del municipio con penetración muy alta.
+Al revisar las matrices de confusión de esos modelos (véase las figuras \ref{fig:p2_mc_logistic_1toall}, \ref{fig:p2_mc_logistic_alltoall}, \ref{fig:p2_mc_rd} y \ref{fig:p2_mc_xgboost} en el apéndice) se aprecia, en términos generales: a) en general, el modelo de gradient tree boosting fue el único que se equivocó prediciendo la penetración de un municipio a un nivel inmediato superior o inferior, b) ninguno de los modelos pudo predecir acertadamente el nivel de penetración del municipio con penetración muy alta.
 
 Por otro lado, de acuerdo las figuras de feature importance asociados al modelo de gradient tree  boosting, (ver figuras \ref{fig:p2_xgboost_weight}, \ref{fig:p2_xgboost_gain}, \ref{fig:p2_xgboost_cover} presentes en el apéndice) se desprender que la cantidad de operadores presentes en el municipio que tienen instalados servicios de BAF, el porcentaje de disponibilidad de Internet, que el número de hogares y la población son las variables que más aportaron en la reducción de pérdida a la hora de efectuar splits de los árboles del método, es decir, en términos relativos fueron las que más aportaron a la predicción del nivel de cobertura de BAF a nivel municipio.
 
