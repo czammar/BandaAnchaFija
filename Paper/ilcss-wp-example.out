@@ -16,15 +16,15 @@
 \BOOKMARK [1][-]{section.2}{Metodolog\355a para inferencia de niveles de cobertura de banda ancha fija en municipios}{}% 16
 \BOOKMARK [2][-]{subsection.2.1}{Modelos de aprendizaje de m\341quina a considerar}{section.2}% 17
 \BOOKMARK [3][-]{subsubsection.2.1.1}{Modelo de regresi\363n}{subsection.2.1}% 18
-\BOOKMARK [2][-]{subsection.2.2}{Bosques aleatorios}{section.2}% 19
-\BOOKMARK [2][-]{subsection.2.3}{Gradient tree boosting}{section.2}% 20
-\BOOKMARK [2][-]{subsection.2.4}{Variables a considerarse en los modelos}{section.2}% 21
-\BOOKMARK [2][-]{subsection.2.5}{Procesamiento de los datos}{section.2}% 22
-\BOOKMARK [2][-]{subsection.2.6}{Ajuste de los modelos y calibraci\363n de sus hiper-par\341metros}{section.2}% 23
-\BOOKMARK [2][-]{subsection.2.7}{An\341lisis de resultados}{section.2}% 24
-\BOOKMARK [3][-]{subsubsection.2.7.1}{P1}{subsection.2.7}% 25
-\BOOKMARK [3][-]{subsubsection.2.7.2}{P2}{subsection.2.7}% 26
-\BOOKMARK [2][-]{subsection.2.8}{Conclusiones}{section.2}% 27
+\BOOKMARK [3][-]{subsubsection.2.1.2}{Bosques aleatorios}{subsection.2.1}% 19
+\BOOKMARK [3][-]{subsubsection.2.1.3}{Gradient tree boosting}{subsection.2.1}% 20
+\BOOKMARK [2][-]{subsection.2.2}{Variables a considerarse en los modelos}{section.2}% 21
+\BOOKMARK [2][-]{subsection.2.3}{Procesamiento de los datos}{section.2}% 22
+\BOOKMARK [2][-]{subsection.2.4}{Ajuste de los modelos y calibraci\363n de sus hiper-par\341metros}{section.2}% 23
+\BOOKMARK [2][-]{subsection.2.5}{An\341lisis de resultados}{section.2}% 24
+\BOOKMARK [3][-]{subsubsection.2.5.1}{P1}{subsection.2.5}% 25
+\BOOKMARK [3][-]{subsubsection.2.5.2}{P2}{subsection.2.5}% 26
+\BOOKMARK [2][-]{subsection.2.6}{Conclusiones}{section.2}% 27
 \BOOKMARK [1][-]{section*.7}{Appendices}{}% 28
 \BOOKMARK [1][-]{Appendix.1.A}{Repositorio Github}{}% 29
 \BOOKMARK [1][-]{Appendix.1.B}{Figuras de an\341lisis exploratorio}{}% 30

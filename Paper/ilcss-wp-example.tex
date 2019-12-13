@@ -290,7 +290,7 @@ En el caso en que la respuesta sea binaria ($y\in \{0,1\}$) suele aplicarse el m
 
 Por otra parte, el modelo de regresión multinomial resulta de una generalización de lo anterior, para tratar puntos con múltiples etiquetas ($K>1$). En este caso, la probabilidad de que cada punto pertenezca una clase $k$ se modela con la función $softmax$, esto es $P[y=k] = \frac{\exp(\mathbf{W}_k^T x )}{\sum_{i=1}^{K-1}\mathbf{W}_i^T x}$, donde $W_i$ refiere a la $i$-ésima columna del vector de pesos. En ente sentido, esta familia de modelos predice la etiqueta $\hat{y}(x)$de un punto específico $x$ a través asignándolo a la clase que maximice la probabilidad de pertenencia a ésta.
 
-\subsection{Bosques aleatorios}
+\subsubsection{Bosques aleatorios}
 
 En el contexto de problemas de clasificación los árboles son modelos de aprendizaje de máquina que buscan realizar predicciones explorando a los individuos a través de cortes en sus características (variables de entrada) con el objeto de ir dividiendo la muestra, de manera que mediante cortes sucesivos se puedan refinar hasta establecer regiones que caractericen a las predicciones de manera acertada, lo cual 1) permite aproximar relaciones no lineales entre sus variables, y 2) otorga variabilidad en el proceso de su construcción.
 
@@ -300,7 +300,7 @@ en cada nodo candidato a particionar, se escogen al azar $m$ variables; 2) de en
 Ello permite consolidar un sistema de votación entre las predicciones de todos los árboles; de modo que la clase a la que pertenece un punto específico se estima como aquella a la que predijeron en mayor medida los árboles construidos en el proceso previamente descrito; es decir mediante la expresión $T^*(x) = argmax_k \{ \# \{b |T_b^*(x)=k; b=1,\ldots, B\}\}.$
 
 
-\subsection{Gradient tree boosting}
+\subsubsection{Gradient tree boosting}
 El algoritmo de potenciación de gradiente de árboles (\emph{gradient tree boosting}) es una técnica de aprendizaje de máquina que parte de la premisa de que al combinar de manera aditiva una cantidad de modelos base (árboles) se puede obtener un modelo con mejoras en sus capacidades de aprendizaje (\cite{Chen:2016:XST:2939672.2939785}). Ello equivale a que dado un conjunto de datos,${\mathcal D} =\{(\mathbf{x_i}, y_i) : \mathbf{x_i}\in  \mathbb{R}^m, y_i\in  \mathbb{R} \}$ con $|{\mathcal D}|$, la predicción resulta de un ensamble $\hat{y}_i = \sum_{k=1}^K f_k(x_i), f_k \in \mathcal{F}$, donde $K$ es el número de árboles, $f_k$ se refiere a una familia de modelos base de tipo árbol, $\mathcal{F}=\{ f(\mathbf{x}) = w_{q(\mathbf{x})} :  T\in \mathbb{N}, q: \mathbb{R}^m \rightarrow \{1,2,\cdots,T\} ,  w\in \mathbb{R}^T  \}$, siendo $T$ el número de hojas de un árbol $f_k$ y $q$ una función que representa su estructura\footnote{Estableciendo una regla de asociación entre un punto del espacio y el índice de la hoja del árbol a la que corresponde} y $w$ una colección de pesos sobre sus hojas\footnote{En un ejemplo específico, se emplean reglas de decisión sobre la estructura de los árboles a elegir, para clasificarlos respecto a la elección de sus hojas y crear una predicción sumando los pesos de las mismas}.
 
 Desde una perspectiva teórica, el aprendizaje del modelo se logra a través de la optimización de una función objetivo ${\mathcal L}(\phi)$ que incorpora a una función de pérdida $l(y_i, \hat{y}_i)$ convexa 

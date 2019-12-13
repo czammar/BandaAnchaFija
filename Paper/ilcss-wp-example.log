@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.29)  12 DEC 2019 23:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.29)  13 DEC 2019 07:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1768,101 +1768,101 @@ Underfull \hbox (badness 10000) in paragraph at lines 441--442
 \T1/lmr/m/n/9 (+20) de un repos-i-to-rio en Github de ac-ceso público:
  []
 
-<images/pen_habs_penbc.png, id=355, 709.65125pt x 604.2575pt>
+<images/pen_habs_penbc.png, id=359, 709.65125pt x 604.2575pt>
 File: images/pen_habs_penbc.png Graphic file (type png)
 <use images/pen_habs_penbc.png>
 Package pdftex.def Info: images/pen_habs_penbc.png  used on input line 447.
 (pdftex.def)             Requested size: 221.48567pt x 188.59027pt.
-<images/pen_habs_penyuc.png, id=357, 840.13875pt x 615.29875pt>
+<images/pen_habs_penyuc.png, id=361, 840.13875pt x 615.29875pt>
 File: images/pen_habs_penyuc.png Graphic file (type png)
 <use images/pen_habs_penyuc.png>
 Package pdftex.def Info: images/pen_habs_penyuc.png  used on input line 454.
 (pdftex.def)             Requested size: 221.48567pt x 162.2084pt.
-<images/pen_habs_cdmx.png, id=358, 744.7825pt x 592.2125pt>
+<images/pen_habs_cdmx.png, id=362, 744.7825pt x 592.2125pt>
 File: images/pen_habs_cdmx.png Graphic file (type png)
 <use images/pen_habs_cdmx.png>
 Package pdftex.def Info: images/pen_habs_cdmx.png  used on input line 461.
 (pdftex.def)             Requested size: 221.48567pt x 176.11086pt.
-<images/pen_income.png, id=359, 451.6875pt x 267.24844pt>
+<images/pen_income.png, id=363, 451.6875pt x 267.24844pt>
 File: images/pen_income.png Graphic file (type png)
 <use images/pen_income.png>
 Package pdftex.def Info: images/pen_income.png  used on input line 468.
 (pdftex.def)             Requested size: 246.09686pt x 145.60876pt.
-<images/pen_smm.png, id=368, 334.24875pt x 268.75406pt>
+<images/pen_smm.png, id=372, 334.24875pt x 268.75406pt>
 File: images/pen_smm.png Graphic file (type png)
 <use images/pen_smm.png>
 Package pdftex.def Info: images/pen_smm.png  used on input line 475.
 (pdftex.def)             Requested size: 246.09686pt x 197.88248pt.
-<images/pen_denhabs.png, id=373, 334.24875pt x 268.75406pt>
+<images/pen_denhabs.png, id=377, 334.24875pt x 268.75406pt>
 File: images/pen_denhabs.png Graphic file (type png)
 <use images/pen_denhabs.png>
 Package pdftex.def Info: images/pen_denhabs.png  used on input line 482.
 (pdftex.def)             Requested size: 246.09686pt x 197.88248pt.
 [8 <./images/pen_habs_penbc.png> <./images/pen_habs_penyuc.png> <./images/pen_h
 abs_cdmx.png> <./images/pen_income.png (PNG copy)>]
-<images/p1_mc_logistic.png, id=388, 249.93375pt x 232.87pt>
+<images/p1_mc_logistic.png, id=392, 249.93375pt x 232.87pt>
 File: images/p1_mc_logistic.png Graphic file (type png)
 <use images/p1_mc_logistic.png>
 Package pdftex.def Info: images/p1_mc_logistic.png  used on input line 491.
 (pdftex.def)             Requested size: 147.6596pt x 137.58397pt.
-<images/p1_mc_rd.png, id=389, 247.92625pt x 229.85875pt>
+<images/p1_mc_rd.png, id=393, 247.92625pt x 229.85875pt>
 File: images/p1_mc_rd.png Graphic file (type png)
 <use images/p1_mc_rd.png>
 Package pdftex.def Info: images/p1_mc_rd.png  used on input line 498.
 (pdftex.def)             Requested size: 147.6596pt x 136.89917pt.
-<images/p1_mc_xgboost.png, id=390, 238.8925pt x 230.8625pt>
+<images/p1_mc_xgboost.png, id=394, 238.8925pt x 230.8625pt>
 File: images/p1_mc_xgboost.png Graphic file (type png)
 <use images/p1_mc_xgboost.png>
 Package pdftex.def Info: images/p1_mc_xgboost.png  used on input line 505.
 (pdftex.def)             Requested size: 147.6596pt x 142.69644pt.
-<images/p1_xgboost_weight.png, id=391, 622.325pt x 301.125pt>
+<images/p1_xgboost_weight.png, id=395, 622.325pt x 301.125pt>
 File: images/p1_xgboost_weight.png Graphic file (type png)
 <use images/p1_xgboost_weight.png>
 Package pdftex.def Info: images/p1_xgboost_weight.png  used on input line 512.
 (pdftex.def)             Requested size: 246.09686pt x 119.07861pt.
-<images/p1_xgboost_gain.png, id=392, 630.355pt x 295.1025pt>
+<images/p1_xgboost_gain.png, id=396, 630.355pt x 295.1025pt>
 File: images/p1_xgboost_gain.png Graphic file (type png)
 <use images/p1_xgboost_gain.png>
 Package pdftex.def Info: images/p1_xgboost_gain.png  used on input line 519.
 (pdftex.def)             Requested size: 246.09686pt x 115.21107pt.
-<images/p1_xgboost_cover.png, id=393, 625.33624pt x 290.08376pt>
+<images/p1_xgboost_cover.png, id=397, 625.33624pt x 290.08376pt>
 File: images/p1_xgboost_cover.png Graphic file (type png)
 <use images/p1_xgboost_cover.png>
 Package pdftex.def Info: images/p1_xgboost_cover.png  used on input line 526.
 (pdftex.def)             Requested size: 246.09686pt x 114.1591pt.
-<images/p2_mc_logistic_1toall.png, id=394, 244.915pt x 234.8775pt>
+<images/p2_mc_logistic_1toall.png, id=398, 244.915pt x 234.8775pt>
 File: images/p2_mc_logistic_1toall.png Graphic file (type png)
 <use images/p2_mc_logistic_1toall.png>
 Package pdftex.def Info: images/p2_mc_logistic_1toall.png  used on input line 5
 35.
 (pdftex.def)             Requested size: 147.6596pt x 141.6121pt.
-<images/p2_mc_logistic_alltoall.png, id=395, 237.88875pt x 232.87pt>
+<images/p2_mc_logistic_alltoall.png, id=399, 237.88875pt x 232.87pt>
 File: images/p2_mc_logistic_alltoall.png Graphic file (type png)
 <use images/p2_mc_logistic_alltoall.png>
 Package pdftex.def Info: images/p2_mc_logistic_alltoall.png  used on input line
  542.
 (pdftex.def)             Requested size: 147.6596pt x 144.552pt.
-<images/p2_mc_rd.png, id=396, 236.885pt x 233.87375pt>
+<images/p2_mc_rd.png, id=400, 236.885pt x 233.87375pt>
 File: images/p2_mc_rd.png Graphic file (type png)
 <use images/p2_mc_rd.png>
 Package pdftex.def Info: images/p2_mc_rd.png  used on input line 549.
 (pdftex.def)             Requested size: 147.6596pt x 145.78531pt.
-<images/p2_mc_xgboost.png, id=397, 240.9pt x 235.88126pt>
+<images/p2_mc_xgboost.png, id=401, 240.9pt x 235.88126pt>
 File: images/p2_mc_xgboost.png Graphic file (type png)
 <use images/p2_mc_xgboost.png>
 Package pdftex.def Info: images/p2_mc_xgboost.png  used on input line 556.
 (pdftex.def)             Requested size: 147.6596pt x 144.5856pt.
-<images/p2_xgboost_weight.png, id=398, 622.325pt x 297.11pt>
+<images/p2_xgboost_weight.png, id=402, 622.325pt x 297.11pt>
 File: images/p2_xgboost_weight.png Graphic file (type png)
 <use images/p2_xgboost_weight.png>
 Package pdftex.def Info: images/p2_xgboost_weight.png  used on input line 563.
 (pdftex.def)             Requested size: 246.09686pt x 117.49089pt.
-<images/p2_xgboost_gain.png, id=399, 626.34pt x 290.08376pt>
+<images/p2_xgboost_gain.png, id=403, 626.34pt x 290.08376pt>
 File: images/p2_xgboost_gain.png Graphic file (type png)
 <use images/p2_xgboost_gain.png>
 Package pdftex.def Info: images/p2_xgboost_gain.png  used on input line 570.
 (pdftex.def)             Requested size: 246.09686pt x 113.97763pt.
-<images/p2_xgboost_cover.png, id=400, 601.24625pt x 289.08pt>
+<images/p2_xgboost_cover.png, id=404, 601.24625pt x 289.08pt>
 File: images/p2_xgboost_cover.png Graphic file (type png)
 <use images/p2_xgboost_cover.png>
 Package pdftex.def Info: images/p2_xgboost_cover.png  used on input line 577.
@@ -1887,18 +1887,24 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 584.
 (./ilcss-wp-example.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 584.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 584.
-Package rerunfilecheck Info: File `ilcss-wp-example.out' has not changed.
-(rerunfilecheck)             Checksum: 247DEF4CC50822C32600B704C595C01C;2758.
 
+
+Package rerunfilecheck Warning: File `ilcss-wp-example.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `ilcss-wp-example.out':
+(rerunfilecheck)             Before: 247DEF4CC50822C32600B704C595C01C;2758
+(rerunfilecheck)             After:  A7D0FA75AFB8B77D129AB86D33E428F2;2778.
 
 LaTeX Warning: There were undefined references.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 584.
  ) 
 Here is how much of TeX's memory you used:
- 36250 strings out of 494457
- 662820 string characters out of 6173956
- 760857 words of memory out of 5000000
+ 36254 strings out of 494457
+ 662896 string characters out of 6173956
+ 760856 words of memory out of 5000000
  39017 multiletter control sequences out of 15000+600000
  674500 words of font info for 197 fonts, out of 8000000 for 9000
  62 hyphenation exceptions out of 8191
@@ -1969,6 +1975,18 @@ pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 , replaced by a fixed one
 
+pdfTeX warning (dest): name{subsection.2.8} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsubsection.2.7.2} has been referenced but does n
+ot exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsubsection.2.7.1} has been referenced but does n
+ot exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.2.7} has been referenced but does not ex
+ist, replaced by a fixed one
+
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/te
 xlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2019/te
 xmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2019/texmf-dist/f
@@ -1996,10 +2014,10 @@ type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/u
 rw/helvetic/uhvbo8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/hel
 vetic/uhvr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/u
 hvro8a.pfb>
-Output written on ilcss-wp-example.pdf (11 pages, 1229318 bytes).
+Output written on ilcss-wp-example.pdf (11 pages, 1229400 bytes).
 PDF statistics:
- 542 PDF objects out of 1000 (max. 8388607)
- 457 compressed objects within 5 object streams
- 113 named destinations out of 1000 (max. 500000)
+ 547 PDF objects out of 1000 (max. 8388607)
+ 462 compressed objects within 5 object streams
+ 117 named destinations out of 1000 (max. 500000)
  43889 words of extra memory for PDF output out of 51595 (max. 10000000)
 
