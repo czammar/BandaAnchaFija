@@ -74,3 +74,13 @@ ggplot(df_EDA, aes(PO2SM, colour = CLASS_PEN_BAF_HABS_COAXFO)) + theme_classic()
   geom_density(alpha = 0.9)
 
 
+# Densidad acumulada de penetacion
+
+library(ggpubr)
+  ggplot(df_EDA, aes(x =df_EDA$PEN_BAF_HABS_COAXFO)) + stat_ecdf(geom = "step", size = 0.8, color = 'red') + 
+    theme_pubclean()+ theme(legend.title = element_blank())+
+    theme(legend.position="none")+  labs(x = "Accesos de BAF por cada 100 habitantes",y ="Porcentaje de municipios" , title = "Densidad acumulada de municipios \n según penetración de BAF")
+  
+
+
+

@@ -11,12 +11,12 @@
 
 \documentclass[9pt,twocolumn,twoside]{ilcss}
 
-
+\usepackage[toc,page]{appendix}
 
 
 \templatetype{ilcssworkingpaper} % Choose template 
 
-\title{\ M\'etodos de aprendizaje de \'maquina para inferir el nivel de cobertura de banda ancha fija en municipios  de M\'exico}	
+\title{M\'etodos de aprendizaje de \'maquina para inferir el nivel de cobertura de banda ancha fija en municipios  de M\'exico}	
 
 % Use letters for affiliations, numbers to show equal authorship (if applicable) and to indicate the corresponding author
 \author[a]{C\'esar Zamora Mart\'inez}
@@ -164,82 +164,45 @@ Se observó que a junio de 2019, existían 18.85 millones de accesos de BAF dist
 
 En términos de los principales grupos de telecomunicaciones de México a los que pertenecen los accesos de BAF, se tiene la siguiente distribución: América Móvil\footnote{Telmex y Telnor}  51.6\%, Grupo Televisa\footnote{Cablecom, Cablemas, Cablevision, Cablevision Red, Television Internacional y Sky} 23.3\%, Megacable-MCM\footnote{Megacable y MCM}  16.1\% y Totalplay 7.35\%  
 
-Otro punto a destacar es que únicamente los empresas que pertenecen a dichos grupos han desplegado accesos basados en cable coaxial o fibra óptica en el país.\footnote{Aunque no se tiene datos explícitos de fibra óptica para Grupo Televisa, la oferta comercial de "Izzi" si los considera
-	: \emph{"...hoy izzi ofrece servicio en más de 60 ciudades en 29 estados de la República Mexicana, mediante una red de más de 30,000 kilómetros de fibra óptica y 77,000 kilómetros de cable coaxial"}, consultado el 18 de Noviembre de 2019 en 
-	ver https://www.izzi.mx/nosotros\#infraestructura}.
-
-\begin{table}[tbhp]
- \centering
-	\caption{Distribución de accesos de BAF por tecnología (Junio 2019)\label{table:distribaccesosgrupos}}
-	\begin{tabular}{@{}llllll@{}}
-		\toprule
-		Grupo & Coaxial & DSL & Fibra & Satelital & No especificado \\ \midrule
-		América Móvil &  & 71.9\% & 28.1\% &  &  \\ 
-		Grupo Televisa & 95.6\% &  &  & 0.1\% & 4.3\% \\ 
-		Megacable-MCM & 99.9\% &  &  &  & 0.1\% \\ 
-		TotalPlay &  &  & 100\% &  &  \\ \bottomrule
-	\end{tabular}
-\end{table}
+Otro punto a destacar es que únicamente los empresas que pertenecen a dichos grupos han desplegado accesos basados en cable coaxial o fibra óptica en el país.%\footnote{Aunque no se tiene datos explícitos de fibra óptica para Grupo Televisa, la oferta comercial de "Izzi" si los considera
+%	: \emph{"...hoy izzi ofrece servicio en más de 60 ciudades en 29 estados de la República Mexicana, mediante una red de más de 30,000 kilómetros de fibra óptica y 77,000 kilómetros de cable coaxial"}, consultado el 18 de Noviembre de 2019 en 
+%	ver https://www.izzi.mx/nosotros\#infraestructura}.
+%
+%\begin{table}[tbhp]
+% \centering
+%	\caption{Distribución de accesos de BAF por tecnología (Junio 2019)\label{table:distribaccesosgrupos}}
+%	\begin{tabular}{@{}llllll@{}}
+%		\toprule
+%		Grupo & Coaxial & DSL & Fibra & Satelital & No especificado \\ \midrule
+%		América Móvil &  & 71.9\% & 28.1\% &  &  \\ 
+%		Grupo Televisa & 95.6\% &  &  & 0.1\% & 4.3\% \\ 
+%		Megacable-MCM & 99.9\% &  &  &  & 0.1\% \\ 
+%		TotalPlay &  &  & 100\% &  &  \\ \bottomrule
+%	\end{tabular}
+%\end{table}
 
 No se omite destacar la existencia de municipios con una cantidad de accesos inusualmente baja (e.g. hay 31 municipios con un sólo acceso, 7 que poseen únicamente dos accesos).
-
-\subsubsection{Distribucion de poblacion y hogares}
-
-\begin{table}[tbhp]
-\centering
-\caption{Distribución de población y hogares según nivel de penetración de BAF en municipios}
-\label{tab:dist_pob_hogs}
-\begin{tabular}{@{}lcccc@{}}
-	\toprule
-	Penetracion & \multicolumn{1}{l}{\# Municipios} & \multicolumn{1}{l}{\% Municipios} & \multicolumn{1}{l}{\% Poblacion} & \multicolumn{1}{l}{\% Hogares} \\ \midrule
-	Nula & 1,686 & 68.1 & 16.4 & 15.5 \\
-	Baja & 629 & 25.4 & 38.5 & 37.4 \\
-	Media & 134 & 5.4 & 35.4 & 36.3 \\
-	Alta & 20 & 0.8 & 7.42 & 7.96 \\
-	Muy alta & 8 & 0.3 & 2.4 & 2.85 \\ \bottomrule
-\end{tabular}
-\end{table}
-
-\subsubsection{Densidad de habitantes y penetracion}
-
-Aunque existe variabilidad considerable en la densidad de habitantes por municipio la información refleja un escalonamiento.
-
-\begin{figure}[tbhp]
-	\centering
-	\includegraphics[width=1.0\linewidth]{images/pen_denhabs.png}
-	\caption{Densidad de habitantes en municipios vs Penetración BAF Junio 2018 (\cite{IFT2019BIT})}
-	\label{fig:pen_denhabs}
-\end{figure}
-
-\subsubsection{Ingreso y penetración}
-Del análisis (ver figura \ref{fig:pen_income}) se desprende una relación escalonada, en términos generales, entre el ingreso que per capita de los municipios de México\footnote{Se reitera que en la fuente considerada no se cuentan con datos de 11 municipios del país.} y el nivel de penetración de BAF basado en fibra óptica y cable coaxial, lo cual sugiere que los despliegues de ambas tecnologías se han focalizado en municipios donde hay mayores ingresos por habitante.
-
-\begin{figure}[tbhp]
-	\centering
-	\includegraphics[width=1.0\linewidth]{images/pen_income.png}
-	\caption{Penetración BAF Junio 2018 (\cite{IFT2019BIT}) vs Ingreso Anual per capita en municipios (\cite{ONU2015}) }
-	\label{fig:pen_income}
-\end{figure}
-
-\begin{figure}[tbhp]
-	\centering
-	\includegraphics[width=1.0\linewidth]{images/pen_smm.png}
-	\caption{Gráfico de densidad del porcentaje de población en municipios que ganaba hasta 2 salarios mínimos(\cite{CONAPO2015}), desagregado por nivel de penetración de BAF. \textbf{Nota:} 0 = Pen. nula, 1= Pen. Baja, ..., 5= Pen. Muy alta}
-	\label{fig:pen_smm}
-\end{figure}
 
 \subsubsection{Heterogeneidad de la penetración en los municipios}
 
 \begin{figure}[tbhp]
-\centering
-\includegraphics[width=0.9\linewidth]{images/pen_habs_cdmx.png}
-\caption{Penetración de cable coaxial y fibra alrededor de CDMX}
-\label{fig:pen_habs_cdmx}
+	\centering
+	\includegraphics[width=0.9\linewidth]{images/cumulative_dens_pen.png}
+	\caption{Distribución acumulada de municipios según su penetración de BAF}
+	\label{fig:cumulative}
 \end{figure}
 
-\subsection{Hola}
+Para ilustrar el panorama de la diferencias en la cobertura en los diferentes municipios del país, se construyó la distribución acumulada empírica de los municipios según su penetración de accesos de BAF basados en cable coaxial y fibra óptica. Se aprecia que dicho parámetro oscila entre 0 y cerca de 50 accesos por 100 habitantes a nivel municipal, además casi el 75\% de los municipios del país no cuenta con penetración de BAF. En contraste, únicamente 10\% de los municipios supera los 10 accesos de BAF de este tipo por cada 10 habitantes.
 
-Dado que, como se hizo notar en la sección previa, la cobertura de los municipios es heterogénea, para estudiarla se categorizará a cada municipio del país acuerdo a su nivel de penetración de banda ancha fija, con referencia al valor promedio de los países miembros de la OCDE (30.92 accesos por cada 100 habitantes):
+En complemento, también se elaboraron mapas de calor\footnote{Librearía \emph{mxmaps}, disponible a través de https://www.diegovalle.net/mxmaps/. Por otra parte, una versión interactiva de este mapa se encuentra dispoinble para su consulta en el repositorio de Github que acompaña a este documento \url{https://github.com/czammar/BandaAnchaFija/blob/master/Mapas/Penetracion_BAF_xcada100Habitantes_062019.html}} que responde a la cantidad de accesos de BAF (basados en fibra óptica y cable coaxial) por cada 100 hogares eligiéndose tres zonas diferentes del país: i) península de Baja California (figura \ref{fig:pen_habs_penbc}) y iii) Ciudad de México (figura \ref{fig:pen_habs_cdmx}).
+
+ En términos generales, para las zonas de la península se aprecia mayor penetración en municipios fronterizos o zonas turísticas. Para la zona de la Ciudad de México, se aprecia una mayor penetración en la delegaciones Benito Juárez, Cuahutemoc  y Miguel Hidalgo, mientras que Milpa Alta y Tláhuac son las zonas con menores niveles observados.
+
+\subsubsection{Estratificación de municipios de acuerdo a su nivel de cobertura BAF}
+
+Dado que, como se hizo notar en la sección previa, la cobertura de los municipios es heterogénea, para estudiarla se categorizará a cada municipio del país acuerdo a su nivel de penetración de banda ancha fija, con referencia al valor promedio de los países miembros de la OCDE (30.92 accesos por cada 100 habitantes), como se aprecia en la tabla 
+\ref{table:clasifpen}.
+
 \begin{table}[tbhp]
 	\centering
 	\caption{Niveles de penetración en un municipio\label{table:clasifpen}}
@@ -259,13 +222,69 @@ Dado que, como se hizo notar en la sección previa, la cobertura de los municipi
 	%\addtabletext{Clasificación de municipios según su rango de penetración de BAF}
 \end{table}
 
-%\section*{Sections: Theory, Methods, Results, Discussion...}
 
-\section{Modelación y niveles de cobertura de banda ancha fija en municipios}
+\subsubsection{Distribución de poblacion y hogares}
+
+Como se ha mencionado previamente la distribución de población y hogares son factores que los operadores de telecomunicaciones toman en cuenta para realizar sus despliegues, y por lo tanto es un factor a considerar para explicar el nivel de penetración de BAF en municipios. Sin embargo, que un porcentaje de la población mayor al 16\% habita 1,698 municipios donde no existen accesos de las tecnologías cable coaxial ni fibra óptica; en contraste los municipios con alta nivel de penetración agrupan únicamente a 2.4\% de la población del país.
+
+\begin{table}[tbhp]
+\centering
+\caption{Distribución de población y hogares según nivel de penetración de BAF en municipios}
+\label{tab:dist_pob_hogs}
+\begin{tabular}{@{}lcccc@{}}
+	\toprule
+	Penetracion & \multicolumn{1}{l}{\# Municipios} & \multicolumn{1}{l}{\% Municipios} & \multicolumn{1}{l}{\% Poblacion} & \multicolumn{1}{l}{\% Hogares} \\ \midrule
+	Nula & 1,686 & 68.1 & 16.4 & 15.5 \\
+	Baja & 629 & 25.4 & 38.5 & 37.4 \\
+	Media & 134 & 5.4 & 35.4 & 36.3 \\
+	Alta & 20 & 0.8 & 7.42 & 7.96 \\
+	Muy alta & 8 & 0.3 & 2.4 & 2.85 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+
+\subsubsection{Ingreso y penetración}
+Del análisis (ver figuras \ref{fig:pen_income} y \ref{fig:pen_smm}) se desprende una relación escalonada, en términos generales, entre el ingreso que de los municipios de México\footnote{Se reitera que en la fuente considerada no se cuentan con datos de 11 municipios del país.}, y el nivel de penetración de BAF basado en fibra óptica y cable coaxial, lo cual sugiere que los despliegues de ambas tecnologías se han focalizado en municipios donde hay mayores ingresos por habitante.
+
+
+
+\subsubsection{Densidad de habitantes y penetracion}
+
+De acuerdo a la figura \ref{fig:pen_denhabs}, aunque existe variabilidad considerable en la densidad de habitantes por municipio la información refleja un escalonamiento de conforme al nivel de penetración de BAF en los municipios.
+
+
+
+\section{Metodología para inferencia de niveles de cobertura de banda ancha fija en municipios}
 
 En linea con la exposición anterior, se busca explorar la posibilidad de que la información del entorno socio-económico, demográfico y tecnológico de los municipios sirva como una vía que permita inferir el nivel de cobertura actual de los servicios de banda ancha fija que los operadores hayan desplegado a la fecha.
 
-\subsection{Modelo de regresión para clasificación}
+Para ello, se propondrán modelos de aprendizaje de máquina que permitan clasificar a los municipios de acuerdo a las siguientes situaciones:
+
+\begin{itemize}
+	\item[\textbf{P1:}] Existe o no penetración de BAF basada en accesos de fibra óptica o cable coaxial. \vspace{-0.3cm}
+	\item[\textbf{P2:}] Nivel de penetración de BAF basada en accesos de fibra óptica o cable coaxial, de acuerdo a las especificaciones de la tabla \ref{table:clasifpen}.
+\end{itemize}
+
+En ambos casos, la metodología a seguir\footnote{Aunque los pasos se presentan de manera lineal, la implementación requirió iteraciones entre ellos a efector de mejorar el funcionamiento global de las predicciones} es la siguiente:
+
+\begin{itemize}
+	\item[\textbf{A}.] Definir los modelos a considerar, \vspace{-0.3cm}
+	\item[\textbf{B}.] De entre todas la información reunida, establecer cuales son las variables relevantes a considerar,\vspace{-0.3cm}
+	\item[\textbf{C}.] Transformar los datos de manera compatible con sus requerimientos de estos,\vspace{-0.3cm}
+	\item[\textbf{D}.] Para la ejecución de cada modelo, realizar un pipeline que permita calibrar los posibles hiper-parámetros de los modelos, considerando la evaluación de los mismos con un métrica establecida a través de validación cruzada,\vspace{-0.3cm}
+	\item[\textbf{E}.] Considerar el mejor modelo resultado del pipeline anterior de acuerdo a la métrica predefinida, y\vspace{-0.3cm}
+	\item[\textbf{F}.] Analizar los resultados interpretando el funcionamiento de los modelos de aprendizaje de máquina.	
+\end{itemize}
+
+A continuación se exponen las consideraciones realizadas para llevar a cabo las fases anterior, en el entendido que la ejecución de estas se realizó a través de diferentes programas implementados en Python.
+
+\subsection{Modelos de aprendizaje de máquina a considerar}
+
+Dado que se trata de problemas clasificación , se estimó pertinente considerar un modelo de referencia (\emph{baseline}) a partir de una regresión logística.
+
+Ahora bien, dado en análisis exploratorio realizado se aprecia que la penetración de banda ancha no guarda necesariamente relaciones lineales con las diferentes variables se estimó que los árboles podrían ser de utilidad en el contexto de \textbf{P1} y \textbf{P2}, por lo cual se estimó pertinente usar los modelos que se describen a continuación:
+
+\subsubsection{Modelo de regresión}
 
 Los modelos regresión de regresión se emplean a problemas de clasificación de $K\geq 1$ clases; es decir se consideran conjuntos de puntos y etiquetas de la forma ${\mathcal D} =\{(x^{(i)}, y^{(i)}) \in \mathbb{R}^n \times \{0,1,2, \ldots, K-1\}: i\in [m] \}$ donde se asume la existencia de una relación funcional en términos probabilísticos $\mathbf{y} = \mathbf{W}^T \mathbf{x} + \epsilon$ donde $\mathbf{W}$ es un vector de pesos y $\epsilon$ representa un error residual.
 
@@ -273,7 +292,7 @@ En el caso en que la respuesta sea binaria ($y\in \{0,1\}$) suele aplicarse el m
 
 Por otra parte, el modelo de regresión multinomial resulta de una generalización de lo anterior, para tratar puntos con múltiples etiquetas ($K>1$). En este caso, la probabilidad de que cada punto pertenezca una clase $k$ se modela con la función $softmax$, esto es $P[y=k] = \frac{\exp(\mathbf{W}_k^T x )}{\sum_{i=1}^{K-1}\mathbf{W}_i^T x}$, donde $W_i$ refiere a la $i$-ésima columna del vector de pesos. En ente sentido, esta familia de modelos predice la etiqueta $\hat{y}(x)$de un punto específico $x$ a través asignándolo a la clase que maximice la probabilidad de pertenencia a ésta.
 
-\subsection{Bosques aleatorios para problemas de clasificación}
+\subsection{Bosques aleatorios}
 
 En el contexto de problemas de clasificación los árboles son modelos de aprendizaje de máquina que buscan realizar predicciones explorando a los individuos a través de cortes en sus características (variables de entrada) con el objeto de ir dividiendo la muestra, de manera que mediante cortes sucesivos se puedan refinar hasta establecer regiones que caractericen a las predicciones de manera acertada, lo cual 1) permite aproximar relaciones no lineales entre sus variables, y 2) otorga variabilidad en el proceso de su construcción.
 
@@ -283,26 +302,56 @@ en cada nodo candidato a particionar, se escogen al azar $m$ variables; 2) de en
 Ello permite consolidar un sistema de votación entre las predicciones de todos los árboles; de modo que la clase a la que pertenece un punto específico se estima como aquella a la que predijeron en mayor medida los árboles construidos en el proceso previamente descrito; es decir mediante la expresión $T^*(x) = argmax_k \{ \# \{b |T_b^*(x)=k; b=1,\ldots, B\}\}.$
 
 
-\subsection{Extra Gradient boosting (XGboost) para problemas de clasificación) }
-Análogamente a los bosques aleatorios, los modelos XGBoost (\cite{Chen:2016:XST:2939672.2939785}) se basan en ensambles de árboles, bajo la idea de que al combinar cierta cantidad de modelos predictores débiles se puede obtener un predictor más fuerte. Esto se traduce en aplicar un proceso recursivo de aprendizaje
+\subsection{Gradient tree boosting}
+El algoritmo de potenciación de gradiente de árboles (\emph{gradient tree boosting}) es una técnica de aprendizaje de máquina que parte de la premisa de que al combinar de manera aditiva una cantidad de modelos base (árboles) se puede obtener un modelo con mejoras en sus capacidades de aprendizaje (\cite{Chen:2016:XST:2939672.2939785}). Ello equivale a que dado un conjunto de datos,${\mathcal D} =\{(\mathbf{x_i}, y_i) : \mathbf{x_i}\in  \mathbb{R}^m, y_i\in  \mathbb{R} \}$ con $|{\mathcal D}|$, la predicción resulta de un ensamble $\hat{y}_i = \sum_{k=1}^K f_k(x_i), f_k \in \mathcal{F}$, donde $K$ es el número de árboles, $f_k$ se refiere a una familia de modelos base de tipo árbol, $\mathcal{F}=\{ f(\mathbf{x}) = w_{q(\mathbf{x})} :  T\in \mathbb{N}, q: \mathbb{R}^m \rightarrow \{1,2,\cdots,T\} ,  w\in \mathbb{R}^T  \}$, siendo $T$ el número de hojas de un árbol $f_k$ y $q$ una función que representa su estructura\footnote{Estableciendo una regla de asociación entre un punto del espacio y el índice de la hoja del árbol a la que corresponde} y $w$ una colección de pesos sobre sus hojas\footnote{En un ejemplo específico, se emplean reglas de decisión sobre la estructura de los árboles a elegir, para clasificarlos respecto a la elección de sus hojas y crear una predicción sumando los pesos de las mismas}.
 
-\begin{equation}
-\hat{y}_i = \sum_{k=1}^K f_k(x_i), f_k \in \mathcal{F}
+Desde una perspectiva teórica, el aprendizaje del modelo se logra a través de la optimización de una función objetivo ${\mathcal L}(\phi)$ que incorpora a una función de pérdida $l(y_i, \hat{y}_i)$ convexa 
+y un término $\Omega$ que penaliza la complejidad del modelo y permite su regularazión para evitar sobre-ajuste. Sin embargo, dado que puede ser difícil de minimizarla con métodos tradicionales, a través del algoritmo en comento se plantea aproximar dicha función en el proceso de entrenamiento de una manera aditiva, iniciando desde una predicción constante y añadiendo una función en cada paso; es decir para $\hat{y}_i^{(t)}$ la predicción del $i$-ésimo individuo en la $t$-ésima etapa de entrenamiento realizar la minimización de:
+\begin{equation}\label{aprox_gboost}
+{\mathcal L}^{(t)} = \sum_{i=1}^n l(y_i, \hat{y}_i^{(t-1)}+f_t(\mathbf{x}_i)) + \sum_{k=1}^K \Omega(f_k)
 \end{equation}
 
+Pero considerando únicamente los términos de primer y segundo orden de la función de pérdida, $g_i = \partial_{\hat{y}_i^{(t-1)}} l(y_i, \hat{y}_i^{(t-1)})$  $h_i = \partial_{\hat{y}_i^{(t-1)}}^2 l(y_i, \hat{y}_i^{(t-1)})$. Dicha estrategia permite encontrar una expresión simplificada de la aproximación de (\ref{aprox_gboost}):
+\begin{equation}
+\tilde{{\mathcal L}}^{(t)} =\sum_{i=1}^n [g_i f_t(x_i) + \frac{1}{2} h_i f_t^2(x_i)] + \Omega(f_t) \approx {\mathcal L}^{(t)}
+\end{equation}
 
+Lo cual equivale a que si $I_j := \{i|q(x_i)=j\}$, entonces:
+\begin{equation}
+\tilde{{\mathcal L}}^{(t)} =\sum^T_{j=1} [(\sum_{i\in I_j} g_i) w_j + \frac{1}{2} (\sum_{i\in I_j} h_i + \lambda) w_j^2 ] + \gamma T
+\end{equation}
 
-En el contexto de 
+A partir de ella, para una estructura fija de un árbol $q(\mathbf{x})$, se puede obtener una expresión cerrada del peso $w_j^*$ en la $j$-ésima hoja de dicho árbol, donde si $G_j := \sum_{i\in I_j} g_i$ y $H_j = \sum_{i\in I_j} h_i$ entonces:
+\begin{equation}
+w_j^\ast = -\frac{G_j}{H_j+\lambda}
+\end{equation}
 
-Esta técnica se basa en un aprendizaje de funcione
-Start from constant prediction, add a new function each time
+Así como el cálculo del correspondiente valor óptimo:
+\begin{equation}
+{\tilde{{\mathcal L}}^{(t)}}(q) = -\frac{1}{2} \sum_{j=1}^T \frac{G_j^2}{H_j+\lambda} + \gamma T
+\end{equation}
 
+A partir de esta forma de medir qué tan bueno es un árbol, se puede plantear un algoritmo
+para crecer un árbol de la siguiente forma: 1) comenzar con un árbol de profundidad cero, 2) para cada nodo de hoja del árbol, intentar agregar una división (split), 3) evaluar la reducción de la perdida después de agregar la división para decidir si es aceptable con la ecuación:
+$$\mathcal{L}_{split} = \frac{1}{2} \left[\frac{G_L^2}{H_L+\lambda}+\frac{G_R^2}{H_R+\lambda}-\frac{(G_L+G_R)^2}{H_L+H_R+\lambda}\right] - \gamma$$
 
-Pendiente: desarrollo
+XGBoost\footnote{https://xgboost.readthedocs.io/en/latest/}  es una de las librerías más populares que implementa el algoritmo recién descrito, encontrándose disponible para Python y R.
+
+\subsection{Variables a considerarse en los modelos}
+
+En el caso del \textbf{P1}, se consideraron a las siguientes variables por municipio: 1) número de hogares, 2) número de habitantes, 3) superficie (en km), 4) densidad de $hogares/km^2$, 5) densidad de $habitantes/km^2$, 6) porcentaje de habitantes de municipio sin educación primaria, 7) años promedio de escolaridad por habitante, 8) porcentaje de hogares sin acceso a electricidad,  9) porcentaje de hogares sin acceso a energía eléctrica, 10) porcentaje de población que vive en localidades de menos de 5,000 habitantes, 11) porcentaje de la población que gana menos de 2 salarios mínimos, 12) ingreso promedio anual per cápita (poder de paridad de compra, expresado en dólares), 13) porcentaje de hogares con servicios de televisión de paga, 14) porcentaje de hogares con servicios de telefonía celular, y 15) porcentaje de hogares con disponibilidad de teléfono fijo.
+
+Para \textbf{P2}, se consideraron a las variables descritas para \textbf{P1} añadiendo 16) el porcentaje de hogares con disponibilidad de Internet, y 17) una variable que indica si hay dos o más operadores de telecomunicaciones que proveen servicios de BAF basados en cable coaxial o fibra óptica. 
+
+\subsection{Transformaciones a los datos}
+
+[Pendiente]
+
+\subsection{Ajuste de los modelos y calibración de sus hiper-parámetros}
+
+[Pendiente]
 
 \section{Figures and Tables}
-
-Figures and Tables should be labeled and referenced in the standard way using the \verb|\label{}| and \verb|\ref{}| commands.
 
 
 %\begin{figure}[tbhp]
@@ -388,5 +437,54 @@ Figures and Tables should be labeled and referenced in the standard way using th
 % Bibliography
 
 \bibliography{ilcss-sample}
+
+\newpage
+
+\begin{appendices}
+	\section{Figuras de análisis exploratorio}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=0.9\linewidth]{images/pen_habs_penbc.png}
+	\caption{Penetración de cable coaxial y fibra en la península de Baja California}
+	\label{fig:pen_habs_penbc}
+\end{figure}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=0.9\linewidth]{images/pen_habs_penyuc.png}
+	\caption{Penetración de cable coaxial y fibra en la península de Yucatán}
+	\label{fig:pen_habs_penyuc}
+\end{figure}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=0.9\linewidth]{images/pen_habs_cdmx.png}
+	\caption{Penetración de cable coaxial y fibra alrededor de CDMX}
+	\label{fig:pen_habs_cdmx}
+\end{figure}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=1.0\linewidth]{images/pen_income.png}
+	\caption{Penetración BAF Junio 2018 (\cite{IFT2019BIT}) vs Ingreso Anual per capita en municipios (\cite{ONU2015}) }
+	\label{fig:pen_income}
+\end{figure}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=1.0\linewidth]{images/pen_smm.png}
+	\caption{Gráfico de densidad del porcentaje de población en municipios que ganaba hasta 2 salarios mínimos(\cite{CONAPO2015}), desagregado por nivel de penetración de BAF. \textbf{Nota:} 0 = Pen. nula, 1= Pen. Baja, ..., 5= Pen. Muy alta}
+	\label{fig:pen_smm}
+\end{figure}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=1.0\linewidth]{images/pen_denhabs.png}
+	\caption{Densidad de habitantes en municipios vs Penetración BAF Junio 2018 (\cite{IFT2019BIT})}
+	\label{fig:pen_denhabs}
+\end{figure}
+
+\end{appendices}
 
 \end{document}
