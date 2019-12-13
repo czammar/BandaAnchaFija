@@ -69,7 +69,7 @@ A efecto de explicar el entorno de la penetración de servicios de Internet a ni
 
 Dicho contexto les condiciona a establecer un circuito físico o virtual a través del cual se pueda conectar la ubicación del usuario a la red del operador y a través del que se prestarán los servicios (“Acceso de datos” o simplemente como “acceso”, \cite{IFT2018man}). Por ende, dado que afrontan costos considerables en infraestructura, equipos, permisos y recursos humanos para poder brindar servicios\footnote{En línea con \cite{IFT2017reb}, no sólo se enfrentan costos directos, sino oportunidad y de transacción; así como el riesgo de afrontar costos hundidos.}, típicamente los operadores concentran su oferta en zonas densamente pobladas donde existe suficiente capacidad económica para asegurar no solo que recuperarán sus inversiones sino que serán rentables desde la visión de negocio.
 
-%Además de los aspectos socio-económicos, también se destacan otros factores que pueden ser tomados en cuentan por un operador para evaluar una zona como idónea para brindar servicios: 1) Viabilidad de permisos para desarrollar los despliegues (e.g. concesiones para operar, medio ambiente), 2) viabilidad tecnológica (e.g. limitadas técnicas por la distancia que limitan la velocidad, calidad, entre otras), 3) existencia de infraestructura cercana a la zona de la que puedan disponer para proveer servicios (por ejemplo, propia o arrendada); y 4) existencia de competencia en el área; es decir de proveedores de servicios de telecomunicaciones.
+Además de los aspectos socio-económicos, también se destacan otros factores que pueden ser tomados en cuentan por un operador para evaluar una zona como idónea para brindar servicios: 1) Viabilidad de permisos para desarrollar los despliegues (e.g. concesiones para operar, medio ambiente), 2) viabilidad tecnológica (e.g. limitadas técnicas por la distancia que limitan la velocidad, calidad, entre otras), 3) existencia de infraestructura cercana a la zona de la que puedan disponer para proveer servicios (por ejemplo, propia o arrendada); y 4) existencia de competencia en el área; es decir de proveedores de servicios de telecomunicaciones.
 %	
 %Por otro lado, un indicador ampliamente usado en el sector de telecomunicaciones (\cite{Hanafizadeh},\cite{IFT2017reb},\cite{IFT2018man}) para cuantificar la cobertura de banda ancha fija es medir la penetración en una zona con la cantidad de accesos en ella por cada 100 hogares:
 %\begin{equation}\label{pen_hogares}
@@ -95,7 +95,7 @@ En este sentido, con motivo de estudiar a los municipios que cuentan penetració
 
 \section{Revisión y análisis de fuentes de datos asociados a banda ancha fija}
 
-A continuación se resumen las fuentes de información consultadas con relación a servicios de BAF, junto con las consideraciones particulares derivadas de su exploración\footnote{El procesamiento de la información se llevó a cabo a través de scripts en Bash, R y Python, disponibles en el Anexo A de este documento}. 
+A continuación se resumen las fuentes de información consultadas con relación a servicios de BAF, junto con las consideraciones particulares derivadas de su exploración\footnote{El procesamiento de la información se llevó a cabo a través de scripts en Bash, R y Python, véase apéndice}. 
 
 \subsection{Revisión de fuentes de información}
 
@@ -111,13 +111,12 @@ Dado que la disponibilidad de información social y demográfica en fuentes púb
 El Banco de Información de Telecomunicaciones (\cite{IFT2019BIT}) posee datos históricos (de 2013 a mediados 2019) sobre los accesos de banda ancha móvil y fija de México; sin embargo únicamente en el segundo caso se ofrece el detalle a nivel municipio. Dicha fuente provee datos de 29 empresas a las que pertenecen los accesos de BAF junto tecnología correspondiente (DSL, cable coaxial, fibra óptica, satelital y otras), sin proveer el desglose entre accesos residenciales o no residenciales. Se consideró relevante extraer los datos accesos en cada municipio, agregando los datos de todos los operadores por tecnología de acceso para el periodo con información más reciente (junio de 2019).
 
 \subsubsection{Datos socio-económicos}
-A través de la Encuesta Intercensal 2015 (\cite{Intercensal2015}), el INEGI reúne información de componentes que describen la evolución de la población, junto con sus viviendas y de sus condiciones socio-económicas.Tras estudiar esta fuente, los datos que se han considerado de interés para el estudio a nivel municipal la penetración de BAF son: 1) número de hogares, 2) número de habitantes, 3) porcentaje de viviendas que cuentan con disponibilidad de servicios de telecomunicaciones (es decir, a través de telefonía fija, telefonía celular, televisión de paga e Internet). 
+A través de la Encuesta Intercensal 2015 (\cite{Intercensal2015}), el INEGI reúne información de componentes que describen la evolución de la población, junto con sus viviendas y de sus condiciones socio-económicas.Tras estudiar esta fuente, los datos que se han considerado de interés para el estudio a nivel municipal la penetración de BAF son: 1) número de hogares, 2) número de habitantes, 3) porcentaje de viviendas que cuentan con disponibilidad de servicios de telecomunicaciones (es decir, a través de telefonía fija, telefonía celular, televisión de paga e Internet)\footnote{Ante la ausencia de información pública sobre la presencia de infraestructura (ver \cite{IFT2017reb}) que permita proveer servicios de Internet de alta velocidad, por ejemplo la localización de centrales de redes de nueva generación o la presencia física de la red backhaul/core de los principales operadores de México o CFE, se estima que la información indirecta de la presencia de servicios constituye un proxy para la presencia de infraestructura necesaria, aunque no suficiente, para poder brindar tales servicios a usuarios finales. A su vez, dicha elección se apoya en que, como se ha mencionado previamente, los despliegues de redes fijas se realizan alrededor de donde se ubican los clientes potenciales, y a su vez en el hecho de que la presencia de servicios de telecomunicaciones (incluso distintos a BAF) constituye una señal de que existen condiciones positivas para que los operadores desarrollen una cadena de elementos de infraestructura y operación que le permitan atender en una zona específica ofreciendo servicios a la población}. 
 
-%Dicha elección se apoya en que, como se ha mencionado previamente, los despliegues de redes fijas se realizan alrededor de donde se ubican los clientes potenciales, y a su vez en el hecho de que la presencia de servicios de telecomunicaciones (incluso distintos a BAF) constituye una señal de que existen condiciones positivas para que los operadores desarrollen una cadena de elementos de infraestructura y operación que le permitan atender en una zona específica ofreciendo servicios a la población.
 
 \subsubsection{Datos asociados a marginación}
 
-La Comisión Nacional de Población (CONAPO) diseño una herramienta denominada "índice de marginación" para realizar mediciones de las carencias que padece la población (\cite{CONAPO2015}). Esta recoge una serie de dimensiones socio-económicas para su construcción: educación, vivienda, y distribución de la población e ingresos. Para explorar la relación de tales ejes con la penetración de servicios de BAF, se consideró relevante involucrar a las siguientes mediciones empleadas por CONAPO en 2015 para la construcción de dicho índice a) porcentaje de ocupantes en viviendas sin energía eléctrica, b) porcentaje de población en localidades con menos de 5,000 habitantes, y c) porcentaje de población ocupada con ingresos de hasta 2 salarios
+La Comisión Nacional de Población (CONAPO) diseño una herramienta denominada "índice de marginación" para realizar mediciones de las carencias que padece la población (\cite{CONAPO2015}). Esta recoge una serie de dimensiones socio-económicas para su construcción: educación, vivienda, y distribución de la población e ingresos. Para explorar la relación de tales ejes con la penetración de servicios de BAF, se consideró relevante involucrar a las siguientes mediciones empleadas por CONAPO en 2015 para la construcción de dicho índice a) porcentaje de ocupantes en viviendas sin energía eléctrica, b) porcentaje de población en localidades con menos de 5,000 habitantes, y c) porcentaje de población ocupada con ingresos de hasta 2 salarios.
 
 %\begin{itemize}
 	%\item Porcentaje de población de 15 años o más analfabeta,	
@@ -131,12 +130,12 @@ La Comisión Nacional de Población (CONAPO) diseño una herramienta denominada 
 	%\item Porcentaje de población ocupada con ingresos de hasta 2 salarios.\vspace{-0.2cm} mínimo.	
 %\end{itemize}
 
-%La elección de tales variables se basa en que: a) la energía eléctrica es una condición necesaria para el funcionamiento de los servicios de telecomunicaciones, b) los operadores deben de hacer mayores esfuerzos para atender zonas que son bajamente pobladas donde puede no ser rentable llevar servicios, y c)
+La elección de tales variables se basa en que: a) la energía eléctrica es una condición necesaria para el funcionamiento de los servicios de telecomunicaciones, b) los operadores deben de hacer mayores esfuerzos para atender zonas que son bajamente pobladas donde puede no ser rentable llevar servicios, y c) el ingreso de las personas constituye una condición necesaria para que puedan solventar el pago de un servicio de Internet.
  
 \subsubsection{Datos asociados a desarrollo humano}
 
-El Programa de las Naciones Unidas para el Desarrollo (PNUD) es una organización orientada a generar soluciones a los países que buscan alcanzar sus metas de desarrollo y lograr los objetivos compartidos con la comunidad internacional. Como parte de sus actividades en México \cite{ONU2015}, periódicamente evalúan el nivel de desarollo de los municipios a través de la construcción del "Índice de Desarrollo Humano (IDH)", el cual considera los ejes de salud, eduación e ingreso. Al respecto, puesto que el ingreso de la población es un componente relevante en el acceso a servicios de telecomunicaciones, se considerarán los datos del PNUD empleados para la estimación del IDH correspondientes al año 2015 relativos el ingreso bruto per cápita en poder de paridad de compra (PPC), expresado en dólares estadounidenses, de cada municipio\footnote{Estos datos no se encuentra disponibles para 11 municipios. 
-	%A saber 5 del estado de Chihuahua (Buenaventura, Carichí, Santa Isabel, Temósachic, y Urique), 4 en Oaxaca (Matías Romero Avendaño, Santa María Chimalapa, Santa María Petapa y San Francisco Chindúa), uno en Puebla (San Nicolás de los Ranchos) y otro en Sonora (General Plutarco Elías Calles)
+El Programa de las Naciones Unidas para el Desarrollo (PNUD) es una organización orientada a generar soluciones a los países que buscan alcanzar sus metas de desarrollo y lograr los objetivos compartidos con la comunidad internacional. Como parte de sus actividades en México \cite{ONU2015}, periódicamente evalúan el nivel de desarrollo de los municipios a través de la construcción del "Índice de Desarrollo Humano (IDH)", el cual considera los ejes de salud, educación e ingreso. Al respecto, puesto que el ingreso de la población es un componente relevante en el acceso a servicios de telecomunicaciones, se considerarán los datos del PNUD empleados para la estimación del IDH correspondientes al año 2015 relativos el ingreso bruto per cápita en poder de paridad de compra (PPC), expresado en dólares estadounidenses, de cada municipio\footnote{Estos datos no se encuentra disponibles para 11 municipios. 
+	A saber 5 del estado de Chihuahua (Buenaventura, Carichí, Santa Isabel, Temósachic, y Urique), 4 en Oaxaca (Matías Romero Avendaño, Santa María Chimalapa, Santa María Petapa y San Francisco Chindúa), uno en Puebla (San Nicolás de los Ranchos) y otro en Sonora (General Plutarco Elías Calles)
 }.
 
 \subsection{Consideraciones sobre la información reunida}
@@ -146,7 +145,7 @@ En términos de la información reunida, la exposición previa (así como la met
 \begin{itemize}
 	\item \textbf{Periodo de la información de accesos:} junio de 2019,\vspace{-0.2cm}
 	\item \textbf{Nivel de desagregación geográfico:} municipal considerando los municipios de la Encuesta Intercensal 2015 (\cite{Intercensal2015}),\vspace{-0.2cm}
-	\item \textbf{Indicador de cobertura:} se considerarán dos ejercicios, uno basado en la penetración por cada 100 hogares y otro en penetración por cada 100 habitantes (ver ec. \ref{pen_hogares} y \ref{pen_habitantes}),\vspace{-0.2cm} 
+	\item \textbf{Indicador de cobertura:} se considerará la penetración por cada 100 habitantes (ver ec. \ref{pen_habitantes}),\vspace{-0.2cm} 
 	\item \textbf{Tipo tecnologías de acceso para establecer cobertura:} cable coaxial y fibra óptica, bajo la premisa de que
 	pueden ser usadas para proveer servicios con velocidades mayores que otras opciones,\vspace{-0.2cm}
 	\item \textbf{Identificación de municipios con cobertura de BAF:} aquellos que son reportados, de manera explícita en el BIT, como con presencia de accesos basadas en cable coaxial o fibra óptica\footnote{Como se verá posteriormente, para el 2.76\% de los accesos se desconoce su localización; no se hacen hipótesis de pertenencia a un municipio pues se estima que la cantidad de accesos puede despreciarse}.\vspace{-0.2cm}
@@ -155,7 +154,8 @@ En términos de la información reunida, la exposición previa (así como la met
 \end{itemize}
 
 Se debe reconocer que existe un desfase entre los datos socio-económicos recopilados (a 2015) y los datos de accesos de BAF (a junio de 2019); sin embargo, se considera que al menos, a alto nivel, a través de tales fuentes se pueden delinear patrones de hacia donde se han orientado los despliegues de los operadores en México que sustentan el estatus de cobertura de los servicios de banda ancha fija. 
-%En este sentido, el estudio en cuestión se inclina a evaluar si la información socio-económica, de hogares y población puede ser de utilidad para inferir el nivel de cobertura los municipios del país, desde la perspectiva de modelos de aprendizaje de máquina, sin perjuicio de que, cuando se actualicen la información relevante, el análisis pueda complementarse y actualizarse con la mejor información disponible.
+
+En este sentido, el estudio en cuestión se inclina a evaluar si la información socio-económica, de hogares y población puede ser de utilidad para inferir el nivel de cobertura los municipios del país, desde la perspectiva de modelos de aprendizaje de máquina, sin perjuicio de que, cuando se actualicen la información relevante, el análisis pueda complementarse y actualizarse con la mejor información disponible.
 
 \subsection{Análisis de información}
 
@@ -164,22 +164,22 @@ Se observó que a junio de 2019, existían 18.85 millones de accesos de BAF dist
 
 En términos de los principales grupos de telecomunicaciones de México a los que pertenecen los accesos de BAF, se tiene la siguiente distribución: América Móvil\footnote{Telmex y Telnor}  51.6\%, Grupo Televisa\footnote{Cablecom, Cablemas, Cablevision, Cablevision Red, Television Internacional y Sky} 23.3\%, Megacable-MCM\footnote{Megacable y MCM}  16.1\% y Totalplay 7.35\%  
 
-Otro punto a destacar es que únicamente los empresas que pertenecen a dichos grupos han desplegado accesos basados en cable coaxial o fibra óptica en el país.%\footnote{Aunque no se tiene datos explícitos de fibra óptica para Grupo Televisa, la oferta comercial de "Izzi" si los considera
-%	: \emph{"...hoy izzi ofrece servicio en más de 60 ciudades en 29 estados de la República Mexicana, mediante una red de más de 30,000 kilómetros de fibra óptica y 77,000 kilómetros de cable coaxial"}, consultado el 18 de Noviembre de 2019 en 
-%	ver https://www.izzi.mx/nosotros\#infraestructura}.
-%
-%\begin{table}[tbhp]
-% \centering
-%	\caption{Distribución de accesos de BAF por tecnología (Junio 2019)\label{table:distribaccesosgrupos}}
-%	\begin{tabular}{@{}llllll@{}}
-%		\toprule
-%		Grupo & Coaxial & DSL & Fibra & Satelital & No especificado \\ \midrule
-%		América Móvil &  & 71.9\% & 28.1\% &  &  \\ 
-%		Grupo Televisa & 95.6\% &  &  & 0.1\% & 4.3\% \\ 
-%		Megacable-MCM & 99.9\% &  &  &  & 0.1\% \\ 
-%		TotalPlay &  &  & 100\% &  &  \\ \bottomrule
-%	\end{tabular}
-%\end{table}
+Otro punto a destacar es que únicamente los empresas que pertenecen a dichos grupos han desplegado accesos basados en cable coaxial o fibra óptica en el país.\footnote{Aunque no se tiene datos explícitos de fibra óptica para Grupo Televisa, la oferta comercial de "Izzi" si los considera
+	: \emph{"...hoy izzi ofrece servicio en más de 60 ciudades en 29 estados de la República Mexicana, mediante una red de más de 30,000 kilómetros de fibra óptica y 77,000 kilómetros de cable coaxial"}, consultado el 18 de Noviembre de 2019 en 
+	ver https://www.izzi.mx/nosotros\#infraestructura}.
+
+\begin{table}[tbhp]
+ \centering
+	\caption{Distribución de accesos de BAF por tecnología (Junio 2019)\label{table:distribaccesosgrupos}}
+	\begin{tabular}{@{}llllll@{}}
+		\toprule
+		Grupo & Coaxial & DSL & Fibra & Satelital & No especificado \\ \midrule
+		América Móvil &  & 71.9\% & 28.1\% &  &  \\ 
+		Grupo Televisa & 95.6\% &  &  & 0.1\% & 4.3\% \\ 
+		Megacable-MCM & 99.9\% &  &  &  & 0.1\% \\ 
+		TotalPlay &  &  & 100\% &  &  \\ \bottomrule
+	\end{tabular}
+\end{table}
 
 No se omite destacar la existencia de municipios con una cantidad de accesos inusualmente baja (e.g. hay 31 municipios con un sólo acceso, 7 que poseen únicamente dos accesos).
 
@@ -252,8 +252,6 @@ Del análisis (ver figuras \ref{fig:pen_income} y \ref{fig:pen_smm}) se desprend
 
 De acuerdo a la figura \ref{fig:pen_denhabs}, aunque existe variabilidad considerable en la densidad de habitantes por municipio la información refleja un escalonamiento de conforme al nivel de penetración de BAF en los municipios.
 
-
-
 \section{Metodología para inferencia de niveles de cobertura de banda ancha fija en municipios}
 
 En linea con la exposición anterior, se busca explorar la posibilidad de que la información del entorno socio-económico, demográfico y tecnológico de los municipios sirva como una vía que permita inferir el nivel de cobertura actual de los servicios de banda ancha fija que los operadores hayan desplegado a la fecha.
@@ -306,7 +304,7 @@ Ello permite consolidar un sistema de votación entre las predicciones de todos 
 El algoritmo de potenciación de gradiente de árboles (\emph{gradient tree boosting}) es una técnica de aprendizaje de máquina que parte de la premisa de que al combinar de manera aditiva una cantidad de modelos base (árboles) se puede obtener un modelo con mejoras en sus capacidades de aprendizaje (\cite{Chen:2016:XST:2939672.2939785}). Ello equivale a que dado un conjunto de datos,${\mathcal D} =\{(\mathbf{x_i}, y_i) : \mathbf{x_i}\in  \mathbb{R}^m, y_i\in  \mathbb{R} \}$ con $|{\mathcal D}|$, la predicción resulta de un ensamble $\hat{y}_i = \sum_{k=1}^K f_k(x_i), f_k \in \mathcal{F}$, donde $K$ es el número de árboles, $f_k$ se refiere a una familia de modelos base de tipo árbol, $\mathcal{F}=\{ f(\mathbf{x}) = w_{q(\mathbf{x})} :  T\in \mathbb{N}, q: \mathbb{R}^m \rightarrow \{1,2,\cdots,T\} ,  w\in \mathbb{R}^T  \}$, siendo $T$ el número de hojas de un árbol $f_k$ y $q$ una función que representa su estructura\footnote{Estableciendo una regla de asociación entre un punto del espacio y el índice de la hoja del árbol a la que corresponde} y $w$ una colección de pesos sobre sus hojas\footnote{En un ejemplo específico, se emplean reglas de decisión sobre la estructura de los árboles a elegir, para clasificarlos respecto a la elección de sus hojas y crear una predicción sumando los pesos de las mismas}.
 
 Desde una perspectiva teórica, el aprendizaje del modelo se logra a través de la optimización de una función objetivo ${\mathcal L}(\phi)$ que incorpora a una función de pérdida $l(y_i, \hat{y}_i)$ convexa 
-y un término $\Omega$ que penaliza la complejidad del modelo y permite su regularazión para evitar sobre-ajuste. Sin embargo, dado que puede ser difícil de minimizarla con métodos tradicionales, a través del algoritmo en comento se plantea aproximar dicha función en el proceso de entrenamiento de una manera aditiva, iniciando desde una predicción constante y añadiendo una función en cada paso; es decir para $\hat{y}_i^{(t)}$ la predicción del $i$-ésimo individuo en la $t$-ésima etapa de entrenamiento realizar la minimización de:
+y un término $\Omega$ que penaliza la complejidad del modelo y permite su regularización para evitar sobre-ajuste. Sin embargo, dado que puede ser difícil de minimizarla con métodos tradicionales, a través del algoritmo en comento se plantea aproximar dicha función en el proceso de entrenamiento de una manera aditiva, iniciando desde una predicción constante y añadiendo una función en cada paso; es decir para $\hat{y}_i^{(t)}$ la predicción del $i$-ésimo individuo en la $t$-ésima etapa de entrenamiento realizar la minimización de:
 \begin{equation}\label{aprox_gboost}
 {\mathcal L}^{(t)} = \sum_{i=1}^n l(y_i, \hat{y}_i^{(t-1)}+f_t(\mathbf{x}_i)) + \sum_{k=1}^K \Omega(f_k)
 \end{equation}
@@ -380,22 +378,68 @@ Es así que los resultados de la metodología recién descrita para \textbf{P1} 
 
 \subsubsection{P1}
 
-Hola	
+Recordemos que este problema aborda la clasificación de un municipio de acuerdo a si hay presencia de penetración de accesos de banda ancha fija basado en las tecnologías de cable coaxial y fibra óptica. 
+
+\begin{table}[tbhp]
+	\centering
+	\caption{Promedio ponderado de resultados obtenidos para los distintos modelos - P1 }
+	\label{tab:p1_results}
+	\begin{tabular}{@{}llllll@{}}
+		\toprule
+		\# & Modelo & Precisión & Recall & $F1$-score & Soporte \\ \midrule
+		1 & Logístico & 0.87 & 0.87 & 0.86 & 612 \\
+		2 & Bosque Aleatorio & 0.87 & 0.86 & 0.87* & 612 \\
+		3 & Gradient Tree Boosting & 0.87 & 0.86 & 0.86 & 612 \\ \bottomrule
+	\end{tabular}
+\end{table}
+
+A través de la tabla \ref{tab:p1_results} se aprecia que el modelo de bosques aleatorio fue el que obtuvo mejor $F1$-score, a nivel promedio ponderado, sobre el conjunto de prueba, y que el resto de modelos obtuvo valores similares de desempeño.
+
+Sin embargo, al analizar las matrices de confusión (ver figuras \ref{fig:p1_mc_logistic} , \ref{fig:p1_mc_rd} y \ref{fig:p1_mc_xgboost}) se puede como el modelo logístico
+acertó en la predicción de más valores que los basados en árboles, mientras que los otros tuvieron menos falsos positivos que éste. Se destaca que las matrices de los modelos basados en árboles son prácticamente iguales, salvo en que la matríz del modelo de gradient tree boosting tuvo un falso positivo más que la proveniente del modelo de bosque aleatorio.
+
+En complemento, a través de los diagramas de feature importance asociados al modelo de gradient tree  boosting, (ver figuras \ref{fig:p1_xgboost_weight}, \ref{fig:p1_xgboost_gain}, \ref{fig:p1_xgboost_cover} presentes en el apéndice) se puede apreciar que el número de hogares, el porcentaje de población del municipio que vive en localidades de menos de 5,000 hogares, la cantidad de habitantes, el ingreso anual per capita y la densidad de hogares son las variables que más aportaron en la reducción de pérdida a la hora de efectuar splits de los árboles del método, es decir, en términos relativos fueron las que más aportaron a la predicción de la existencia de cobertura de BAF.
 
 \subsubsection{P2}
 
-Hola
+Mediante la tabla \ref{tab:p2_results} se desprende que el modelo de bosques aleatorio fue el que obtuvo mejor $F1$-score, respecto al promedio ponderado, sobre el conjunto de prueba, y que el resto de modelos obtuvo valores similares de desempeño.
+
+\begin{table}[tbhp]
+	\centering
+	\caption{Promedio ponderado de resultados obtenidos para los distintos modelos - P2}
+	\label{tab:p2_results}
+	\begin{tabular}{@{}llcccc@{}}
+		\toprule
+		\# & Modelo & \multicolumn{1}{l}{Precisión} & \multicolumn{1}{l}{Recall} & \multicolumn{1}{l}{$F1$-score} & \multicolumn{1}{l}{Soporte} \\ \midrule
+		1 & Logístico (1 vs all) & 0.90 & 0.88 & 0.89 & 612 \\
+		2 & Logístico (all vs all) & 0.90 & 0.88 & 0.89 & 612 \\
+		3 & Bosque aleatorio & 0.90 & 0.89 & 0.89* & 612 \\
+		4 & Gradient Tree Boosting & 0.89 & 0.88 & 0.88 & 612 \\ \bottomrule
+	\end{tabular}
+\end{table}
+
+Se aprecia que respecto a los resultados obtenidos en el caso anterior, existe un aumento en la métrica de los valores predecidos; presumiblemente derivado de que dimos más información al modelos respecto a la presencia de servicios de Internet en los municipios y sobre la competencia a nivel local entre operadores.
+
+Al revisar las matrices de confusión de esos modelos (véase las figuras \ref{fig:p2_mc_logistic_1toall}, \ref{fig:p2_mc_logistic_alltoall}, \ref{fig:p2_mc_rd} y \ref{fig:p2_mc_xgboost} en el apéndice) se aprecia, en términos generales: a) em general, el modelo de gradient tree boosting fue el único que se equivocó prediciendo la penetración de un municipio a un nivel inmediato superior o inferior, b) ninguno de los modelos pudo predecir acertadamente el nivel de penetración del municipio con penetración muy alta.
+
+Por otro lado, de acuerdo las figuras de feature importance asociados al modelo de gradient tree  boosting, (ver figuras \ref{fig:p2_xgboost_weight}, \ref{fig:p2_xgboost_gain}, \ref{fig:p2_xgboost_cover} presentes en el apéndice) se desprender que la cantidad de operadores presentes en el municipio que tienen instalados servicios de BAF, el porcentaje de disponibilidad de Internet, que el número de hogares y la población son las variables que más aportaron en la reducción de pérdida a la hora de efectuar splits de los árboles del método, es decir, en términos relativos fueron las que más aportaron a la predicción del nivel de cobertura de BAF a nivel municipio.
 
 
 \subsection{Conclusiones}
 
-En este documento, exploramos el uso de modelos de aprendizaje de máquina 
+En este documento, exploramos el uso de modelos de aprendizaje de máquina para inferir el nivel de penetración de banda ancha de cierto tipo de tecnologías en los municipios del país, referido como la cantidad de acceso por cada 100 habitantes, a partir de datos socio-económicos provenientes fuentes públicas, basándonos en modelos de aprendizaje de tipo logístico y ensambles de árboles.
+
+Aunque existen limitaciones en la precisión alcanzada por estos modelos, sobretodo al no involucrar detalle de la presencia de infraestructura a nivel geográfico, lo mostrado aquí sugiere que este tipo de modelos puede ser una alternativa para inferir el nivel de cobertura en una zona ante la ausencia de datos de despliegue de operadores, que pueda ser de utilidad a tomadores de decisiones, por ejemplo en la implementación de políticas públicas para aumentar el nivel de penetración de banda ancha, en el entendido de que al entrenarse con datos de México, estos modelos podrían ser aplicables a regiones que posean un nivel de madurez semejante para servicios fijos de telecomunicaciones.
+
 
 \bibliography{ilcss-sample}
 
-\newpage
-
-\begin{Apendices}
+\begin{appendices}
+	
+	\section{Repositorio Github}
+	
+	El desarrollo de este trabajo se consolidó a través de un repositorio en Github de acceso público: https://github.com/czammar/BandaAnchaFija; este contiene la totalidad de script desarrollados en Bash, R, Python, los mapas interactivos, las versiones en .tex de los documentos así como los datos empleados.
+	
 	\section{Figuras de análisis exploratorio}
 
 \begin{figure}[tbhp]
@@ -439,7 +483,101 @@ En este documento, exploramos el uso de modelos de aprendizaje de máquina
 	\caption{Densidad de habitantes en municipios vs Penetración BAF Junio 2018 (\cite{IFT2019BIT})}
 	\label{fig:pen_denhabs}
 \end{figure}
+\newpage
+\section{Resultados de modelos para P1}
 
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/p1_mc_logistic.png}
+	\caption{Matriz de confusión del modelo logístico- P1 }
+	\label{fig:p1_mc_logistic}
+\end{figure}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/p1_mc_rd.png}
+	\caption{Matriz de confusión del modelo de bosque aleatorio- P1 }
+	\label{fig:p1_mc_rd}
+\end{figure}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/p1_mc_xgboost.png}
+	\caption{Matriz de confusión del modelo gradient tree boost- P1 }
+	\label{fig:p1_mc_xgboost}
+\end{figure}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=1\linewidth]{images/p1_xgboost_weight.png}
+	\caption{Feature importace por "weight" del modelo gradiente tree boosting P1}
+	\label{fig:p1_xgboost_weight}
+\end{figure}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=1\linewidth]{images/p1_xgboost_gain.png}
+	\caption{Feature importace por "gain" del modelo gradiente tree boosting P1}
+	\label{fig:p1_xgboost_gain}
+\end{figure}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=1\linewidth]{images/p1_xgboost_cover.png}\newpage
+	\caption{Feature importace por "cover" del modelo gradiente tree boosting P1}
+		\label{fig:p1_xgboost_cover}
+\end{figure}
+	
+\section{Resultados de modelos para P2}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/p2_mc_logistic_1toall.png}
+	\caption{Matriz de confusión del modelo logístico 1 vs all - P2 }
+	\label{fig:p2_mc_logistic_1toall}
+\end{figure}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/p2_mc_logistic_alltoall.png}
+	\caption{Matriz de confusión del modelo logístico all vs all - P2 }
+	\label{fig:p2_mc_logistic_alltoall}
+\end{figure}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/p2_mc_rd.png}
+	\caption{Matriz de confusión del modelo de bosque aleatorio - P2 }
+	\label{fig:p2_mc_rd}
+\end{figure}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/p2_mc_xgboost.png}
+	\caption{Matriz de confusión del modelo gradient tree boosting - P2 }
+	\label{fig:p2_mc_xgboost}
+\end{figure}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=1\linewidth]{images/p2_xgboost_weight.png}
+	\caption{Feature importace por "weight" del modelo gradiente tree boosting P2}
+	\label{fig:p2_xgboost_weight}
+\end{figure}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=1\linewidth]{images/p2_xgboost_gain.png}
+	\caption{Feature importace por "gain" del modelo gradiente tree boosting P2}
+	\label{fig:p3_xgboost_gain}
+\end{figure}
+
+\begin{figure}[tbhp]
+	\centering
+	\includegraphics[width=1\linewidth]{images/p2_xgboost_cover.png}\newpage
+	\caption{Feature importace por "cover" del modelo gradient tree boosting P2}
+\label{fig:p2_xgboost_cover}
+\end{figure}
 
 \end{appendices}
 

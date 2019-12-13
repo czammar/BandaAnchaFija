@@ -1,0 +1,136 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[usenames, dvipsnames]{color}
+\usepackage[T1]{fontenc}
+\usepackage[spanish, activeacute]{babel}
+\usepackage[utf8]{inputenc} 
+\usepackage{array}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage[inline]{enumitem}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+\usepackage[]{algorithm2e}
+\usepackage{geometry}
+\setlength{\topmargin}{-5em} %
+\setlength{\headsep}{15pt} %
+\setlength{\footskip}{25pt} %
+\setlength{\textheight}{9.75in} %
+\setlength{\textwidth}{6.5in} %
+\setlength{\hoffset}{-15pt}
+
+\usepackage{marvosym}
+\makeatletter
+\newcommand{\distas}[1]{\mathbin{\overset{#1}{\kern\z@\sim}}}%
+\newsavebox{\mybox}\newsavebox{\mysim}
+\newcommand{\distras}[1]{%
+  \savebox{\mybox}{\hbox{\kern3pt$\scriptstyle#1$\kern3pt}}%
+  \savebox{\mysim}{\hbox{$\sim$}}%
+  \mathbin{\overset{#1}{\kern\z@\resizebox{\wd\mybox}{\ht\mysim}{$\sim$}}}%
+}
+\title{}
+
+\author{Cesar Zamora}
+
+
+\lstset{language=MATLAB,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\normvec}[1]{\left\lVert|#1|\right\rVert}
+
+\theoremstyle{plain}
+\newtheorem*{defini*}{Definición}
+\newtheorem*{lem*}{Lema}
+\newtheorem*{theo*}{Teorema}
+\newtheorem*{prop*}{Proposición}
+\newtheorem*{cor*}{Corolario}
+
+\newcounter{problem}
+\newcounter{solution}
+
+\newcommand\Problem{%
+  \stepcounter{problem}%
+  \textbf{\theproblem.}~%
+  \setcounter{solution}{0}%
+}
+
+\newcommand\TheSolution{%
+  \textbf{Solución:}\\%
+}
+
+\newcommand\ASolution{%
+  \stepcounter{solution}%
+  \textbf{Solution \TheSolution:}\\%
+}
+\parindent 0in
+\parskip 1em
+
+
+\begin{document}
+
+\section*{Apéndice: Códigos de R}
+
+A continuación se presentan los códigos utilizados en este proyecto.
+
+\subsection*{Archivo creating\_conapo.R}
+
+\begin{lstlisting}[language=R]
+library(readr)
+library(tidyverse)
+
+######---- Carga base de datos de accesos de CONAPO ----######
+conapo <- read_csv("CONAPO/Base_Indice_de_marginacion_municipal_90-15.csv", col_types = cols(CVE_ENT = col_character(), 
+CVE_MUN = col_character()), locale = locale(encoding = "ISO-8859-1"))
+# Creamos variables de id de entidad y municipio
+conapo$K_ENTIDAD<-NA
+conapo$K_MUNICIPIO<-NA
+
+for (index in 1:nrow(conapo)){
+conapo$K_ENTIDAD[index] = ifelse(nchar(conapo$CVE_ENT[index])==1, paste(0,conapo$CVE_ENT[index],sep=""),conapo$CVE_ENT[index])
+}
+
+for (index in 1:nrow(conapo)){
+conapo$K_MUNICIPIO[index] = ifelse(nchar(conapo$CVE_MUN[index])==4, substr(conapo$CVE_MUN[index],2,4),substr(conapo$CVE_MUN[index],3,5))
+}
+
+conapo<- conapo %>% mutate(K_ENTIDAD_MUNICIPIO = paste(K_ENTIDAD, K_MUNICIPIO,sep="")) 
+conapo <- subset(conapo, ENT != "Nacional")
+
+# Escribe la base de datos de conapo
+write_csv(conapo, "CONAPO_2015.csv")
+
+\end{lstlisting}
+
+
+\begin{lstlisting}[language=Bash]
+ cd
+\end{lstlisting}
+
+\begin{lstlisting}[language=Python]
+print("hola")
+\end{lstlisting}
+
+\end{document}

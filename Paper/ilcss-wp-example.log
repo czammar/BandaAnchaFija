@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.29)  12 DEC 2019 20:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.9.29)  12 DEC 2019 23:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1680,9 +1680,9 @@ File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 5.69998pt on input line 62.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <7> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 91.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 89.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 6.64998pt on input line 91.
+(Font)              scaled to size 6.64998pt on input line 89.
  [1{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
@@ -1701,122 +1701,214 @@ LaTeX Font Info:    Font shape `T1/phv/b/it' in size <8> not available
 (Font)              Font shape `T1/phv/b/sl' tried instead on input line 105.
 LaTeX Font Info:    Font shape `T1/phv/b/sl' will be
 (Font)              scaled to size 7.59998pt on input line 105.
+ [2]
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <6> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 169.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 5.69998pt on input line 169.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 7.12497pt on input line 174.
+LaTeX Font Info:    Calculating math sizes for size <7.5> on input line 174.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7.5> on input line 174.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5.24997> on input line 174.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <3.75> on input line 174.
 
+Overfull \hbox (8.17719pt too wide) in paragraph at lines 174--182
+ [][] 
+ []
 
-LaTeX Warning: Reference `pen_hogares' on page 2 undefined on input line 149.
-
-[2]
-<images/cumulative_dens_pen.png, id=229, 392.21532pt x 261.22594pt>
+<images/cumulative_dens_pen.png, id=238, 392.21532pt x 261.22594pt>
 File: images/cumulative_dens_pen.png Graphic file (type png)
 <use images/cumulative_dens_pen.png>
 Package pdftex.def Info: images/cumulative_dens_pen.png  used on input line 190
 .
 (pdftex.def)             Requested size: 221.48567pt x 147.51718pt.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <6> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 197.
-LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 5.69998pt on input line 197.
-LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.12497pt on input line 209.
-LaTeX Font Info:    Calculating math sizes for size <7.5> on input line 209.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7.5> on input line 209.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5.24997> on input line 209.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <3.75> on input line 209.
-
+[3 <./images/cumulative_dens_pen.png (PNG copy)>]
 Overfull \hbox (1.39333pt too wide) in paragraph at lines 234--243
  [][] 
  []
 
-[3 <./images/cumulative_dens_pen.png (PNG copy)>]
-Package footmisc Info: Footnote number 17 out of range on input line 299.
-Package footmisc Info: Footnote number 17 out of range on input line 299.
-Package footmisc Info: Footnote number 18 out of range on input line 306.
-Package footmisc Info: Footnote number 18 out of range on input line 306.
-Package footmisc Info: Footnote number 19 out of range on input line 306.
-Package footmisc Info: Footnote number 19 out of range on input line 306.
- [4]
-Package footmisc Info: Footnote number 20 out of range on input line 338.
-Package footmisc Info: Footnote number 20 out of range on input line 338.
- [5]
+Package footmisc Info: Footnote number 17 out of range on input line 266.
+Package footmisc Info: Footnote number 17 out of range on input line 266.
+Package footmisc Info: Footnote number 18 out of range on input line 289.
+Package footmisc Info: Footnote number 18 out of range on input line 289.
+[4]
+Package footmisc Info: Footnote number 19 out of range on input line 297.
+Package footmisc Info: Footnote number 19 out of range on input line 297.
+Package footmisc Info: Footnote number 20 out of range on input line 304.
+Package footmisc Info: Footnote number 20 out of range on input line 304.
+Package footmisc Info: Footnote number 21 out of range on input line 304.
+Package footmisc Info: Footnote number 21 out of range on input line 304.
+Package footmisc Info: Footnote number 22 out of range on input line 336.
+Package footmisc Info: Footnote number 22 out of range on input line 336.
+ [5] [6]
+Overfull \hbox (0.8489pt too wide) in paragraph at lines 411--419
+ [][] 
+ []
+
+
+LaTeX Warning: Reference `fig:p2_xgboost_gain' on page 7 undefined on input lin
+e 425.
+
 (./ilcss-wp-example.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 60--63
 []\T1/lmr/m/n/9 (+20) INEGI (2015).  En-cuesta In-ter-censal 2015.
  []
 
-) [6]
-<images/pen_habs_penbc.png, id=310, 709.65125pt x 604.2575pt>
+[7])
+Underfull \hbox (badness 4072) in paragraph at lines 441--442
+\T1/lmr/m/n/9 (+20) El de-sar-rollo de este tra-bajo se con-solidó a través
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 441--442
+\T1/lmr/m/n/9 (+20) de un repos-i-to-rio en Github de ac-ceso público:
+ []
+
+<images/pen_habs_penbc.png, id=356, 709.65125pt x 604.2575pt>
 File: images/pen_habs_penbc.png Graphic file (type png)
 <use images/pen_habs_penbc.png>
-Package pdftex.def Info: images/pen_habs_penbc.png  used on input line 397.
+Package pdftex.def Info: images/pen_habs_penbc.png  used on input line 447.
 (pdftex.def)             Requested size: 221.48567pt x 188.59027pt.
-<images/pen_habs_penyuc.png, id=312, 840.13875pt x 615.29875pt>
+<images/pen_habs_penyuc.png, id=358, 840.13875pt x 615.29875pt>
 File: images/pen_habs_penyuc.png Graphic file (type png)
 <use images/pen_habs_penyuc.png>
-Package pdftex.def Info: images/pen_habs_penyuc.png  used on input line 404.
+Package pdftex.def Info: images/pen_habs_penyuc.png  used on input line 454.
 (pdftex.def)             Requested size: 221.48567pt x 162.2084pt.
-<images/pen_habs_cdmx.png, id=313, 744.7825pt x 592.2125pt>
+<images/pen_habs_cdmx.png, id=359, 744.7825pt x 592.2125pt>
 File: images/pen_habs_cdmx.png Graphic file (type png)
 <use images/pen_habs_cdmx.png>
-Package pdftex.def Info: images/pen_habs_cdmx.png  used on input line 411.
+Package pdftex.def Info: images/pen_habs_cdmx.png  used on input line 461.
 (pdftex.def)             Requested size: 221.48567pt x 176.11086pt.
-<images/pen_income.png, id=314, 451.6875pt x 267.24844pt>
+<images/pen_income.png, id=360, 451.6875pt x 267.24844pt>
 File: images/pen_income.png Graphic file (type png)
 <use images/pen_income.png>
-Package pdftex.def Info: images/pen_income.png  used on input line 418.
+Package pdftex.def Info: images/pen_income.png  used on input line 468.
 (pdftex.def)             Requested size: 246.09686pt x 145.60876pt.
-<images/pen_smm.png, id=323, 334.24875pt x 268.75406pt>
+<images/pen_smm.png, id=369, 334.24875pt x 268.75406pt>
 File: images/pen_smm.png Graphic file (type png)
 <use images/pen_smm.png>
-Package pdftex.def Info: images/pen_smm.png  used on input line 425.
+Package pdftex.def Info: images/pen_smm.png  used on input line 475.
 (pdftex.def)             Requested size: 246.09686pt x 197.88248pt.
-<images/pen_denhabs.png, id=328, 334.24875pt x 268.75406pt>
+<images/pen_denhabs.png, id=374, 334.24875pt x 268.75406pt>
 File: images/pen_denhabs.png Graphic file (type png)
 <use images/pen_denhabs.png>
-Package pdftex.def Info: images/pen_denhabs.png  used on input line 432.
+Package pdftex.def Info: images/pen_denhabs.png  used on input line 482.
 (pdftex.def)             Requested size: 246.09686pt x 197.88248pt.
+[8 <./images/pen_habs_penbc.png> <./images/pen_habs_penyuc.png> <./images/pen_h
+abs_cdmx.png> <./images/pen_income.png (PNG copy)> <./images/pen_smm.png (PNG c
+opy)>]
+<images/p1_mc_logistic.png, id=388, 249.93375pt x 232.87pt>
+File: images/p1_mc_logistic.png Graphic file (type png)
+<use images/p1_mc_logistic.png>
+Package pdftex.def Info: images/p1_mc_logistic.png  used on input line 491.
+(pdftex.def)             Requested size: 147.6596pt x 137.58397pt.
+<images/p1_mc_rd.png, id=389, 247.92625pt x 229.85875pt>
+File: images/p1_mc_rd.png Graphic file (type png)
+<use images/p1_mc_rd.png>
+Package pdftex.def Info: images/p1_mc_rd.png  used on input line 498.
+(pdftex.def)             Requested size: 147.6596pt x 136.89917pt.
+<images/p1_mc_xgboost.png, id=390, 238.8925pt x 230.8625pt>
+File: images/p1_mc_xgboost.png Graphic file (type png)
+<use images/p1_mc_xgboost.png>
+Package pdftex.def Info: images/p1_mc_xgboost.png  used on input line 505.
+(pdftex.def)             Requested size: 147.6596pt x 142.69644pt.
+<images/p1_xgboost_weight.png, id=391, 622.325pt x 301.125pt>
+File: images/p1_xgboost_weight.png Graphic file (type png)
+<use images/p1_xgboost_weight.png>
+Package pdftex.def Info: images/p1_xgboost_weight.png  used on input line 512.
+(pdftex.def)             Requested size: 246.09686pt x 119.07861pt.
+<images/p1_xgboost_gain.png, id=392, 630.355pt x 295.1025pt>
+File: images/p1_xgboost_gain.png Graphic file (type png)
+<use images/p1_xgboost_gain.png>
+Package pdftex.def Info: images/p1_xgboost_gain.png  used on input line 519.
+(pdftex.def)             Requested size: 246.09686pt x 115.21107pt.
+<images/p1_xgboost_cover.png, id=393, 625.33624pt x 290.08376pt>
+File: images/p1_xgboost_cover.png Graphic file (type png)
+<use images/p1_xgboost_cover.png>
+Package pdftex.def Info: images/p1_xgboost_cover.png  used on input line 526.
+(pdftex.def)             Requested size: 246.09686pt x 114.1591pt.
+<images/p2_mc_logistic_1toall.png, id=394, 244.915pt x 234.8775pt>
+File: images/p2_mc_logistic_1toall.png Graphic file (type png)
+<use images/p2_mc_logistic_1toall.png>
+Package pdftex.def Info: images/p2_mc_logistic_1toall.png  used on input line 5
+35.
+(pdftex.def)             Requested size: 147.6596pt x 141.6121pt.
+<images/p2_mc_logistic_alltoall.png, id=395, 237.88875pt x 232.87pt>
+File: images/p2_mc_logistic_alltoall.png Graphic file (type png)
+<use images/p2_mc_logistic_alltoall.png>
+Package pdftex.def Info: images/p2_mc_logistic_alltoall.png  used on input line
+ 542.
+(pdftex.def)             Requested size: 147.6596pt x 144.552pt.
+<images/p2_mc_rd.png, id=396, 236.885pt x 233.87375pt>
+File: images/p2_mc_rd.png Graphic file (type png)
+<use images/p2_mc_rd.png>
+Package pdftex.def Info: images/p2_mc_rd.png  used on input line 549.
+(pdftex.def)             Requested size: 147.6596pt x 145.78531pt.
+<images/p2_mc_xgboost.png, id=397, 240.9pt x 235.88126pt>
+File: images/p2_mc_xgboost.png Graphic file (type png)
+<use images/p2_mc_xgboost.png>
+Package pdftex.def Info: images/p2_mc_xgboost.png  used on input line 556.
+(pdftex.def)             Requested size: 147.6596pt x 144.5856pt.
+<images/p2_xgboost_weight.png, id=398, 622.325pt x 297.11pt>
+File: images/p2_xgboost_weight.png Graphic file (type png)
+<use images/p2_xgboost_weight.png>
+Package pdftex.def Info: images/p2_xgboost_weight.png  used on input line 563.
+(pdftex.def)             Requested size: 246.09686pt x 117.49089pt.
+<images/p2_xgboost_gain.png, id=399, 626.34pt x 290.08376pt>
+File: images/p2_xgboost_gain.png Graphic file (type png)
+<use images/p2_xgboost_gain.png>
+Package pdftex.def Info: images/p2_xgboost_gain.png  used on input line 570.
+(pdftex.def)             Requested size: 246.09686pt x 113.97763pt.
+<images/p2_xgboost_cover.png, id=400, 601.24625pt x 289.08pt>
+File: images/p2_xgboost_cover.png Graphic file (type png)
+<use images/p2_xgboost_cover.png>
+Package pdftex.def Info: images/p2_xgboost_cover.png  used on input line 577.
+(pdftex.def)             Requested size: 246.09686pt x 118.32506pt.
  
 AED: lastpage setting LastPage
-[7 <./images/pen_habs_penbc.png> <./images/pen_habs_penyuc.png> <./images/pen_h
-abs_cdmx.png> <./images/pen_income.png (PNG copy)> <./images/pen_smm.png (PNG c
-opy)>] [8
-
- <./images/pen_denhabs.png (PNG copy)>]
+[9 <./images/pen_denhabs.png (PNG copy)> <./images/p1_mc_logistic.png> <./image
+s/p1_mc_rd.png> <./images/p1_mc_xgboost.png> <./images/p1_xgboost_weight.png> <
+./images/p1_xgboost_gain.png>] [10 <./images/p1_xgboost_cover.png> <./images/p2
+_mc_logistic_1toall.png> <./images/p2_mc_logistic_alltoall.png> <./images/p2_mc
+_rd.png> <./images/p2_mc_xgboost.png> <./images/p2_xgboost_weight.png> <./image
+s/p2_xgboost_gain.png> <./images/p2_xgboost_cover.png>]
 
 Package footmisc Warning: Some footnote number(s) were out of range 
 (footmisc)                see log for details.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 440.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 440.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 584.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 584.
 (./ilcss-wp-example.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 440.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 440.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 584.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 584.
+Package rerunfilecheck Info: File `ilcss-wp-example.out' has not changed.
+(rerunfilecheck)             Checksum: ADF472E22D17E41C97A4D077A522DC66;2752.
 
-
-Package rerunfilecheck Warning: File `ilcss-wp-example.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `ilcss-wp-example.out':
-(rerunfilecheck)             Before: 87316F561207E95E993B7B704CFDAFA0;2648
-(rerunfilecheck)             After:  F372BB058E694A0B0D20E57E1657CAA0;2559.
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 440.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 584.
  ) 
 Here is how much of TeX's memory you used:
- 36135 strings out of 494457
- 660125 string characters out of 6173956
- 758321 words of memory out of 5000000
- 38941 multiletter control sequences out of 15000+600000
- 665516 words of font info for 192 fonts, out of 8000000 for 9000
+ 36249 strings out of 494457
+ 662813 string characters out of 6173956
+ 760855 words of memory out of 5000000
+ 39017 multiletter control sequences out of 15000+600000
+ 674500 words of font info for 197 fonts, out of 8000000 for 9000
  62 hyphenation exceptions out of 8191
- 62i,11n,67p,1400b,480s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Hfootnote.20} has been referenced but does not ex
+ 62i,11n,67p,1709b,496s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{Hfootnote.22} has been referenced but does not ex
 ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.21} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.20} has been referenced but does not exis
+t, replaced by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.19} has been referenced but does not exis
 t, replaced by a fixed one
@@ -1875,20 +1967,11 @@ pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 , replaced by a fixed one
 
-pdfTeX warning (dest): name{subsection.2.9} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.2.8.2} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.2.8.1} has been referenced but does n
-ot exist, replaced by a fixed one
-
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/te
 xlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2019/te
 xmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2019/texmf-dist/f
-onts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips
-/lm/lm-mathex.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mat
+onts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/d
+vips/lm/lm-rm.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mat
 hit.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/l
 ocal/texlive/2019/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texli
 ve/2019/texmf-dist/fonts/type1/public/lm/lmbx6.pfb></usr/local/texlive/2019/tex
@@ -1911,10 +1994,10 @@ type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/u
 rw/helvetic/uhvbo8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/hel
 vetic/uhvr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/helvetic/u
 hvro8a.pfb>
-Output written on ilcss-wp-example.pdf (8 pages, 838897 bytes).
+Output written on ilcss-wp-example.pdf (10 pages, 1228969 bytes).
 PDF statistics:
- 458 PDF objects out of 1000 (max. 8388607)
- 402 compressed objects within 5 object streams
- 92 named destinations out of 1000 (max. 500000)
- 42272 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 538 PDF objects out of 1000 (max. 8388607)
+ 454 compressed objects within 5 object streams
+ 112 named destinations out of 1000 (max. 500000)
+ 43889 words of extra memory for PDF output out of 51595 (max. 10000000)
 
