@@ -10,7 +10,7 @@
 % and researcher at the iLCSS.
 
 \documentclass[9pt,twocolumn,twoside]{ilcss}
-
+\usepackage{listings}
 \usepackage[toc,page]{appendix}
 
 
@@ -270,7 +270,7 @@ En ambos casos, la metodología a seguir\footnote{Aunque los pasos se presentan 
 \begin{itemize}
 	\item[\textbf{A}.] Definir los modelos a considerar, \vspace{-0.3cm}
 	\item[\textbf{B}.] De entre todas la información reunida, establecer cuales son las variables relevantes a considerar,\vspace{-0.3cm}
-	\item[\textbf{C}.] Transformar los datos de manera compatible con sus requerimientos de estos,\vspace{-0.3cm}
+	\item[\textbf{C}.] Procesamiento de los datos de manera compatible con sus requerimientos de estos,\vspace{-0.3cm}
 	\item[\textbf{D}.] Para la ejecución de cada modelo, realizar un pipeline que permita calibrar los posibles hiper-parámetros de los modelos, considerando la evaluación de los mismos con un métrica establecida a través de validación cruzada,\vspace{-0.3cm}
 	\item[\textbf{E}.] Considerar el mejor modelo resultado del pipeline anterior de acuerdo a la métrica predefinida, y\vspace{-0.3cm}
 	\item[\textbf{F}.] Analizar los resultados interpretando el funcionamiento de los modelos de aprendizaje de máquina.	
@@ -339,108 +339,63 @@ XGBoost\footnote{https://xgboost.readthedocs.io/en/latest/}  es una de las libre
 
 \subsection{Variables a considerarse en los modelos}
 
-En el caso del \textbf{P1}, se consideraron a las siguientes variables por municipio: 1) número de hogares, 2) número de habitantes, 3) superficie (en km), 4) densidad de $hogares/km^2$, 5) densidad de $habitantes/km^2$, 6) porcentaje de habitantes de municipio sin educación primaria, 7) años promedio de escolaridad por habitante, 8) porcentaje de hogares sin acceso a electricidad,  9) porcentaje de hogares sin acceso a energía eléctrica, 10) porcentaje de población que vive en localidades de menos de 5,000 habitantes, 11) porcentaje de la población que gana menos de 2 salarios mínimos, 12) ingreso promedio anual per cápita (poder de paridad de compra, expresado en dólares), 13) porcentaje de hogares con servicios de televisión de paga, 14) porcentaje de hogares con servicios de telefonía celular, y 15) porcentaje de hogares con disponibilidad de teléfono fijo.
+En el caso del \textbf{P1} para clasificar a los municipios por la presencia o no de servicios de BAF basados en fibra óptica, se estimó pertinente considerar a las siguientes variables por municipio: 1) número de hogares, 2) número de habitantes, 3) superficie (en km), 4) densidad de $hogares/km^2$, 5) densidad de $habitantes/km^2$, 6) porcentaje de habitantes de municipio sin educación primaria, 7) años promedio de escolaridad por habitante, 8) porcentaje de hogares sin acceso a electricidad,  9) porcentaje de hogares sin acceso a energía eléctrica, 10) porcentaje de población que vive en localidades de menos de 5,000 habitantes, 11) porcentaje de la población que gana menos de 2 salarios mínimos, 12) ingreso promedio anual per cápita (poder de paridad de compra, expresado en dólares), 13) porcentaje de hogares con servicios de televisión de paga, 14) porcentaje de hogares con servicios de telefonía celular, y 15) porcentaje de hogares con disponibilidad de teléfono fijo.
 
-Para \textbf{P2}, se consideraron a las variables descritas para \textbf{P1} añadiendo 16) el porcentaje de hogares con disponibilidad de Internet, y 17) una variable que indica si hay dos o más operadores de telecomunicaciones que proveen servicios de BAF basados en cable coaxial o fibra óptica. 
+Dado que en \textbf{P2} se busca clasificar con respecto al nivel específico de penetración de BAF en los municipios se estimó necesario proveer información adicional sobre el nivel de presencia de Internet y el nivel de competencia entre operadores para el despliegue de accesos basados en las tecnologías multi-citadas; ello a través variables descritas para \textbf{P1} añadiendo 16) el porcentaje de hogares con disponibilidad de Internet, y 17) una variable que indica si hay dos o más operadores de telecomunicaciones que proveen servicios de BAF basados en cable coaxial o fibra óptica. 
 
-\subsection{Transformaciones a los datos}
+\subsection{Procesamiento de los datos}
 
-[Pendiente]
+Para los modelos de regresión las variables numéricas fueron estandarizadas aplicando una función z-score para evitar problemas numéricos asociados a su escala. En el caso de los modelos de árboles aleatorios y gradient tree boosting, las covariables no fueron transformadas en el entendido de que el funcionamiento de dichas herramientas es capaz de realizar la clasificación pretendida sin interferencias de escala. 
+
+Para \textbf{P1} la presencia o no de servicios de BAF basados en cable coaxial o fibra óptica se codificó como una variable binaria, que constituye la categoría a ser predecida. En el caso de \textbf{P2} los niveles de penetración se codificaron con una variable categórica donde $0$ refiere a penetración "nula", $1$ a penetración "baja" y así sucesivamente hasta que $5$ alude a penetración "muy alta".
+
+Cabe destacar que los datos de ingreso promedio anual per cápita no se encontraron disponibles para 4 municipios del país; tales fueron excluidos de la modelación.
+
+Por otra parte, se realizó un partición de los datos de manera aleatoria para consolidar un conjunto de entrenamiento y prueba, guardando una relación, de 75\% y 25\%, de manera respectiva.
+
 
 \subsection{Ajuste de los modelos y calibración de sus hiper-parámetros}
 
-[Pendiente]
+A manera de establecer una métrica que permita comparar entre los modelos a considerar, se estableció al $f1$-score.
 
-\section{Figures and Tables}
+Los modelos de regresión fueron ajustados con los datos descritos en la sección previa, usando el método de optimización \emph{lbfgs} para \textbf{P1} y  para \textbf{P2} se consideró a la función softmax para transforma la salida hacia las clases del problema de clasificación.
 
+Para los modelos de árboles aleatorios se ajustaron los pesos de los árboles de manera inversamente proporcionales a las frecuencias de clase en los datos de los municipios para considerar el desbalance en los niveles de penetración de BAF. Además, tales modelos se calibraron los siguientes hiper-parámetros 1) la cantidad de árboles aleatorios a considerar, 2) la profundidad máxima de los árboles a considerar, 3) el mínimo número de muestras necesarias para dividir a un nodo de un árbol.
 
-%\begin{figure}[tbhp]
-%\centering
-%\includegraphics[width=.8\linewidth]{net_red}
-%\caption{Placeholder image of a Network with a long example caption to show justification setting.}
-%\label{fig:net}
-%\end{figure}
+Por lo que hace a los modelos de gradient tree boosting, se ajustaron los siguientes hiper-parámetros: i) la tasa de aprendizaje,  ii) la reducción de pérdida mínima requerida para realizar una partición adicional en un nodo hoja del árbol, iii) la profundidad máxima de los árboles a considerar, iv) la profundidad máxima de los árboles, v) la proporción del conjunto de entrenamiento que se empleará para muestra y construir los árboles, vi)la proporción de columnas del conjunto de entrenamiento que se usara para construir los árboles, así como vii) la cantidad de árboles aleatorios a considerar.
 
+Para \textbf{P1} y \text{P2}, para la evaluación de la pertinencia de los hiper-parámetros se empleó validación cruzada de 6 hojas.
 
-%Figure \ref{fig:net} shows an example of how to insert a column-wide figure. To insert a figure wider than one column, please use the \verb|\begin{figure*}...\end{figure*}| environment. Figures wider than one column should be sized to 11.4 cm or 17.8 cm wide. Use \verb|\begin{SCfigure*}...\end{SCfigure*}| for a wide figure with side captions.
+El detalle del procedimiento usado se puede consultar en los apéndices que acompañan al presente documento.
 
+\subsection{Análisis de resultados}
 
+En el caso de los modelos de regresión logística, se realizó el ajuste sobre el conjunto de entrenamiento, para posteriormente realizar la predicciones correspondiente sobre el conjunto de prueba. 
 
-%
-%
-%\begin{table}%[tbhp]
-%	%\centering
-%	\caption{Character Level Combat Outcomes\label{table:char_main}}
-%	\begin{tabular}{@{\extracolsep{5pt}}lccc} 
-%		\\[-1.8ex]\hline 
-%		\hline \\[-1.8ex] 
-%		& \multicolumn{3}{c}{\textit{Dependent variable:}} \\ 
-%		\cline{2-4} 
-%		\\[-1.8ex] & Combat & Combat & Combat\\ 
-%		\\[-1.8ex] & Amount & Variability & Skill \\ 
-%		\\[-1.8ex] & (1) & (2) & (3)\\ 
-%		\hline \\[-1.8ex] 
-%		Man - Male & 0.042$^{***}$ & 5.659$^{***}$ & 0.031$^{***}$  \\ 
-%		& (0.002) & (0.056) & (0.0004)  \\ 
-%		Woman - Female & $-$0.026$^{***}$ & 1.529$^{***}$ & 0.011$^{***}$  \\ 
-%		& (0.005) & (0.143) & (0.001)  \\ 
-%		Woman - Male & 0.010 & 0.375 & 0.005$^{*}$  \\ 
-%		& (0.009) & (0.272) & (0.002)  \\ 
-%		Player Age & $-$0.077$^{***}$ &  &  $-$0.003$^{***}$\\ 
-%		& (0.001) &  & (0.0002) \\ 
-%		Mil. Label & 0.135$^{***}$ &  & 0.060$^{***}$ \\ 
-%		& (0.002) &  & (0.0004) \\ 
-%		Constant &  & $-$97.425$^{***}$ &   \\ 
-%		&  & (0.046) &   \\ 
-%		\hline 
-%		Char. Order FEs     &       Y&       N&     Y\\
-%		Create Date FEs     &       Y&       N&     Y\\
-%		\hline  
-%		Observations & 576,430 & 576,430 & 576,430 \\ 
-%		R$^{2}$ & 0.028 & 0.018 & 0.089  \\ 
-%		\hline 
-%	\end{tabular} 
-%	\vspace{1mm}
-%	\addtabletext{*  p$<$0.05, ** p$<$0.01, *** p$<$0.001 \\
-%		This table reports coefficients and standards errors from ordinary least squares regressions. In all models we can reject the null that \emph{Woman - Female} and \emph{Woman - Male} are equivalent with p $<$ .01. In models 2 and 3 we can reject the null that the gender gaps within sex are equivalent ((\emph{Woman - Male}) - (\emph{Woman - Female}) = \emph{Man - Male}) with p $<$ .001.}
-%\end{table}
+Por su parte, los modelos de árboles, se ajustaron con los parámetros que obtuvieron mejores resultados sobre el conjunto de entrenamiento a través de validación cruzada y en función de la métrica descrita en la sección previa.
+
+Realizando el ajuste de los modelos con los valores correspondientes a dichos hiper-parámetros sobre el conjunto de entrenamiento, se procedió a comparar los resultados obtenidos por todos los modelos sobre el conjunto de prueba.
+
+Es así que los resultados de la metodología recién descrita para \textbf{P1} y \textbf{P2} se presentan a continuación:
+
+\subsubsection{P1}
+
+Hola	
+
+\subsubsection{P2}
+
+Hola
 
 
-%\texttt{\subsection*{Tables}
-%In addition to including your tables within this manuscript file, PNAS requires that each table be uploaded to the submission separately as a “Table” file.  Please ensure that each table .tex file contains a preamble, the \verb|\begin{document}| command, and the \verb|\end{document}| command. This is necessary so that the submission system can convert each file to PDF.
-%
-%\subsection*{Equations}
-%
-%Authors may use 1- or 2-column equations in their article, according to their preference.
-%
-%To allow an equation to span both columns, use the \verb|\begin{figure*}...\end{figure*}| environment mentioned above for figures. Using only \verb|\begin{figure*}...\end{figure*}| keeps the equation in a two collum format
-%
-%
-%\begin{figure}[bt!]
-%\begin{align*}
-%(x+y)^3&=(x+y)(x+y)^2\\
-%       &=(x+y)(x^2+2xy+y^2) \numberthis \label{eqn:example} \\
-%       &=x^3+3x^2y+3xy^3+x^3. 
-%\end{align*}
-%\end{figure}}
-%
-%
-%\section*{References}
-%
-%References should be cited in alphabethical order; this will be done automatically via bibtex. All references should be included in the main manuscript file.  
-%
-%
-%\acknow{Please include your acknowledgments here, set in a single paragraph. Please do not include any acknowledgments in the Supporting Information, or anywhere else in the manuscript.}
+\subsection{Conclusiones}
 
-\showacknow{} % Display the acknowledgments section
-
-% Bibliography
+En este documento, exploramos el uso de modelos de aprendizaje de máquina 
 
 \bibliography{ilcss-sample}
 
 \newpage
 
-\begin{appendices}
+\begin{Apendices}
 	\section{Figuras de análisis exploratorio}
 
 \begin{figure}[tbhp]
@@ -484,6 +439,7 @@ Para \textbf{P2}, se consideraron a las variables descritas para \textbf{P1} añ
 	\caption{Densidad de habitantes en municipios vs Penetración BAF Junio 2018 (\cite{IFT2019BIT})}
 	\label{fig:pen_denhabs}
 \end{figure}
+
 
 \end{appendices}
 

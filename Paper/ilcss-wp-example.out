@@ -19,8 +19,11 @@
 \BOOKMARK [2][-]{subsection.2.2}{Bosques aleatorios}{section.2}% 19
 \BOOKMARK [2][-]{subsection.2.3}{Gradient tree boosting}{section.2}% 20
 \BOOKMARK [2][-]{subsection.2.4}{Variables a considerarse en los modelos}{section.2}% 21
-\BOOKMARK [2][-]{subsection.2.5}{Transformaciones a los datos}{section.2}% 22
+\BOOKMARK [2][-]{subsection.2.5}{Procesamiento de los datos}{section.2}% 22
 \BOOKMARK [2][-]{subsection.2.6}{Ajuste de los modelos y calibraci\363n de sus hiper-par\341metros}{section.2}% 23
-\BOOKMARK [1][-]{section.3}{Figures and Tables}{}% 24
-\BOOKMARK [1][-]{section*.4}{Appendices}{}% 25
-\BOOKMARK [1][-]{Appendix.1.A}{Figuras de an\341lisis exploratorio}{}% 26
+\BOOKMARK [2][-]{subsection.2.7}{An\341lisis de resultados}{section.2}% 24
+\BOOKMARK [3][-]{subsubsection.2.7.1}{P1}{subsection.2.7}% 25
+\BOOKMARK [3][-]{subsubsection.2.7.2}{P2}{subsection.2.7}% 26
+\BOOKMARK [2][-]{subsection.2.8}{Conclusiones}{section.2}% 27
+\BOOKMARK [1][-]{section*.4}{Appendices}{}% 28
+\BOOKMARK [1][-]{Appendix.1.A}{Figuras de an\341lisis exploratorio}{}% 29
