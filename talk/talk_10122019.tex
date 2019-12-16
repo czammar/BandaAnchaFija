@@ -218,10 +218,24 @@ A  nivel municipal...
 	\item[\textbf{P2:}] ¿Cuál es el nivel de penetración de BAF de fibra óptica o cable coaxial?
 \end{itemize}
 
-\begin{figure}
-	\includegraphics[scale=0.5]{images/ocde_class.jpg}
-	%\caption{Insertando imagen}
-\end{figure}
+\begin{table}[tbhp]
+	\centering
+	\caption{Niveles de penetración en un municipio\label{table:clasifpen}}
+	\begin{tabular}{@{}ll@{}}
+		\hline
+		%\rowcolor[HTML]{EFEFEF} 
+		Nivel de penetración & Rango  de penetración            \\ \hline
+		Muy Alta  & $Penetracion > Media \ OCDE$         \\ 
+		%\rowcolor[HTML]{EFEFEF} 
+		Alta    & $20 < Penetracion \leq Media \ OCDE$ \\ 
+		Media    & $10 < Penetracion \leq 20$  \\ 
+		%\rowcolor[HTML]{EFEFEF} 
+		Baja      & $0 < Penetracion \leq 10$  \\ 
+		%\rowcolor[HTML]{EFEFEF} 
+		Nula      & $Penetracion =0$            \\ \hline
+	\end{tabular}
+	%\addtabletext{Clasificación de municipios según su rango de penetración de BAF}
+\end{table}
 
 \end{frame}
 
@@ -262,30 +276,151 @@ A  nivel municipal...
 		\textbf{P1 - Variables principales :}
 		\begin{itemize}
 			\item hogares, habitantes
-			\item $hogares/km^2$, $habitantes/km^2$
-			\item \% hogares sin acceso a energía eléctrica
+			\item Densidad hogares y habitantes por $km^2$
+			\item \% hogares sin energía eléctrica
 			\item \% pob. en localidades de menos de 5,000 habitantes
-			\item Ingreso promedio anual per cápita
-			\item Habs. que gana menos de 2 SMM,
-			\item \% hogs con servicios tv paga + teléfono fijo + celular
+			\item Ingreso anual per cápita (proedi)
+			\item \% Habs. que ganan menos de 2 SMM,
+			\item \% hogs con tv paga + teléfono fijo/celular
 		\end{itemize}
 		
 	\end{column}
 	\begin{column}{0.5\textwidth}
-		\textbf{Pipeline:}
-		\begin{itemize}
-			\item Modelos: Regresión logística, Random Forest, Gradient Tree Bost
-			\item Gridsearch, calibrar los posibles hiper-parámetros de los modelos + validación cruzada,
-			\item Comparar modelos,
-			\item Analizar los resultados	
-		\end{itemize}
+
+		\textbf{P2 - Variables principales :}
 		
+		Se requieren información adicional para inferir un nivel específico de cobertura a nivel geográfico; (por ejemplo; nivel de competencia en infraestructura/servicios)
+\begin{itemize}
+	\item Mismas que en \textbf{P1}
+	\item Indicador de si hay 2 o más operadores de BAF
+	\item \% hogares con Internet
+
+\end{itemize}	
 		
 	\end{column}
 \end{columns}
 
 \end{frame}
 
+
+\begin{frame}
+\frametitle{P1 - Resultados}
+
+%\begin{figure}
+%	\includegraphics[scale=0.8]{images/p1_results.png}
+%	%\caption{Insertando imagen}
+%\end{figure}
+
+\begin{table}[tbhp]
+	\centering
+
+	\label{tab:p1_results}
+	\begin{tabular}{@{}llllll@{}}
+		\hline
+		\# & Modelo & Precisión & Recall & $F1$-score & Soporte \\ \hline
+		1 & Logístico & 0.87 & 0.87 & 0.86 & 612 \\
+		2 & Bosque Aleatorio & 0.87 & 0.86 & 0.87* & 612 \\
+		3 & Gradient Tree Boosting & 0.87 & 0.86 & 0.86 & 612 \\ \hline
+	\end{tabular}
+
+	\caption{Promedio ponderado de resultados obtenidos para P1 }
+\end{table}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{P1 - Resultados - Matrices de confusión}
+\begin{figure}
+	\includegraphics[scale=0.5]{images/p1_results_matrix.png}
+	%\caption{Insertando imagen}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{P1 - Resultados - Shap municipios sin cobertura}
+\begin{figure}
+	\includegraphics[scale=0.45]{images/p1_results_shap.png}
+	%\caption{Insertando imagen}
+\end{figure}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{P2 - Resultados}
+
+\begin{table}[tbhp]
+	\centering
+	\label{tab:p2_results}
+	\begin{tabular}{@{}llcccc@{}}
+		\hline
+		\# & Modelo & Precisión& Recall & \multicolumn{1}{l}{$F1$-score} & Soporte \\ \hline
+		1 & Logístico (1 vs all) & 0.90 & 0.88 & 0.89 & 612 \\
+		2 & Logístico (all vs all) & 0.90 & 0.88 & 0.89 & 612 \\
+		3 & Bosque aleatorio & 0.90 & 0.89 & 0.89* & 612 \\
+		4 & Gradient Tree Boosting & 0.89 & 0.88 & 0.88 & 612\\ \hline
+	\end{tabular}
+	\caption{Promedio ponderado de resultados obtenidos para P2}
+\end{table}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{P2 - Resultados - Matrices de confusión}
+\begin{figure}
+	\includegraphics[scale=0.5]{images/p2_results_matrix.png}
+	%\caption{Insertando imagen}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{P2 - Resultados - Shap municipios de cobertura Media}
+\begin{figure}
+\includegraphics[scale=0.45]{images/p2_results_shap.png}
+%\caption{Insertando imagen}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Conclusiones y trabajo a futuro}
+
+		\textbf{Conclusiones:}
+		\begin{itemize}
+			\item Los métodos de aprendizaje de máquina muestran resultados prometedores para inferir cobertura de BAF ante falta de información.
+			\item La falta de información sobre cobertura puede ser combatida con datos de fuentes públicas (encuestas, estudios económicos, otros)
+			\item Métodos de aprendizaje de máquina pueden ayudar a establecer factores por los cuales hay un cierto nivel de cobertura en una zona del país.
+
+		\end{itemize}
+
+\end{frame}
+
+\begin{frame}	
+\frametitle{Conclusiones y trabajo a futuro}		
+\textbf{Líneas que se podrían explorar:}
+
+\begin{itemize}
+			\item Incorporar información a nivel geográfico;
+			\item Considerar distancia a infraestructura que permita ampliar la que los operadores tienes en los municipios; por ejemplo cercanía a centrales, distancia a red troncal CFE/Uninet,
+			\item Incorporar información de cobertura de banda ancha con otras tecnologías (banda ancha móvil 4G/5G)
+			\item Extender metodologías/modelos zonas o países donde sin suficiente información del mercado de BAF (e.g. si tienen un nivel de madurez comparable al de México)
+		\end{itemize}	
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Referencias}		
+\begin{itemize}
+	
+	\item \textbf{OCDE:} http://www.oecd.org/internet/broadband/broadband-faqs.htm
+	\item \textbf{Banco de información de telecomunicaciones (IFT)}: https://bit.ift.org.mx/BitWebApp/
+	\item \textbf{Documentos del proyecto:} https://github.com/czammar/BandaAnchaFija
+	\item \textbf{Mapas interactivos:} https://github.com/czammar/BandaAnchaFija/tree/master/Mapas
+
+\end{itemize}
+
+\end{frame}
 
 %
 %\begin{frame}[fragile] % Notice the [fragile] option %
