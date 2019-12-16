@@ -1058,7 +1058,7 @@ Package xypdf Info: Line width: 0.43799pt on input line 120.
 _10122019.toc) [2
 
 ]
-<images/access_network.jpg, id=91, 790.955pt x 421.575pt>
+<images/access_network.jpg, id=103, 790.955pt x 421.575pt>
 File: images/access_network.jpg Graphic file (type jpg)
 <use images/access_network.jpg>
 Package pdftex.def Info: images/access_network.jpg  used on input line 157.
@@ -1066,7 +1066,7 @@ Package pdftex.def Info: images/access_network.jpg  used on input line 157.
  [3
 
  <./images/access_network.jpg>]
-<images/access_technology.jpg, id=120, 700.6175pt x 401.5pt>
+<images/access_technology.jpg, id=132, 700.6175pt x 401.5pt>
 File: images/access_technology.jpg Graphic file (type jpg)
 <use images/access_technology.jpg>
 Package pdftex.def Info: images/access_technology.jpg  used on input line 172.
@@ -1077,7 +1077,7 @@ Package pdftex.def Info: images/access_technology.jpg  used on input line 172.
  <./images/access_technology.jpg>] [5
 
 ]
-<images/ocde.png, id=182, 814.04124pt x 460.72125pt>
+<images/ocde.png, id=194, 814.04124pt x 460.72125pt>
 File: images/ocde.png Graphic file (type png)
 <use images/ocde.png>
 Package pdftex.def Info: images/ocde.png  used on input line 196.
@@ -1096,7 +1096,7 @@ Package pdftex.def Info: images/ocde.png  used on input line 196.
 ] [11
 
 ]
-<images/p1_results_matrix.png, id=345, 679.53876pt x 292.09125pt>
+<images/p1_results_matrix.png, id=357, 679.53876pt x 292.09125pt>
 File: images/p1_results_matrix.png Graphic file (type png)
 <use images/p1_results_matrix.png>
 Package pdftex.def Info: images/p1_results_matrix.png  used on input line 339.
@@ -1104,7 +1104,7 @@ Package pdftex.def Info: images/p1_results_matrix.png  used on input line 339.
  [12
 
  <./images/p1_results_matrix.png>]
-<images/p1_results_shap.png, id=375, 592.2125pt x 456.70625pt>
+<images/p1_results_shap.png, id=385, 592.2125pt x 456.70625pt>
 File: images/p1_results_shap.png Graphic file (type png)
 <use images/p1_results_shap.png>
 Package pdftex.def Info: images/p1_results_shap.png  used on input line 347.
@@ -1114,7 +1114,7 @@ Package pdftex.def Info: images/p1_results_shap.png  used on input line 347.
  <./images/p1_results_shap.png>] [14
 
 ]
-<images/p2_results_matrix.png, id=431, 1007.765pt x 299.1175pt>
+<images/p2_results_matrix.png, id=441, 1007.765pt x 299.1175pt>
 File: images/p2_results_matrix.png Graphic file (type png)
 <use images/p2_results_matrix.png>
 Package pdftex.def Info: images/p2_results_matrix.png  used on input line 376.
@@ -1127,7 +1127,7 @@ Overfull \hbox (161.58597pt too wide) in paragraph at lines 376--376
 [15
 
  <./images/p2_results_matrix.png>]
-<images/p2_results_shap.png, id=459, 583.17876pt x 503.8825pt>
+<images/p2_results_shap.png, id=470, 583.17876pt x 503.8825pt>
 File: images/p2_results_shap.png Graphic file (type png)
 <use images/p2_results_shap.png>
 Package pdftex.def Info: images/p2_results_shap.png  used on input line 384.
@@ -1159,21 +1159,14 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 507.
  (./talk_10122019.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 507.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 507.
-
-
-Package rerunfilecheck Warning: File `talk_10122019.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `talk_10122019.out':
-(rerunfilecheck)             Before: F91CB994AE814627C710101B9EFA8C1F;132
-(rerunfilecheck)             After:  D87CA899E2ACF5AA4EEE8BAC6F217AD9;243.
+Package rerunfilecheck Info: File `talk_10122019.out' has not changed.
+(rerunfilecheck)             Checksum: D87CA899E2ACF5AA4EEE8BAC6F217AD9;243.
  ) 
 Here is how much of TeX's memory you used:
- 20907 strings out of 494457
- 381833 string characters out of 6173956
+ 20915 strings out of 494457
+ 381905 string characters out of 6173956
  503559 words of memory out of 5000000
- 24022 multiletter control sequences out of 15000+600000
+ 24030 multiletter control sequences out of 15000+600000
  16261 words of font info for 66 fonts, out of 8000000 for 9000
  62 hyphenation exceptions out of 8191
  56i,16n,63p,3246b,631s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1185,10 +1178,10 @@ sr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr
 /local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></us
 r/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></us
 r/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on talk_10122019.pdf (19 pages, 421626 bytes).
+Output written on talk_10122019.pdf (19 pages, 422119 bytes).
 PDF statistics:
- 607 PDF objects out of 1000 (max. 8388607)
- 546 compressed objects within 6 object streams
+ 615 PDF objects out of 1000 (max. 8388607)
+ 554 compressed objects within 6 object streams
  47 named destinations out of 1000 (max. 500000)
- 130 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 146 words of extra memory for PDF output out of 10000 (max. 10000000)
 
