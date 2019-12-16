@@ -1,0 +1,13 @@
+\frametitle{Verbatim}
+\begin{example}[Putting Verbatim]
+\begin{verbatim}
+\begin{frame}
+\frametitle{Outline}
+\begin{block}
+{Why Beamer?}
+Does anybody need an introduction to Beamer?
+I don't think so.
+\end{block}
+ Extra carriage return causes problem with verbatim %
+\end{frame}\end{verbatim}
+\end{example}

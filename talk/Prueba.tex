@@ -1,0 +1,249 @@
+\documentclass[xcolor=dvipsnames, compress]{beamer}
+%\usetheme{Madrid} % My favorite!
+%\usetheme{Boadilla} % Pretty neat, soft color.
+%\usetheme{Warsaw}
+%\usecolortheme{dove} 
+%\usetheme[secheader]{Boadilla}
+%\useoutertheme[subsection=false]{smoothbars}
+% \useinnertheme{rectangles}
+% \usetheme{Marburg}
+%   \usecolortheme[RGB={139,10,80}]{structure}
+%  \usecolortheme[RGB={25,25,112}]{structure}
+%\usecolortheme[RGB={255,127,36}]{structure}
+%\usetheme{CambridgeUS}
+%\usetheme{PaloAlto}
+% \usefonttheme{professionalfonts}
+% \usepackage{listings}
+
+%\usetheme{Boadilla}
+
+% \usetheme{Warsaw}
+%\usetheme{Darmstadt} %OK!
+%  \usetheme{Frankfurt} %OK!
+% \usetheme{Goettingen}
+% \usetheme{Dresden}
+%\usetheme{JuanLesPins} %OK!!
+%\usetheme{Marburg}
+%  \usetheme{Montpellier}
+% \usetheme{Rochester} %sobrio
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Luebeck}
+
+%\usetheme{Hannover}
+%\usecolortheme{wolverine}
+
+%\usecolortheme{albatross}
+%\usecolortheme{seahorse}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove} %<- este con orchid
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{whale}
+
+%\usetheme{Bergen} % This template has nagivation on the left
+%\usetheme{Frankfurt} % Similar to the default 
+%with an extra region at the top.
+\usecolortheme{seahorse} % Simple and clean template
+%\usetheme{Darmstadt} % not so good
+% Uncomment the following line if you want %
+% page numbers and using Warsaw theme%
+% \setbeamertemplate{footline}[page number]
+%\setbeamercovered{transparent}
+%\setbeamercovered{invisible}
+% To remove the navigation symbols from 
+% the bottom of slides%
+%\setbeamertemplate{navigation symbols}{} 
+%
+\usepackage{graphicx}
+\usepackage{amssymb,amsmath,amscd}
+\usepackage{latexsym,xspace}
+\usepackage[utf8]{inputenc}
+\usepackage{epsfig}
+%\usepackage{fancyhdr}
+%\usepackage[spanish]{babel}
+\usepackage[all]{xy}
+\usepackage{enumerate}
+\usepackage{eucal}
+%\usepackage[usenames]{color}
+
+\usepackage{mathtools} % flechas con nombres arriba o abajo
+
+
+%#########################
+\newcommand{\tx}{\ensuremath{\tau(X)}}
+\newcommand{\txx}{\ensuremath{\tau_{X}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\C}{\ensuremath{\mathbb{C}}}
+\newcommand{\A}{\ensuremath{\forall}}
+\newcommand{\E}{\ensuremath{\exists}}
+\newcommand{\iso}{\ensuremath{\cong}}
+\newcommand{\union}{\ensuremath{\cup}}
+%\newcommand{\morinyec}{\ensuremath{\precapprox}}
+%\newenvironment{prueba}{\vspace{-3mm}\noindent\textbf{Demostraci\'on}\\}{\noindent$\blacksquare$\\}
+\newcommand{\nin}{\ensuremath{\notin}}
+\renewcommand{\emptyset}{\varnothing}
+
+%\newcommand{\niso}{\ensuremath{\not \cong}}
+\newtheorem{teor}{Teorema}[section]
+\newtheorem{defi}{Definition}[section]
+\newtheorem{ejemplo}{Examples}[section]
+\newtheorem{obs}{Remark}[section]
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{cor}{Corollary}[section]
+\newtheorem{ntc}{Notation}[section]
+\newtheorem{lema}{Lemma}[section]
+\newtheorem{prob}{Problem}
+\newtheorem{comen}{Comment}
+
+
+%\usepackage{bm}         % For typesetting bold math (not \mathbold)
+%\logo{\includegraphics[height=0.6cm]{yourlogo.eps}}
+%
+\title[Proyecto]{Nombre de projecto}
+\author{Ely, Laura, Miguel, César}
+\institute[ITAM]
+%\date{November 7, 2019}
+% \today will show current date. 
+% Alternatively, you can specify a date.
+%
+
+
+\begin{document}
+%
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Índice}
+ \tableofcontents%[sections]
+\end{frame}
+
+\begin{frame}
+
+Soy un texto de ejemplo $$\pi(x|y) = \frac{\pi(y|x) \pi(x)}{\pi(y)} $$
+
+
+\end{frame}
+
+ \begin{frame}
+% \section{Motivación}
+Ejemplo del ambiente de definiciones:
+  \begin{defi}[Soy un modelo]
+Un modelo es...
+ \end{defi}
+ \end{frame}
+
+
+
+\begin{frame}
+\section{Hola soy la seccion 2}
+\frametitle{Example of a Theorem}
+
+Ejemplo del ambiente de teoremas:
+
+\begin{theorem}
+The quick brown fox jumps over the lazy dog.
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\section{Imágenes}
+\frametitle{Soy una imagen}
+A simple example...
+	\begin{figure}
+		\includegraphics[scale=0.15]{images/gato.jpeg}
+		\caption{Insertando imagen}
+	 \end{figure}
+\end{frame}
+
+%
+%\begin{frame}[fragile] % Notice the [fragile] option %
+%\frametitle{Verbatim}
+%\begin{example}[Putting Verbatim]
+%\begin{verbatim}
+%\begin{frame}
+%\frametitle{Outline}
+%\begin{block}
+%{Why Beamer?}
+%Does anybody need an introduction to Beamer?
+%I don't think so.
+%\end{block}
+% Extra carriage return causes problem with verbatim %
+%\end{frame}\end{verbatim} 
+%\end{example}
+%\end{frame}
+ 
+%\begin{frame}[fragile]  % notice the fragile option, since the body
+			% contains a verbatim command
+%Example of the \verb|\cite| command to give a reference is below:
+%Example of citation using \cite{key1} follows on.
+%\end{frame}
+ 
+% \begin{frame}
+% \section{Bibliografía}
+% \frametitle{Referencias}
+% \footnotesize{
+% \begin{thebibliography}{99}
+%  \bibitem[Morita, 2010]{key1} J. Nagata, K. Morita (1989)
+%  \newblock Topics On General Topology.
+%  \newblock \emph{Elsevier Science Publisher B.V.} 15(6), 203 -- 243.
+
+% \bibitem[VanMill, 2010]{key1} J. Van Mill ; M. Husek (1992)
+%  \newblock Recent Progress In General Topology.
+%  \newblock \emph{Elsevier Publications} p. 375.
+
+% \bibitem[MacLane, 2010]{key1} J. S. Mac Lane(1971)
+%  \newblock Categories for the working mathematician,.
+%  \newblock \emph{Springer} p. 375.
+
+%  \bibitem[Ishii, 2010]{key1} Tadashi Ishii (1969)
+%  \newblock On Tychonoff Functor and $w$-Compactness.
+%  \newblock \emph{Topology Appl.} 11, 175 -- 187.
+
+%  \bibitem[Ishii, 2010]{key1} T. Hoshina; K. Morita (1980)
+%  \newblock On Regular Products Of Topological Spaces.
+%  \newblock \emph{Topology Appl.} 11, 47 -- 57.
+% \end{thebibliography}
+% }
+% \end{frame}
+
+
+ 
+% \begin{frame}
+% %\section{Bibliografía}
+% \frametitle{Referencias}
+% \footnotesize{
+% \begin{thebibliography}{99}
+%  \bibitem[Porter, 2010]{key1}J. R. Porter ; R. Grant Woods  (1987)
+%  \newblock Extensions and Absolutes of Hausdorff Spaces.
+%  \newblock \emph{Springer-Verlag} 856.
+
+
+%  \bibitem[Simon, 2010]{key1} Petr Simon (1984)
+%  \newblock Completely regular modification and products.
+%  \newblock \emph{Commentationes Mathematicae Universitatis Carolinae} 25(1), 121--128.
+
+
+
+%  \bibitem[Puppier, 2010]{key1} René Puppier (1969)
+%  \newblock La Completion Universelle D'un Produit D'espaces Completement Reguliers .
+%  \newblock \emph{Publ. Dept. Math, Lyon} 254, 342--351.
+
+
+
+% \end{thebibliography}
+% }
+% \end{frame}
+% 
+% End of slides
+\end{document} 

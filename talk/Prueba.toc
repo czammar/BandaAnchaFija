@@ -1,0 +1,2 @@
+\beamer@sectionintoc {1}{Hola soy la seccion 2}{5}{0}{1}
+\beamer@sectionintoc {2}{Im\IeC {\'a}genes}{6}{0}{2}

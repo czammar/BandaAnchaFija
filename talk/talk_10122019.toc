@@ -1,0 +1,2 @@
+\beamer@sectionintoc {1}{Cobertura de banda ancha fija en M\IeC {\'e}xico}{3}{0}{1}
+\beamer@sectionintoc {2}{Problemas a explorar}{8}{0}{2}
