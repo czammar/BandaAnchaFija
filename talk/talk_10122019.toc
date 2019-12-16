@@ -1,2 +1,4 @@
 \beamer@sectionintoc {1}{Cobertura de banda ancha fija en M\IeC {\'e}xico}{3}{0}{1}
 \beamer@sectionintoc {2}{Problemas a explorar}{8}{0}{2}
+\beamer@sectionintoc {3}{Resultados}{12}{0}{3}
+\beamer@sectionintoc {4}{Conclusiones y trabajo a futuro}{17}{0}{4}
