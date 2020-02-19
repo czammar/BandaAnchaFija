@@ -1,8 +1,11 @@
 ---
-title: "Penetracion de accesos de banda ancha fija por cada 100 hogares, para fibra y cable coaxial, para todos los municipios del país"
+title: Penetracion de accesos de banda ancha fija por cada 100 hogares, para fibra
+  y cable coaxial, para todos los municipios del país
 author: "Cesar Zamora"
 date: "2/19/2020"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}

@@ -1,8 +1,11 @@
 ---
-title: "Mapas de penetracion de accesos de banda ancha fija por cada 100 hogares, para fibra y cable coaxial"
+title: Mapas de penetracion de accesos de banda ancha fija por cada 100 hogares, para
+  fibra y cable coaxial
 author: "Cesar Zamora"
 date: "2/19/2020"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
