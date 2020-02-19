@@ -181,12 +181,38 @@ df1$IS_PEN_BAF_HABS_COAXFO <- as.character(df1$IS_PEN_BAF_HABS_COAXFO)
 df1$NUM_OPS <- as.character(df1$NUM_OPS)
 ```
 
-### Penetracion vs Ingreso
+
+### Penetracion vs Densidad de habitantes
 
 ```{r echo=FALSE}
 ggplot(df1, aes(x =df1$CLASS_PEN_BAF_HABS_COAXFO , 
-                y = df1$INGRESOPC_ANUAL, color= df1$CLASS_PEN_BAF_HABS_COAXFO)) +
+                y = df1$DENS_HABS, color= df1$CLASS_PEN_BAF_HABS_COAXFO)) +
   geom_boxplot() + theme_classic() + theme(legend.title = element_blank())+
+  theme(legend.position="none")+
+  labs(y = "Penetración BAF" ,x = "Densidad de Habitantes/KM^2",title = "Relación penetracion y densidad de habitantes por KM^2")+
+ scale_x_discrete(labels=c("0" = "Nula", "1" = "Baja", "2" = "Media", "3" = "Alta", "4" = "Muy Alta"))+
+  coord_flip()
+```
+
+### Penetracion vs Densidad de hogares
+
+```{r echo=FALSE}
+ggplot(df1, aes(x =df1$CLASS_PEN_BAF_HABS_COAXFO , 
+                y = df1$DENS_HOGS, color= df1$CLASS_PEN_BAF_HABS_COAXFO)) +
+  geom_boxplot() + theme_classic() + theme(legend.title = element_blank())+
+  theme(legend.position="none")+
+  labs(y = "Penetración BAF" ,x = "Densidad de Hogares/KM^2",title = "Relación penetracion y densidad de hogares por KM^2")+
+ scale_x_discrete(labels=c("0" = "Nula", "1" = "Baja", "2" = "Media", "3" = "Alta", "4" = "Muy Alta"))+
+  coord_flip()
+```
+
+
+### Penetración de banda ancha fija vs Ingreso
+
+```{r echo=FALSE}
+ggplot(df1, aes(x =df1$CLASS_PEN_BAF_HABS_COAXFO , 
+                y = df1$DENS_HABS, color= df1$CLASS_PEN_BAF_HABS_COAXFO)) +
+  geom_boxplot() + theme_classic() + theme(legend.title = element_blank()) +
   theme(legend.position="none")+
   #scale_x_discrete(name ="Penetración BAF", limits=c("Nula","Baja","Media", "Alta", "Muy Alta"))+
   labs(x = "Penetración BAF" ,y = "Ingreso anual per capita (USD, en ppc)", title = "Relación penetracion e ingreso anual")+
@@ -194,4 +220,25 @@ ggplot(df1, aes(x =df1$CLASS_PEN_BAF_HABS_COAXFO ,
 ```
 
 
+### Penetración de banda ancha fija vs salario minimo mensual
+
+```{r echo=FALSE}
+ggplot(df1, aes(x =df1$PO2SM)) +
+  geom_density(aes(colour=df1$CLASS_PEN_BAF_HABS_COAXFO)) + theme_classic() + theme(legend.title = element_blank()) +
+  labs(x = "% población en municipios con ingreso\n de hasta 2 salarios minimos en 2015" ,y = "Density", title = "Relación penetracion y porcentaje de población que\n gana hasta 2 salarios minimos")+
+  scale_x_discrete(labels=c("0" = "Nula", "1" = "Baja", "2" = "Media", "3" = "Alta", "4" = "Muy Alta"))
+```
+
+### Curva acumulada 
+
+```{r}
+rm(list = ls())
+source("createdb_fixedbroadband.R")
+```
+
+```{r}
+df<-df %>% mutate(PEN_BAF_HABS = df$ALL_ACCESS/df$POBLACION*100)
+ggplot(df, aes(df$PEN_BAF_HABS)) + stat_ecdf(geom = "step", pad = FALSE,aes(colour='red'))+ theme_classic() + theme(legend.title = element_blank()) +
+  labs(x = "Accesos de BAF por cada 100 habitantes" ,y = "Porcentaje de municipios", title = "Densidad acumulada de municipios\n según su penetración")
+```
 
