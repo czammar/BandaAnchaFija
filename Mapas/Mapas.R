@@ -3,28 +3,23 @@
 # Script para crecion mapas de penetracion BAF
 
 # Libreria
-library("mxmaps") #Ver https://www.diegovalle.net/mxmaps/
-library("scales")
 library("readxl")
-library("ggplot2")
 library("tidyverse")
 library("readr")
 library(leaflet) # Libreria para invocar la funcion colorNumeric de paleta de colores
-library(mxmaps)
+library(mxmaps) #Ver https://www.diegovalle.net/mxmaps/
 library(viridis) # Libreria para paleta de colores
 library(scales) # Libreria auxiliar para colores
 
 
 # Establece directorio de trabajo
-setwd("/media/Box/Aprendizaje_Maquina/Projecto")
+#setwd("/media/Box/Aprendizaje_Maquina/Projecto")
 
 # Crear las bases de datos para trabajar
-source("creating_baf.R") # Accesos de banda ancha fija a junio/2019 BIT del IFT
-source("creating_hogares.R") # Hogares por municipios Encuesta intercensal 2015, INEGI
-source("creating_poblacion.R") # Poblacion por municipios Encuesta intercensal 2015, INEGI
+source("createdb_fixedbroadband.R") # Accesos de banda ancha fija a junio/2019 BIT del IFT
 
 # Cargamos la base de datos de nombre de estados y municipios para usarla en los mapas
-Nombres <- read_csv("Nombres_entidad_municipio.csv", locale = locale(encoding = "ISO-8859-1"))
+Nombres <- read_csv("data/Nombres_entidad_municipio.csv", locale = locale(encoding = "ISO-8859-1"))
 Nombres <- Nombres %>% select(K_ENTIDAD_MUNICIPIO,nom_ent,nom_mun)
 
 # Consolidamos las bases
@@ -47,7 +42,7 @@ df <- df %>% mutate(PEN_BAF_HABS = 100*COAX_FO/POBLACION) # Penetracion por cada
 
 # Agregamos una columna que nos diga la region socioecnomica a la que pertenece el municipio
 
-RegionesSocioEcono <- read_csv("RegionesSocioEcono.csv", 
+RegionesSocioEcono <- read_csv("data/RegionesSocioEcono.csv", 
                                col_types = cols(NOM_ABRE_ENTIDAD = col_skip(), 
                                                 NOM_ENTIDAD = col_skip(), NUM = col_skip()))
 df <- df %>% mutate(K_ENTIDAD = substr(K_ENTIDAD_MUNICIPIO,1,2))
@@ -144,244 +139,245 @@ mxmunicipio_leaflet(PenetrationBAF_Habitantes,
 # 
 
 ########## Mapa estatico de penetracion BAF en todos los municpios de mexico version 2 ##########
-# gg = MXMunicipioChoropleth$new(PenetrationBAF_Hogares)
-# 
-# gg$title <- "Penetración de servicios fijos de Internet en México"
-# gg$set_num_colors(1)
-# 
-# # el parametro option toma valores de letras (A,B,C,D ...) y arroja diferentes opciones de paletas de colores
-# gg$ggplot_scale <- scale_fill_viridis("Accesos por \n cada 100 hogares",option="C")
-# 
-# # Muestra el mapa
-# gg$render()
+gg = MXMunicipioChoropleth$new(PenetrationBAF_Hogares)
+
+gg$title <- "Penetración de servicios fijos de Internet en México"
+gg$set_num_colors(1)
+
+# el parametro option toma valores de letras (A,B,C,D ...) y arroja diferentes opciones de paletas de colores
+gg$ggplot_scale <- scale_fill_viridis("Accesos por \n cada 100 hogares",option="C")
+
+# Muestra el mapa
+gg$render()
 
 ########## Mapas estaticos de penetracion BAF de los municpios de mexico por estado ##########
 # 
 # 
 # # Variable auxiliar para escala de colores de num_colors
-# Idx= 8
+Idx= 8
+PenetrationBAF <- PenetrationBAF_Habitantes
 # 
 # # Nota: se hace uso de la funcion zoom para crear un filtro con el nombre del estado (columna nom_ent)
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Aguascalientes"))$region,
-#                        title = "Aguascalientes - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Baja California"))$region,
-#                        title = "Baja California - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Baja California Sur"))$region,
-#                        title = "Baja California Sur- Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Campeche"))$region,
-#                        title = "Campeche - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Coahuila de Zaragoza"))$region,
-#                        title = "Coahuila - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Colima"))$region,
-#                        title = "Colima - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Chiapas"))$region,
-#                        title = "Chiapas - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Chihuahua"))$region,
-#                        title = "Chihuahua - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Distrito Federal"))$region,
-#                        title = "CDMX - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Durango"))$region,
-#                        title = "Durango - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Guanajuato"))$region,
-#                        title = "Guanajuato - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Guerrero"))$region,
-#                        title = "Guerrero - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Hidalgo"))$region,
-#                        title = "Hidalgo - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Jalisco"))$region,
-#                        title = "Jalisco - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("México"))$region,
-#                        title = "Estado de México - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Michoacán de Ocampo"))$region,
-#                        title = "Michoacán - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Morelos"))$region,
-#                        title = "Morelos - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Nayarit"))$region,
-#                        title = "Nayarit - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Nuevo León"))$region,
-#                        title = "Nuevo León - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Oaxaca"))$region,
-#                        title = "Oaxaca - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Puebla"))$region,
-#                        title = "Puebla - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Querétaro"))$region,
-#                        title = "Querétaro - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Quintana Roo"))$region,
-#                        title = "Quintana Roo - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("San Luis Potosí"))$region,
-#                        title = "San Luis Potosí - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Sinaloa"))$region,
-#                        title = "Sinaloa - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Sonora"))$region,
-#                        title = "Sonora - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Tabasco"))$region,
-#                        title = "Tabasco - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Tamaulipas"))$region,
-#                        title = "Tamaulipas - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Tlaxcala"))$region,
-#                        title = "Tlaxcala - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Veracruz de Ignacio de la Llave"))$region,
-#                        title = "Veracruz - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Yucatán"))$region,
-#                        title = "Yucatán - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Zacatecas"))$region,
-#                        title = "Zacatecas - Accesos para servicios fijos de Internet por cada 100 hogares",
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Aguascalientes"))$region,
+                       title = "Aguascalientes - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Baja California"))$region,
+                       title = "Baja California - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Baja California Sur"))$region,
+                       title = "Baja California Sur- Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Campeche"))$region,
+                       title = "Campeche - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Coahuila de Zaragoza"))$region,
+                       title = "Coahuila - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Colima"))$region,
+                       title = "Colima - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Chiapas"))$region,
+                       title = "Chiapas - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Chihuahua"))$region,
+                       title = "Chihuahua - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Distrito Federal"))$region,
+                       title = "CDMX - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Durango"))$region,
+                       title = "Durango - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Guanajuato"))$region,
+                       title = "Guanajuato - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Guerrero"))$region,
+                       title = "Guerrero - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Hidalgo"))$region,
+                       title = "Hidalgo - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Jalisco"))$region,
+                       title = "Jalisco - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("México"))$region,
+                       title = "Estado de México - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Michoacán de Ocampo"))$region,
+                       title = "Michoacán - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Morelos"))$region,
+                       title = "Morelos - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Nayarit"))$region,
+                       title = "Nayarit - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Nuevo León"))$region,
+                       title = "Nuevo León - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Oaxaca"))$region,
+                       title = "Oaxaca - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Puebla"))$region,
+                       title = "Puebla - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Querétaro"))$region,
+                       title = "Querétaro - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Quintana Roo"))$region,
+                       title = "Quintana Roo - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("San Luis Potosí"))$region,
+                       title = "San Luis Potosí - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Sinaloa"))$region,
+                       title = "Sinaloa - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Sonora"))$region,
+                       title = "Sonora - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Tabasco"))$region,
+                       title = "Tabasco - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Tamaulipas"))$region,
+                       title = "Tamaulipas - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Tlaxcala"))$region,
+                       title = "Tlaxcala - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Veracruz de Ignacio de la Llave"))$region,
+                       title = "Veracruz - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Yucatán"))$region,
+                       title = "Yucatán - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Zacatecas"))$region,
+                       title = "Zacatecas - Accesos para servicios fijos de Internet por cada 100 hogares",
+                       legend = "Accesos por \n cada 100 hogares")
+
 # 
 # 
 # ########## Mapas estaticos de penetracion BAF de los municpios de mexico por regiones socioeconomicas ##########
 # 
 # # Nota: se hace uso de la funcion zoom para crear un filtro con el nombre del estado (columna nom_ent)
 # 
-# # Region Noroeste
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Baja California", "Baja California Sur", "Chihuahua", "Durango", "Sinaloa", "Sonora"))$region,
-#                        title = "Accesos para servicios fijos de Internet por cada 100 hogares \n Región Noroeste (Baja California, Baja California Sur, \n Chihuahua, Durango, Sinaloa y Sonora )",
-#                        show_states = TRUE,
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# # Region Noroeste
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Coahuila de Zaragoza", "Nuevo León", "Tamaulipas"))$region,
-#                        title = "Accesos para servicios fijos de Internet por cada 100 hogares \n Región Noreste (Coahuila, Nuevo León y Tamaulipas) ",
-#                        show_states = TRUE,
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# # Region Occidente
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Colima", "Jalisco", "Michoacán de Ocampo", "Nayarit"))$region,
-#                        title = "Accesos para servicios fijos de Internet por cada 100 hogares \n Región Occidente (Colima, Jalisco, Michoacán y Nayarit)",
-#                        show_states = TRUE,
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# # Region Oriente
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Hidalgo", "Puebla", "Tlaxcala", "Veracruz de Ignacio de la Llave"))$region,
-#                        title = "Accesos para servicios fijos de Internet por cada 100 hogares \n Región Oriente (Hidalgo, Puebla, Tlaxcala y Veracruz)",
-#                        show_states = TRUE,
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# # Region Centronorte
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Aguascalientes", "Guanajuato", "Querétaro", "San Luis Potosí", "Zacatecas"))$region,
-#                        title = "Accesos para servicios fijos de Internet por cada 100 hogares \n Región Centronorte (Aguascalientes, Guanajuato, Querétaro, \n San Luis Potosí y Zacatecas)",
-#                        show_states = TRUE,
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# # Region Centrosur
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("México", "Distrito Federal", "Morelos"))$region,
-#                        title = "Accesos para servicios fijos de Internet por cada 100 hogares \n Region Centrosur (CDMX, Estado de México y Morelos)",
-#                        show_states = TRUE,
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# # Region Suroeste
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Chiapas", "Guerrero", "Oaxaca"))$region,
-#                        title = "Accesos para servicios fijos de Internet por cada 100 hogares \n Región Suroeste (Chiapas, Guerrero y Oaxaca) ",
-#                        show_states = TRUE,
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
-# # Region Sureste
-# mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
-#                        zoom = subset(PenetrationBAF,nom_ent %in% c("Campeche", "Quintana Roo", "Tabasco", "Yucatán"))$region,
-#                        title = "Accesos para servicios fijos de Internet por cada 100 hogares \n Región Sureste (Campeche, Tabasco, Quintana Roo y Yucatán)",
-#                        show_states = TRUE,
-#                        legend = "Accesos por \n cada 100 hogares")
-# 
+# Region Noroeste
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Baja California", "Baja California Sur", "Chihuahua", "Durango", "Sinaloa", "Sonora"))$region,
+                       title = "Accesos para servicios fijos de Internet por cada 100 hogares \n Región Noroeste (Baja California, Baja California Sur, \n Chihuahua, Durango, Sinaloa y Sonora )",
+                       show_states = TRUE,
+                       legend = "Accesos por \n cada 100 hogares")
+
+# Region Noroeste
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Coahuila de Zaragoza", "Nuevo León", "Tamaulipas"))$region,
+                       title = "Accesos para servicios fijos de Internet por cada 100 hogares \n Región Noreste (Coahuila, Nuevo León y Tamaulipas) ",
+                       show_states = TRUE,
+                       legend = "Accesos por \n cada 100 hogares")
+
+# Region Occidente
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Colima", "Jalisco", "Michoacán de Ocampo", "Nayarit"))$region,
+                       title = "Accesos para servicios fijos de Internet por cada 100 hogares \n Región Occidente (Colima, Jalisco, Michoacán y Nayarit)",
+                       show_states = TRUE,
+                       legend = "Accesos por \n cada 100 hogares")
+
+# Region Oriente
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Hidalgo", "Puebla", "Tlaxcala", "Veracruz de Ignacio de la Llave"))$region,
+                       title = "Accesos para servicios fijos de Internet por cada 100 hogares \n Región Oriente (Hidalgo, Puebla, Tlaxcala y Veracruz)",
+                       show_states = TRUE,
+                       legend = "Accesos por \n cada 100 hogares")
+
+# Region Centronorte
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Aguascalientes", "Guanajuato", "Querétaro", "San Luis Potosí", "Zacatecas"))$region,
+                       title = "Accesos para servicios fijos de Internet por cada 100 hogares \n Región Centronorte (Aguascalientes, Guanajuato, Querétaro, \n San Luis Potosí y Zacatecas)",
+                       show_states = TRUE,
+                       legend = "Accesos por \n cada 100 hogares")
+
+# Region Centrosur
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("México", "Distrito Federal", "Morelos"))$region,
+                       title = "Accesos para servicios fijos de Internet por cada 100 hogares \n Region Centrosur (CDMX, Estado de México y Morelos)",
+                       show_states = TRUE,
+                       legend = "Accesos por \n cada 100 hogares")
+
+# Region Suroeste
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Chiapas", "Guerrero", "Oaxaca"))$region,
+                       title = "Accesos para servicios fijos de Internet por cada 100 hogares \n Región Suroeste (Chiapas, Guerrero y Oaxaca) ",
+                       show_states = TRUE,
+                       legend = "Accesos por \n cada 100 hogares")
+
+# Region Sureste
+mxmunicipio_choropleth(PenetrationBAF, num_colors = Idx,
+                       zoom = subset(PenetrationBAF,nom_ent %in% c("Campeche", "Quintana Roo", "Tabasco", "Yucatán"))$region,
+                       title = "Accesos para servicios fijos de Internet por cada 100 hogares \n Región Sureste (Campeche, Tabasco, Quintana Roo y Yucatán)",
+                       show_states = TRUE,
+                       legend = "Accesos por \n cada 100 hogares")
+

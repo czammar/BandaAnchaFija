@@ -1,5 +1,4 @@
-#library(shiny)
-#library(plotly)
+#
 library(ggplot2)
 library(dplyr)
 library(tidyverse)
@@ -7,7 +6,7 @@ library(tidyverse)
 # Para ejectuar este archivo, por favor situarse en la ruta donde esta el archivo csv con los datos
 # Cargamos los datos limpios
 # Nota: modificar en la ruta donde almacenan los datos
-df1 <- read_csv("/media/Box/Aprendizaje_Maquina/Projecto/BAF_06209_P2.csv")
+df1 <- read_csv("data/processed/BAF_062019_P2.csv")
 
 # Aqui especificamos cuales con las variables categoricas
 # Nota: la lista de los nombres de estas variables se tiene que escribir en la linea 32

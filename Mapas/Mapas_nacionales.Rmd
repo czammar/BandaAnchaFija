@@ -1,0 +1,154 @@
+---
+title: "Penetracion de accesos de banda ancha fija por cada 100 hogares, para fibra y cable coaxial, para todos los municipios del país"
+author: "Cesar Zamora"
+date: "2/19/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("readxl")
+library("tidyverse")
+library("readr")
+library(leaflet) # Libreria para invocar la funcion colorNumeric de paleta de colores
+library(mxmaps) #Ver https://www.diegovalle.net/mxmaps/
+library(viridis) # Libreria para paleta de colores
+library(scales) # Libreria auxiliar para colores
+
+```
+
+## 0. Introduccion
+
+Este documento contiene mapas de penetración de accesos de banda fija para los municipios de México a nivel estatal. Los datos que se toman como referencia para su elaboración fueron 1) Datos de accesos de banda ancha, publicados por el Instituto Federal de Telecomunicaciones para Junio de 2019, 2) Datos de población y hogares, obtenidos de la Encuesta Intercensal 2015 de Inegi; ambos fueron los últimos disponibles a la fecha de elaboración de este proyecto.
+
+Como base, se usó la libreria *mapsmx* de R, puesto que toma como referencia las claves geoestadisticas de dicha Encuesta Intercensal.
+
+Adicionalmente, como se explica a detalle en el documento **ilcss-wp-example.pdf** y se ubica en la carpeta */Paper*, el indicador de penetración mostrado por tales mapas se basa en una medida definida por la Organización para la Cooperación y el Desarrollo Económicos (OCDE) para cuantificar la cobertura de banda ancha fija en una zona (dado como la cantidad de accesos en ella por cada 100 habitantes, el cual es un proxy del indicador de suscriptores por cada 100 habitantes,[http://www.oecd.org/internet/broadband/broadband-faqs.htm](http://www.oecd.org/internet/broadband/broadband-faqs.htm)):
+$$PenBAFHabitantes = \frac{Accesos }{Habitantes} \times 100$$
+
+
+
+
+## 1. Procesamiento de los datos
+
+Cargamos las bases de datos:
+
+```{r, echo=FALSE}
+hogares2015<- read_csv("../data/processed/hogares2015.csv")
+poblacion2015<- read_csv("../data/processed/poblacion2015.csv")
+BAF_062019 <- read_csv("../data/processed/BAF_062019.csv")
+
+```
+
+Damos forma a los datos para poder crear los mapas a nivel estatal:
+
+```{r pressure, echo=FALSE}
+# Cargamos la base de datos de nombre de estados y municipios para usarla en los mapas
+Nombres <- read_csv("../data/Nombres_entidad_municipio.csv", locale = locale(encoding = "ISO-8859-1"))
+Nombres <- Nombres %>% select(K_ENTIDAD_MUNICIPIO,nom_ent,nom_mun)
+
+# Consolidamos las bases
+df <- left_join(hogares2015,poblacion2015, by = "K_ENTIDAD_MUNICIPIO")
+df <- left_join(df,BAF_062019, by = "K_ENTIDAD_MUNICIPIO")
+df <- left_join(df,Nombres, by = "K_ENTIDAD_MUNICIPIO")
+
+
+# Imputamos ceros donde no hay datos de penetracion
+df <- df %>% mutate_all(~replace(., is.na(.), 0))
+
+# Elimina variables auxiliares
+rm(left_path,name_state,right_path,states_list,cleaning_hog_state,cleaning_pop_state, hogares2015,poblacion2015, BAF_062019, INAFED)
+
+
+# Seleccionamos variables de interes y creamos otras
+df <- df %>% select(K_ENTIDAD_MUNICIPIO, K_ENTIDAD, K_MUNICIPIO,nom_ent, nom_mun, HOGARES, POBLACION, ALL_ACCESS, COAX_FO)
+df <- df %>% mutate(PEN_BAF_HOGS = 100*COAX_FO/HOGARES) # Penetracion por cada 100 hogares
+df <- df %>% mutate(PEN_BAF_HABS = 100*COAX_FO/POBLACION) # Penetracion por cada 100 hogares
+
+# Agregamos una columna que nos diga la region socioecnomica a la que pertenece el municipio
+
+RegionesSocioEcono <- read_csv("../data/RegionesSocioEcono.csv", 
+                               col_types = cols(NOM_ABRE_ENTIDAD = col_skip(), 
+                                                NOM_ENTIDAD = col_skip(), NUM = col_skip()))
+df <- df %>% mutate(K_ENTIDAD = substr(K_ENTIDAD_MUNICIPIO,1,2))
+df <- left_join(df,RegionesSocioEcono, by = "K_ENTIDAD")
+
+for (index in 1:nrow(df)){
+  df$REG_SOCIOECONOM[index] <- if_else(df$REG_SOCIOECONOM[index]=="Centronorte",1, 
+                                       if_else(df$REG_SOCIOECONOM[index]=="Centrosur",2,
+                                               if_else(df$REG_SOCIOECONOM[index]=="Noreste",3,
+                                                       if_else(df$REG_SOCIOECONOM[index]=="Noroeste",4,
+                                                               if_else(df$REG_SOCIOECONOM[index]=="Occidente",5,
+                                                                       if_else(df$REG_SOCIOECONOM[index]=="Oriente",6,
+                                                                               if_else(df$REG_SOCIOECONOM[index]=="Sureste",7,8)))))))
+}
+
+```
+
+## 2. Penetracion por cada 100 hogares en todos los municpios de mexico
+
+
+```{r, echo=FALSE}
+# Creamos una variable para hacer mapas de penetracion de cable coaxial y fibra optica
+PenetrationBAF_Hogares <- df
+
+# Crea nombres de columnas value y region que se necesita para usan alimentar la función mxmunicipio_choropleth
+PenetrationBAF_Hogares$value <- PenetrationBAF_Hogares$PEN_BAF_HOGS # Valores para escala de colores
+PenetrationBAF_Hogares$region <- PenetrationBAF_Hogares$K_ENTIDAD_MUNICIPIO # Llave principal de municipios de INEGI
+
+
+# Definicion de paleta de colores a partir de valores de penetracion
+# "RdYlBu", "Accent", or "Greens"
+#"viridis", "magma", "inferno", or "plasma".
+
+# Spectral para el mapa de BAF para hogares
+pal <- colorNumeric(palette = "magma", domain = PenetrationBAF_Hogares$value) 
+
+mxmunicipio_leaflet(PenetrationBAF_Hogares,
+                    pal,
+                    ~ pal(value),
+                    ~ sprintf("Estado: %s<br/>Municipio : %s<br/>Penetración: %s ",
+                              nom_ent, nom_mun, round(value,1))) %>%
+  addLegend(position = "topright", 
+            pal = pal, 
+            values = PenetrationBAF_Hogares$value,
+            title = "Accesos de cable coaxial y fibra <br/>  óptica por cada 100 hogares",
+            labFormat = labelFormat(suffix = "",
+                                    transform = function(x) {x})) %>%
+  addProviderTiles("CartoDB.Positron")
+```
+
+
+## Penetracion por cada 100 habitantes en todos los municpios de México
+
+```{r, echo=FALSE}
+
+# Creamos una variable para hacer mapas de penetracion de cable coaxial y fibra optica
+PenetrationBAF_Habitantes <- df
+
+# Crea nombres de columnas value y region que se necesita para usan alimentar la función mxmunicipio_choropleth
+PenetrationBAF_Habitantes$value <- PenetrationBAF_Habitantes$PEN_BAF_HABS # Valores para escala de colores
+PenetrationBAF_Habitantes$region <- PenetrationBAF_Habitantes$K_ENTIDAD_MUNICIPIO # Llave principal de municipios de INEGI
+
+# Definicion de paleta de colores a partir de valores de penetracion
+# http://www.di.fc.ul.pt/~jpn/r/GraphicalTools/colorPalette.html
+# "RdYlBu", "Accent", or "Greens"
+#"viridis", "magma", "inferno", or "plasma".
+
+# Spectral para el mapa de BAF para hogares
+pal <- colorNumeric(palette = "Spectral", domain = PenetrationBAF_Habitantes$value) 
+
+mxmunicipio_leaflet(PenetrationBAF_Habitantes,
+                    pal,
+                    ~ pal(value),
+                    ~ sprintf("Estado: %s<br/>Municipio : %s<br/>Penetración: %s ",
+                              nom_ent, nom_mun, round(value,1))) %>%
+  addLegend(position = "topright", 
+            pal = pal, 
+            values = PenetrationBAF_Habitantes$value,
+            title = "Accesos de cable coaxial y fibra <br/>  óptica por cada 100 habitantes",
+            labFormat = labelFormat(suffix = "",
+                                    transform = function(x) {x})) %>%
+  addProviderTiles("CartoDB.Positron")
+```
+
