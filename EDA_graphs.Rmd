@@ -1,0 +1,197 @@
+---
+title: "EDA_graphs"
+author: "Cesar Zamora"
+date: "2/19/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(dplyr)
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+```
+
+## Carga de datos de banda ancha fija en municipios de México
+
+```{r load_data, echo=FALSE}
+# Cargamos la base de datos de accesos de banda ancha para Mexico
+
+BAF_raw <- read_csv("data/TODO_BAF/TD_ACC_BAF_ITE_VA.csv", 
+                    col_types = cols(ANIO = col_character(), 
+                                     K_ACCESO_INTERNET = col_character(), 
+                                     K_ENTIDAD = col_character(), K_MUNICIPIO = col_character(), 
+                                     MES = col_character()), locale = locale(encoding = "ISO-8859-1"))
+
+######---- Modificamos los datos atipicos de de Mayapan (Yucatan) y Rayon (Estado de Mexico) ----#####
+
+# Los municipios circundates a Mayapan no tienen penetracion de BAF en cable coaxial ni fibra optica.
+# Se considera que Mayapan tampoco (error en la base del  BIT)
+
+indice_mayapan = (BAF_raw$ANIO == "2019")*(BAF_raw$ENTIDAD == "Yucatan")*(BAF_raw$MUNICIPIO == "Mayapan")
+for (i in which(indice_mayapan==1)){
+  BAF_raw$A_TOTAL_E[i]<-0
+}
+
+rm(indice_mayapan)
+# El nivel reportado de penetracion para Rayon es muy alto debido a incosistencias con los accesos
+# reportados por Megacable en los meses 04, 05 y 06 de 2019. Se les imputa el valor
+# historico mas reciente, que es congruente con los datos historicos previos.
+
+
+indice_rayon = (BAF_raw$ANIO == "2019")*(BAF_raw$ENTIDAD == "Mexico.")*(BAF_raw$MUNICIPIO == "Rayon..")*(BAF_raw$EMPRESA == "MEGACABLE")*(BAF_raw$TECNO_ACCESO_INTERNET == "Cable Coaxial")
+
+indice_rayon_03 = which((indice_rayon*(BAF_raw$MES == "03"))==1)
+indice_rayon_04 = which((indice_rayon*(BAF_raw$MES == "04"))==1)
+indice_rayon_05 = which((indice_rayon*(BAF_raw$MES == "05"))==1)
+indice_rayon_06 = which((indice_rayon*(BAF_raw$MES == "06"))==1)
+
+BAF_raw$A_TOTAL_E[indice_rayon_04] <- BAF_raw$A_TOTAL_E[indice_rayon_03] 
+BAF_raw$A_TOTAL_E[indice_rayon_05] <- BAF_raw$A_TOTAL_E[indice_rayon_03] 
+BAF_raw$A_TOTAL_E[indice_rayon_06] <- BAF_raw$A_TOTAL_E[indice_rayon_03] 
+
+```
+
+## Tablas y valores relevantes para describir mercado de banda ancha en México
+
+### Numero de accesos de BAF en 06/2019; sin importa tecnologia (18.85439 millones)		
+
+```{r, echo=FALSE}
+dt <- BAF_raw %>% filter(ANIO=='2019' & MES=='06') %>% select(A_TOTAL_E) %>% sum()/1000000		
+dt %>% kable() %>%kable_styling()
+
+```
+
+### Numero de accesos de BAF en 06/2019; sin ubicación
+
+```{r, echo=FALSE}
+BAF_raw %>% filter(ANIO=='2019' & MES=='06') %>% select(MUNICIPIO,A_TOTAL_E) %>% filter(MUNICIPIO == "Sin información de Municipio") %>% select(A_TOTAL_E) %>% sum()/1000000/18.85439		
+```
+
+### Distribucion de accesos de BAF en 06/2019 por tecnologia
+
+```{r, echo=FALSE}
+dt<-BAF_raw%>% filter(ANIO=='2019' & MES=='06')  %>% select(TECNO_ACCESO_INTERNET,A_TOTAL_E) %>% 		
+  group_by(TECNO_ACCESO_INTERNET) %>%  summarize(n=sum(A_TOTAL_E,na.rm = TRUE)/1000000) %>%		
+  ungroup() %>% mutate(distrib_n = n/18.85439)
+dt %>% kable() %>%kable_styling()
+```
+
+
+### Empresas y concesionarios de toda la DB (una empresas esta formada de varios concesionarios)		
+
+**Empresas**
+```{r, echo=FALSE}
+dt<-unique(BAF_raw$EMPRESA)
+dt %>% kable() %>%kable_styling()
+```
+
+**Concesionarios**
+
+```{r, echo=FALSE}
+dt<-unique(BAF_raw$CONCESIONARIO)
+dt %>% kable() %>%kable_styling()
+```
+
+
+### Empresas de Grupo Televisa		
+```{r, echo=FALSE}
+dt <- BAF_raw %>% select(GRUPO, EMPRESA) %>% unique() %>% filter(GRUPO=="GRUPO TELEVISA")
+dt %>% kable() %>%kable_styling()
+```
+
+
+### Empresas de grupo America Movil
+```{r, echo=FALSE}
+dt<-BAF_raw %>% select(GRUPO, EMPRESA) %>% unique() %>% filter(GRUPO=="AMÉRICA MÓVIL")
+dt %>% kable() %>%kable_styling()
+```
+
+### Empresas de grupo MEGACABLE-MCM
+```{r, echo=FALSE}
+dt<-BAF_raw %>% select(GRUPO, EMPRESA) %>% unique() %>% filter(GRUPO=="MEGACABLE-MCM")
+dt %>% kable() %>%kable_styling()
+```
+
+### Empresas de grupo TOTALPLAY
+
+```{r, echo=FALSE}
+dt<-BAF_raw %>% select(GRUPO, EMPRESA) %>% unique() %>% filter(GRUPO=="TOTALPLAY")
+dt %>% kable() %>%kable_styling()
+```
+
+### Distribución de accesos por grupos economicos
+
+```{r, echo=FALSE}
+dt<-BAF_raw%>% filter(ANIO=='2019' & MES=='06')  %>% select(GRUPO,A_TOTAL_E) %>% 		
+  group_by(GRUPO) %>%  summarize(n=sum(A_TOTAL_E,na.rm = TRUE)/1000000) %>%		
+  ungroup() %>% mutate(distrib_n = n/18.85439) %>% arrange(desc(distrib_n))	
+dt %>% kable() %>%kable_styling()
+```
+
+### Distribucion de acceso por tecnologia y por grupos de empresas
+
+```{r, echo=FALSE}
+dt<-BAF_raw%>% filter(ANIO=='2019' & MES=='06')  %>% select(GRUPO,TECNO_ACCESO_INTERNET,A_TOTAL_E) %>% 		
+  group_by(GRUPO,TECNO_ACCESO_INTERNET) %>%  summarize(n=sum(A_TOTAL_E,na.rm = TRUE)/1000000) %>%		
+  ungroup() %>% spread(TECNO_ACCESO_INTERNET, n)%>% mutate_all(~replace(., is.na(.), 0)) %>% 		
+  mutate(Sin_tecnoliga_especificada = `Sin tecnología especificada`+`Sin Tecnología especificada`) %>%		
+  select(-c(`Sin tecnología especificada`,`Sin Tecnología especificada`))
+dt %>% kable() %>%kable_styling()
+```
+
+### Distribucion de acceso por tecnologia y por por grupos de empresas mas importantes
+
+```{r, echo=FALSE}
+dt<-BAF_raw%>% filter(ANIO=='2019' & MES=='06')  %>% select(GRUPO,TECNO_ACCESO_INTERNET,A_TOTAL_E) %>% 		
+  group_by(GRUPO,TECNO_ACCESO_INTERNET) %>%  summarize(n=sum(A_TOTAL_E,na.rm = TRUE)/1000000) %>%		
+  ungroup() %>% spread(TECNO_ACCESO_INTERNET, n)%>% mutate_all(~replace(., is.na(.), 0)) %>%		
+  mutate(Sin_tecnologia_especificada = `Sin tecnología especificada`+`Sin Tecnología especificada`) %>%		
+  select(-c(`Sin tecnología especificada`,`Sin Tecnología especificada`)) %>% 		
+  filter(GRUPO == "AMÉRICA MÓVIL"|GRUPO == "GRUPO TELEVISA"| GRUPO == "AMÉRICA MÓVIL" | GRUPO == "MEGACABLE-MCM" | GRUPO == "TOTALPLAY")
+dt %>% kable() %>%kable_styling()
+```
+
+### Numero de accesos de BAF basados en DSL en 06/2019 (11.34751 millones)
+
+```{r, echo=FALSE}
+BAF_raw %>% filter(ANIO=='2019' & MES=='06' & TECNO_ACCESO_INTERNET=='DSL' ) %>% select(A_TOTAL_E) %>% sum()/1000000		
+```
+
+### Numero de accesos de BAF basados en fibra óptica o cable coaxial en 06/2019 (11.34751 millones)
+
+```{r, echo=FALSE}
+BAF_raw %>% filter(ANIO=='2019' & MES=='06' & (TECNO_ACCESO_INTERNET=='Cable Coaxial' |  TECNO_ACCESO_INTERNET=='Fibra Óptica' ) ) %>% select(A_TOTAL_E) %>% sum()/1000000		
+```
+
+## Graficos
+
+Cargamos los datos limpios. Cabe destacar que para ejectuar este archivo, por favor situarse en la ruta donde esta el archivo csv con los datos:
+
+```{r echo=FALSE}
+rm(list = ls())
+df1 <- read_csv("data/processed/BAF_062019_P2.csv")
+
+# Aqui especificamos cuales con las variables categoricas
+# Nota: la lista de los nombres de estas variables se tiene que escribir en la linea 32
+df1$CLASS_PEN_BAF_HABS_COAXFO <- as.character(df1$CLASS_PEN_BAF_HABS_COAXFO)
+df1$IS_PEN_BAF_HABS_COAXFO <- as.character(df1$IS_PEN_BAF_HABS_COAXFO)
+df1$NUM_OPS <- as.character(df1$NUM_OPS)
+```
+
+### Penetracion vs Ingreso
+
+```{r echo=FALSE}
+ggplot(df1, aes(x =df1$CLASS_PEN_BAF_HABS_COAXFO , 
+                y = df1$INGRESOPC_ANUAL, color= df1$CLASS_PEN_BAF_HABS_COAXFO)) +
+  geom_boxplot() + theme_classic() + theme(legend.title = element_blank())+
+  theme(legend.position="none")+
+  #scale_x_discrete(name ="Penetración BAF", limits=c("Nula","Baja","Media", "Alta", "Muy Alta"))+
+  labs(x = "Penetración BAF" ,y = "Ingreso anual per capita (USD, en ppc)", title = "Relación penetracion e ingreso anual")+
+  scale_x_discrete(labels=c("0" = "Nula", "1" = "Baja", "2" = "Media", "3" = "Alta", "4" = "Muy Alta"))
+```
+
+
+

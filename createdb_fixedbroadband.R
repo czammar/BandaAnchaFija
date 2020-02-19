@@ -460,7 +460,7 @@ for (index in 1:nrow(df)){
 
 #----- Agregamos una columna que nos diga la region socioecnomica a la que pertenece el municipio
 
-RegionesSocioEcono <- read_csv("RegionesSocioEcono.csv", 
+RegionesSocioEcono <- read_csv("data/RegionesSocioEcono.csv", 
                                col_types = cols(NOM_ABRE_ENTIDAD = col_skip(), 
                                                 NOM_ENTIDAD = col_skip(), NUM = col_skip()))
 df <- df %>% mutate(K_ENTIDAD = substr(K_ENTIDAD_MUNICIPIO,1,2))
