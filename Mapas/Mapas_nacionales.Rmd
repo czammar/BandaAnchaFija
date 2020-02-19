@@ -19,7 +19,7 @@ library(scales) # Libreria auxiliar para colores
 
 ## 0. Introduccion
 
-Este documento contiene mapas de penetración de accesos de banda fija para los municipios de México a nivel estatal. Los datos que se toman como referencia para su elaboración fueron 1) Datos de accesos de banda ancha, publicados por el Instituto Federal de Telecomunicaciones para Junio de 2019, 2) Datos de población y hogares, obtenidos de la Encuesta Intercensal 2015 de Inegi; ambos fueron los últimos disponibles a la fecha de elaboración de este proyecto.
+Este documento contiene mapas de penetración de accesos de banda fija para los municipios de México a nivel nacional. Los datos que se toman como referencia para su elaboración fueron 1) Datos de accesos de banda ancha, publicados por el Instituto Federal de Telecomunicaciones para Junio de 2019, 2) Datos de población y hogares, obtenidos de la Encuesta Intercensal 2015 de Inegi; ambos fueron los últimos disponibles a la fecha de elaboración de este proyecto.
 
 Como base, se usó la libreria *mapsmx* de R, puesto que toma como referencia las claves geoestadisticas de dicha Encuesta Intercensal.
 
