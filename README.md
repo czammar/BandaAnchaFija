@@ -4,16 +4,26 @@
 
 **16 de diciembre de 2019**
 
-### 1. Introducción
-
 El desarrollo de las telecomunicaciones, particularmente de los servicios de Internet de banda ancha, ha tenido un impacto sin precedentes en los procesos productivos, financieros y en el bienestar de la población.
 
-En México, a cerca de cuatro años de la reforma de telecomunicaciones, en 2013, se estimó un crecimiento superior al 37\% en las conexiones de banda ancha fija (BAF), traduciéndose en que para entonces casi la mitad los hogares contaban con servicios de Internet. Ello ubicó a México, en 2018 México, como el cuarto país con mayor crecimiento de penetración de banda ancha fija entre los países de la Organización para la Cooperación y Desarrollo Económicos (OCDE); y mostró un crecimiento de 17.9\% en la penetración de accesos por medio de fibra óptica.
+En México, a cerca de cuatro años de la reforma de telecomunicaciones, 2013 - 2017, se estimó un crecimiento superior al 37\% en las conexiones de banda ancha fija (BAF), traduciéndose en que para entonces casi la mitad los hogares contaban con servicios de Internet.
 
-Sin embargo, la Encuesta sobre Disponibilidad y Uso de Tecnologías de la Información y la Comunicación en los Hogares 2018 (ENDUTIH 2018, \cite{ENDUTIH2018}) dejó en claro la existencia de una brecha en la adopción de estos servicios para la población mexicana y sus beneficios:
 
-* **La penetración no tan honda:** sólo 65.8\% de la población con seis años o más es usuario de servicios de Internet en los hogares del país,
-* **En un feómeno más urbano que rural:** Cerca de 73.1\% del total de la población urbana son usuarios de este servicio en contraste con la población conectada en zonas rurales que es cercana a 40.6\%.
+
+ Sin embargo, la ENDUTIH 2018 dejó en claro la existencia de una brecha en la adopción de estos servicios para la población mexicana y sus beneficios:
+
+* **La penetración no es tan honda:** sólo 65.8\% de la población con seis años o más es usuario de servicios de Internet en los hogares del país,
+* **En un fenómeno más urbano que rural:** Cerca de 73.1\% del total de la población urbana son usuarios de este servicio en contraste con la población conectada en zonas rurales que es cercana a 40.6\%.
+
+![Penetración de banda ancha por cada 100 habitantes en Ciudad de México, a Junio 2018](Paper/images/pen_habs_cdmx.png)
+
+La imagen anterior muestra, que en incluso en la zona del Valle de México, existe una disparidad respecto a la cantidad de accesos a Internet por cada 100 habitantes, cuando se consideran tecnologías modernas como la fibra ópticas y el cable coaxial, que son las opciones para brindar servicios de calidad y velocidad alta.
+
+
+Para cuantificar la cobertura de banda ancha fija la OCDE define una medida de penetración en una zona como la cantidad de accesos en ella por cada 100 habitantes, el cual es un proxy del indicador de suscriptores por cada 100 habitantes (http://www.oecd.org/internet/broadband/broadband-faqs.htm):
+
+$$PenBAFHabitantes = \frac{Accesos }{Habitantes} \times 100 $$
+
 
 A efecto de explicar el entorno de la penetración de servicios de Internet a nivel municipal, en adelante nos centraremos en los servicios de banda ancha fija, los cuales son servicios de acceso a Internet y transmisión de datos orientados a usuarios finales (personas físicas o empresas), que se brindan a través de equipos terminales (módems, terminales ópticas y demás) que tienen una ubicación geográfica determinada y fija. Ello obliga a los operadores de telecomunicaciones interesados a realizar inversiones que les permitan alcanzar los puntos geográficos en donde se localizan los clientes potenciales, esto es, cerca de hogares y edificios de empresas, aprovechando las capacidades de las tecnologías en las que se basan sus redes.
 
@@ -26,7 +36,6 @@ Además de los aspectos socio-económicos, también se destacan otros factores q
 
 Explorar métodos de aprendizaje de máquina para inferir el nivel de cobertura de banda ancha fija, de accesos basados en fibra óptica o cable coaxial, a partir de información pública (por ejemplo, indicadores socio-económicos, proxys de indicadores de presencia de infraestructura).
 
-![Penetración de banda ancha por cada 100 habitantes en Ciudad de México, a Junio 2018](Paper/images/pen_habs_cdmx.png)
 
 ### Consideraciones
 
