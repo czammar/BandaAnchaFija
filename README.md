@@ -17,21 +17,18 @@ Al provenir de un sector que hace inversiones cuantiosas con vista a largo plazo
 
 ![Penetración de banda ancha por cada 100 habitantes en Ciudad de México, a Junio 2018](Paper/images/pen_habs_cdmx.png)
 
-La imagen anterior muestra, que en incluso en la zona del Valle de México, existe una disparidad respecto a la cantidad de accesos a Internet por cada 100 habitantes, cuando se consideran tecnologías modernas como la fibra ópticas y el cable coaxial, que son las opciones para brindar servicios de calidad y velocidad alta.
-
-Para cuantificar la cobertura de banda ancha fija la OCDE define una medida de penetración en una zona como la cantidad de accesos en ella por cada 100 habitantes, el cual es un proxy del indicador de suscriptores por cada 100 habitantes (http://www.oecd.org/internet/broadband/broadband-faqs.htm):
+De hecho, para cuantificar la cobertura de banda ancha fija la OCDE define una medida de penetración en una zona como la cantidad de accesos en ella por cada 100 habitantes, el cual es un proxy del indicador de suscriptores por cada 100 habitantes (http://www.oecd.org/internet/broadband/broadband-faqs.htm):
 
 $$PenBAFHabitantes = \frac{Accesos }{Habitantes} \times 100 $$
 
+Empleando este indicador, la imagen previa muestra, que incluso en la zona del Valle de México, existe una disparidad respecto a la cantidad de accesos a Internet por cada 100 habitantes, cuando se consideran tecnologías modernas como la fibra ópticas y el cable coaxial, que son las opciones para brindar servicios de calidad y velocidad alta. Las zonas azules muestran una penetración comparable con los países con penetración de banda ancha más alta de la OCDE [^2], mientras que los naranjas y rojos corresponden, respectivamente a sus últimos lugares o sin accesos de tales tecnologías.
 
-A efecto de explicar el entorno de la penetración de servicios de Internet a nivel municipal, en adelante nos centraremos en los servicios de banda ancha fija, los cuales son servicios de acceso a Internet y transmisión de datos orientados a usuarios finales (personas físicas o empresas), que se brindan a través de equipos terminales (módems, terminales ópticas y demás) que tienen una ubicación geográfica determinada y fija. Ello obliga a los operadores de telecomunicaciones interesados a realizar inversiones que les permitan alcanzar los puntos geográficos en donde se localizan los clientes potenciales, esto es, cerca de hogares y edificios de empresas, aprovechando las capacidades de las tecnologías en las que se basan sus redes.
+[^2]: A saber Suiza, Dinamarca, Francia y Paises Bajos; considerando cualquier tecnología de banda ancha desplegada en tales países, no sólo fibra y cable coaxial como en el mapa, lo cual es impresionante!!!
 
-Dicho contexto les condiciona a establecer un circuito físico o virtual a través del cual se pueda conectar la ubicación del usuario a la red del operador y a través del que se prestarán los servicios (“Acceso de datos” o simplemente como “acceso”). Por ende, dado que afrontan costos considerables en infraestructura, equipos, permisos y recursos humanos para poder brindar servicios\footnote{En línea con \cite{IFT2017reb}, no sólo se enfrentan costos directos, sino oportunidad y de transacción; así como el riesgo de afrontar costos hundidos.}, típicamente los operadores concentran su oferta en zonas densamente pobladas donde existe suficiente capacidad económica para asegurar no solo que recuperarán sus inversiones sino que serán rentables desde la visión de negocio.
-
-Además de los aspectos socio-económicos, también se destacan otros factores que pueden ser tomados en cuentan por un operador para evaluar una zona como idónea para brindar servicios: 1) Viabilidad de permisos para desarrollar los despliegues (e.g. concesiones para operar, medio ambiente), 2) viabilidad tecnológica (e.g. limitadas técnicas por la distancia que limitan la velocidad, calidad, entre otras), 3) existencia de infraestructura cercana a la zona de la que puedan disponer para proveer servicios (por ejemplo, propia o arrendada); y 4) existencia de competencia en el área; es decir de proveedores de servicios de telecomunicaciones.
-%
 
 ### Objetivo
+
+A efecto de explicar el entorno de la penetración de servicios de Internet a nivel municipal, en adelante nos centraremos en los servicios de banda ancha fija.
 
 Explorar métodos de aprendizaje de máquina para inferir el nivel de cobertura de banda ancha fija, de accesos basados en fibra óptica o cable coaxial, a partir de información pública (por ejemplo, indicadores socio-económicos, proxys de indicadores de presencia de infraestructura).
 
