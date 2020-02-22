@@ -4,6 +4,12 @@
 
 **16 de diciembre de 2019**
 
+### 1. Introducción
+
+hola
+
+
+
 ### Objetivo
 
 Explorar métodos de aprendizaje de máquina para inferir el nivel de cobertura de banda ancha fija, de accesos basados en fibra óptica o cable coaxial, a partir de información pública (por ejemplo, indicadores socio-económicos, proxys de indicadores de presencia de infraestructura).
