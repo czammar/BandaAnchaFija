@@ -11,7 +11,7 @@ El desarrollo de los servicios de Internet de banda ancha, ha tenido un impacto 
 * **La penetración no es tan honda:** sólo 66\% de la población con seis años o más es usuario de servicios de Internet en los hogares del país,
 * **En un fenómeno más urbano que rural:** Cerca de 73\% del total de la población urbana son usuarios de este servicio en contraste con la población conectada en zonas rurales que es cercana a 40.6\%.
 
-La distribución de los accesos [^1] a Internet en una zona obedece a muchos factores.
+Al provenir de un sector que hace inversiones cuantiosas con vista a largo plazo, se sabe que distribución de los accesos [^1] a Internet en una zona obedece a muchos aspectos que no solo son socio-económicos, pues también hay  otros factores que pueden ser tomados en cuentan por un operador para evaluar una zona como idónea para brindar servicios, como: 1) viabilidad de permisos para desarrollar los despliegues, 2) viabilidad tecnológica (e.g. limitadas técnicas por la distancia que limitan la velocidad, calidad, entre otras), 3) existencia de infraestructura cercana a la zona de la que puedan disponer para proveer servicios (por ejemplo, propia o arrendada); y 4) existencia de competencia en el área; es decir de proveedores de servicios de telecomunicaciones.
 
 [^1]: circuitos con los que se puede conectar la ubicación del usuario a la red de un operador y a través de la que se le prestan los servicios.
 
